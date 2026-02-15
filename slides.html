@@ -555,6 +555,70 @@
     animation: pulseGlow 3s ease-in-out infinite;
     animation-delay: 1.2s;
   }
+  /* ===== PRINT / PDF EXPORT ===== */
+  @media print {
+    @page {
+      size: 1280px 720px;
+      margin: 0;
+    }
+    html, body {
+      height: auto !important;
+      overflow: visible !important;
+      background: white !important;
+    }
+    .deck {
+      position: static !important;
+      width: 1280px !important;
+      height: auto !important;
+    }
+    .slide {
+      position: static !important;
+      opacity: 1 !important;
+      transform: none !important;
+      pointer-events: auto !important;
+      width: 1280px !important;
+      height: 720px !important;
+      page-break-after: always;
+      page-break-inside: avoid;
+      break-after: page;
+      break-inside: avoid;
+      display: flex !important;
+      border-radius: 0 !important;
+      margin: 0 !important;
+    }
+    .slide-inner {
+      width: 100% !important;
+      height: 100% !important;
+    }
+    .anim-fade, [class*="anim-d"] {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+      transition: none !important;
+    }
+    .substep {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+    .exclusive-steps .substep { display: none !important; }
+    .exclusive-steps .substep[data-substep="0"] {
+      display: flex !important;
+      opacity: 1 !important;
+    }
+    .acronym-slide .acronym-grid {
+      grid-template-columns: 1fr 1px 1fr !important;
+    }
+    .acronym-word { opacity: 1 !important; transform: none !important; }
+    .acronym-divider { opacity: 1 !important; }
+    .pipeline-node, .pipeline-connector {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    .slide-nav, .progress-bar, .slide-counter {
+      display: none !important;
+    }
+  }
 </style>
 </head>
 <body>

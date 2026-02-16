@@ -496,6 +496,93 @@
     line-height: 1.3;
   }
 
+  /* ── DSA Infographic (Slide 03) ── */
+  .dsa-callout-card {
+    padding: 16px 20px;
+    background: var(--accent-soft);
+    border-left: 3px solid var(--fg);
+    border-radius: 0 6px 6px 0;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  }
+  .exclusive-steps .substep.visible .dsa-callout-card {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .dsa-callout-card:nth-child(2) { transition-delay: 0.15s; }
+  .dsa-callout-card:nth-child(3) { transition-delay: 0.3s; }
+  .dsa-callout-card:nth-child(4) { transition-delay: 0.45s; }
+
+  .dsa-gap-circle {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-weight: 600;
+    font-size: 15px;
+    transition: transform 0.6s ease-in-out, opacity 0.5s ease-in-out;
+  }
+
+  .dsa-gap-text {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease-in-out 0.4s, transform 0.6s ease-in-out 0.4s;
+  }
+  .exclusive-steps .substep.visible .dsa-gap-text {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .dsa-gap-text:nth-child(2) { transition-delay: 0.55s; }
+  .dsa-gap-text:nth-child(3) { transition-delay: 0.7s; }
+
+  /* ── Comparison slide: push-apart animation ── */
+  .comparison-slide .comp-left,
+  .comparison-slide .comp-right {
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+  }
+  .comparison-slide:has(.solution-reveal.visible) .comp-left {
+    transform: translateX(-30px) scale(0.92);
+    opacity: 0.5;
+  }
+  .comparison-slide:has(.solution-reveal.visible) .comp-right {
+    transform: translateX(30px) scale(0.92);
+    opacity: 0.5;
+  }
+  .comparison-slide .comp-vs {
+    transition: opacity 0.3s ease;
+  }
+  .comparison-slide:has(.solution-reveal.visible) .comp-vs {
+    opacity: 0;
+  }
+  .solution-reveal {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
+    transition: opacity 0.5s ease 0.2s, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+    pointer-events: none;
+  }
+  .solution-reveal.visible {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+  }
+
+  /* Questionnaire fill animation */
+  .comp-checkbox {
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+  .comp-fill-anim .comp-cb-1 { background: var(--fg) !important; transition-delay: 0.1s; }
+  .comp-fill-anim .comp-cb-2 { background: var(--fg) !important; transition-delay: 0.35s; }
+  .comp-fill-anim .comp-input-fill { opacity: 1 !important; transition-delay: 0.55s; }
+  .comp-fill-anim .comp-cb-3 { background: var(--fg) !important; transition-delay: 0.75s; }
+  .comp-input-fill {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
   /* ── Exclusive steps: crossfade between substeps ── */
   .exclusive-steps .substep {
     opacity: 0;
@@ -640,8 +727,8 @@
       </div>
       <h1 class="anim-fade anim-d2" style="font-size: clamp(64px, 10vw, 140px); letter-spacing: -0.02em;">Corinna</h1>
       <div class="anim-fade anim-d3 divider anim-line" style="margin: 8px auto;"></div>
-      <p class="anim-fade anim-d4" style="font-style: italic; font-size: 20px; max-width: 600px; letter-spacing: 0.02em;">
-        Leveraging Large Language Models for Automated DSA Compliance Assessment
+      <p class="anim-fade anim-d4" style="font-style: italic; font-size: 18px; max-width: 700px; letter-spacing: 0.02em; white-space: nowrap;">
+        Large Language Models as Tools for Navigating Regulatory Compliance
       </p>
       <div class="anim-fade anim-d5" style="margin-top: 32px; max-width: 640px;">
         <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.6;">
@@ -711,94 +798,477 @@
   </div>
 
   <!-- ============================
-       SLIDE 3 — DSA Structure and Obligations
+       SLIDE — The Tech Lawyer (Guadamuz 2025)
        ============================ -->
-  <div class="slide">
+  <div class="slide" data-steps="3">
+    <div class="slide-inner" style="padding: 40px 56px;">
+      <div class="slide-header anim-fade anim-d1">
+        <span class="logo">Corinna</span>
+        <span class="tag"><span class="tag-dot"></span> Interdisciplinarity</span>
+      </div>
+
+      <h2 class="anim-fade anim-d2" style="font-size: 32px; margin-bottom: 6px;">&ldquo;Tech Lawyers&rdquo; &amp; Interdisciplinary Approaches</h2>
+      <p class="anim-fade anim-d3" style="font-size: 12px; color: var(--text-secondary); margin-bottom: 18px;">After Guadamuz (2025)</p>
+
+      <div style="flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;">
+
+        <!-- LEFT COLUMN -->
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+
+          <!-- The Translation Crisis -->
+          <div class="anim-fade anim-d3" style="border: 1px solid #c62828; padding: 16px 18px; background: rgba(198,40,40,0.03);">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+              <span style="font-size: 13px; font-weight: 600; color: #c62828; text-transform: uppercase; letter-spacing: 0.06em;">The Translation Crisis</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; align-items: start; gap: 8px;">
+                <span style="width: 5px; height: 5px; background: #c62828; flex-shrink: 0; margin-top: 6px;"></span>
+                <span style="font-size: 11px; color: var(--text-secondary); line-height: 1.5;">Courts decide AI&rsquo;s fate via <strong style="color: var(--fg);">metaphors</strong>: is a training set a &ldquo;mixtape&rdquo;? A &ldquo;compressed database&rdquo;? A &ldquo;synthetic brain&rdquo;?</span>
+              </div>
+              <div style="display: flex; align-items: start; gap: 8px;">
+                <span style="width: 5px; height: 5px; background: #c62828; flex-shrink: 0; margin-top: 6px;"></span>
+                <span style="font-size: 11px; color: var(--text-secondary); line-height: 1.5;">Lawyers rely on expert witnesses who struggle to connect technical explanations to legal elements</span>
+              </div>
+              <div style="display: flex; align-items: start; gap: 8px;">
+                <span style="width: 5px; height: 5px; background: #c62828; flex-shrink: 0; margin-top: 6px;"></span>
+                <span style="font-size: 11px; color: var(--text-secondary); line-height: 1.5;"><strong style="color: var(--fg);">Diverging rulings</strong> on the same tech: Getty Images (London) vs. GEMA (Munich) &mdash; opposite conclusions on whether models &ldquo;store&rdquo; data</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- The Tech Lawyer -->
+          <div class="substep" data-substep="0" style="border: 1px solid #2e7d6f; padding: 16px 18px; background: rgba(46,125,111,0.03);">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+              <span style="font-size: 13px; font-weight: 600; color: #2e7d6f; text-transform: uppercase; letter-spacing: 0.06em;">The Tech Lawyer: Dual Fluency</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <div style="display: flex; align-items: center; gap: 8px; padding: 6px 12px; background: rgba(46,125,111,0.06); border-left: 2px solid #2e7d6f;">
+                <span style="font-size: 11px; color: var(--fg);">Parse a <strong>dataset</strong> as easily as a <strong>contract</strong></span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px; padding: 6px 12px; background: rgba(46,125,111,0.06); border-left: 2px solid #2e7d6f;">
+                <span style="font-size: 11px; color: var(--fg);">Understand the architecture of a <strong>neural network</strong> and of a <strong>legal argument</strong></span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px; padding: 6px 12px; background: rgba(46,125,111,0.06); border-left: 2px solid #2e7d6f;">
+                <span style="font-size: 11px; color: var(--fg);">Know which simplifications are <strong>permissible</strong> vs. <strong>misleading</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quote -->
+          <div class="substep" data-substep="0" style="border-left: 3px solid var(--fg); padding: 10px 16px; background: var(--accent-soft);">
+            <p style="font-family: var(--font-serif); font-style: italic; font-size: 12px; color: var(--fg); line-height: 1.5;">
+              &ldquo;This kind of translation is an art form &hellip; requires a deep enough understanding of the tech to know which simplifications are permissible and which are misleading.&rdquo;
+            </p>
+            <p class="mono" style="font-size: 9px; color: var(--text-secondary); margin-top: 4px;">&mdash; Guadamuz, 2025</p>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+
+          <!-- Connection to Engel/Kruse & Corinna -->
+          <div class="substep" data-substep="1" style="border: 1px solid var(--border); padding: 16px 18px; background: rgba(255,255,255,0.5);">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+              <span class="mono" style="font-size: 10px; padding: 3px 10px; background: var(--fg); color: white; letter-spacing: 0.06em;">CONNECTION</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="display: flex; align-items: start; gap: 10px;">
+                <div class="step-number" style="width: 22px; height: 22px; font-size: 10px; flex-shrink: 0;">1</div>
+                <p style="font-size: 11px; color: var(--text-secondary); line-height: 1.5;"><strong style="color: var(--fg);">Engel &amp; Kruse&rsquo;s pipeline</strong> requires a tech lawyer: the LLM cannot infer doctrine alone &mdash; someone must teach it the doctrinal framework through prompts</p>
+              </div>
+              <div style="display: flex; align-items: start; gap: 10px;">
+                <div class="step-number" style="width: 22px; height: 22px; font-size: 10px; flex-shrink: 0;">2</div>
+                <p style="font-size: 11px; color: var(--text-secondary); line-height: 1.5;"><strong style="color: var(--fg);">Corinna</strong> embodies the same logic: dual fluency designs the agent pipeline, encodes the DSA&rsquo;s structure, crafts the classification logic</p>
+              </div>
+              <div style="padding: 8px 12px; border: 2px solid var(--fg); text-align: center; margin-top: 4px;">
+                <span style="font-size: 12px; font-weight: 600; color: var(--fg);">The tech lawyer is not replaced &mdash; the tech lawyer is the architect</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- From expertise to infrastructure -->
+          <div class="substep" data-substep="2" style="border: 1px solid var(--border); padding: 16px 18px; background: rgba(255,255,255,0.5);">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+              <span class="mono" style="font-size: 10px; padding: 3px 10px; background: #2e7d6f; color: white; letter-spacing: 0.06em;">SCALABILITY</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 10px;">
+              <div style="text-align: center; flex: 1;">
+                <span style="font-size: 11px; color: var(--text-secondary);">Individual expertise</span>
+                <p style="font-size: 9px; color: var(--text-secondary);">rare, high-value</p>
+              </div>
+              <div style="display: flex; align-items: center;">
+                <svg width="32" height="16" viewBox="0 0 32 16"><path d="M0 8h28M24 3l6 5-6 5" fill="none" stroke="var(--fg)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div style="text-align: center; flex: 1;">
+                <span style="font-size: 11px; color: var(--fg); font-weight: 600;">Reusable pipeline</span>
+                <p style="font-size: 9px; color: var(--text-secondary);">scalable, updatable</p>
+              </div>
+            </div>
+            <p style="font-size: 11px; color: var(--fg); opacity: 0.7; line-height: 1.5;">
+              Encode the tech lawyer&rsquo;s expertise into a tool: compliance assessment run by a non-specialist, commentary updated automatically. <strong style="color: var(--fg);">Knowledge multiplied, not replaced.</strong>
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="slide-footer anim-fade anim-d4">
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================
+       SLIDE 3 — DSA Architecture (Multi-Step Infographic)
+       ============================ -->
+  <div class="slide exclusive-steps" data-steps="3">
     <div class="slide-inner" style="padding: 48px 64px;">
       <div class="slide-header anim-fade anim-d1">
         <span class="logo">Corinna</span>
         <span class="tag"><span class="tag-dot"></span> Legal Background</span>
       </div>
 
-      <h2 class="anim-fade anim-d2" style="font-size: 34px; margin-bottom: 8px;">The Digital Services Act: Structure &amp; Obligations</h2>
+      <h2 class="anim-fade anim-d2" style="font-size: 34px; margin-bottom: 4px;">The DSA Architecture</h2>
       <div class="anim-fade anim-d2" style="margin-bottom: 20px;">
         <span style="font-size: 13px; color: var(--text-secondary);">Regulation (EU) 2022/2065 &mdash; A comprehensive framework for digital intermediaries</span>
       </div>
 
-      <div style="flex: 1; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center;">
+      <div style="flex: 1; position: relative; min-height: 0;">
 
-        <!-- LEFT: Stacked pyramid of obligations -->
-        <div class="anim-fade anim-d3" style="display: flex; flex-direction: column; align-items: center; gap: 0; padding: 12px 0;">
-          <p class="mono" style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 18px;">Cumulative obligations &uarr;</p>
-
-          <!-- VLOP/VLOSE -->
-          <div style="width: 48%; padding: 16px 20px; background: var(--fg); color: white; text-align: center; border-radius: 8px 8px 0 0;">
-            <span style="font-size: 15px; font-weight: 700; letter-spacing: 0.06em;">VLOP / VLOSE</span>
-            <p style="font-size: 11px; opacity: 0.7; margin-top: 3px;">Arts. 33&ndash;43</p>
-          </div>
-          <!-- Online Platforms -->
-          <div style="width: 66%; padding: 16px 20px; background: rgba(10,10,10,0.72); color: white; text-align: center; margin-top: 3px;">
-            <span style="font-size: 15px; font-weight: 600;">Online Platforms</span>
-            <p style="font-size: 11px; opacity: 0.7; margin-top: 3px;">Arts. 20&ndash;32</p>
-          </div>
-          <!-- Hosting -->
-          <div style="width: 83%; padding: 16px 20px; background: rgba(10,10,10,0.42); color: white; text-align: center; margin-top: 3px;">
-            <span style="font-size: 15px; font-weight: 600;">Hosting Services</span>
-            <p style="font-size: 11px; opacity: 0.7; margin-top: 3px;">Arts. 16&ndash;18</p>
-          </div>
-          <!-- Intermediary Services -->
-          <div style="width: 100%; padding: 16px 20px; background: rgba(10,10,10,0.1); text-align: center; border-radius: 0 0 8px 8px; margin-top: 3px; border: 1px solid var(--border-strong);">
-            <span style="font-size: 15px; font-weight: 600; color: var(--fg);">All Intermediary Services</span>
-            <p style="font-size: 11px; color: var(--text-muted); margin-top: 3px;">Arts. 11&ndash;15</p>
+        <!-- ── STEP 0: Territorial Scope & Substantial Connection ── -->
+        <div class="substep" data-substep="0" style="position: absolute; inset: 0; display: flex; flex-direction: column;">
+          <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px;">
+            <h3 style="font-size: 20px; color: var(--fg);">Territorial Scope &mdash; &ldquo;Substantial Connection&rdquo;</h3>
           </div>
 
-          <p style="font-size: 11px; color: var(--text-muted); margin-top: 14px; font-style: italic;">Exclusion of micro &amp; small enterprises (Art.&nbsp;19, Art.&nbsp;29)</p>
+          <!-- Art. 2(1) rule bar -->
+          <div style="padding: 10px 18px; border: 2px solid var(--fg); border-radius: 6px; background: white; margin-bottom: 12px;">
+            <p style="font-size: 13px; color: var(--fg); line-height: 1.5;">
+              <span class="mono" style="font-size: 10px; font-weight: 600; letter-spacing: 0.06em; margin-right: 8px;">ART. 2(1)</span>
+              Applies to intermediary services offered to recipients <strong>in the EU</strong>, irrespective of where providers are established.
+            </p>
+          </div>
+
+          <!-- Substantial Connection structured layout -->
+          <div style="flex: 1; display: flex; flex-direction: column; gap: 10px; min-height: 0;">
+
+            <!-- Header: Substantial Connection -->
+            <div style="text-align: center; padding: 10px 0 4px;">
+              <span style="font-size: 15px; font-weight: 700; color: var(--fg);">Substantial Connection to the EU</span>
+              <span class="mono" style="font-size: 9px; color: var(--text-secondary); margin-left: 10px;">Art. 3(e) &bull; Recital 8</span>
+            </div>
+
+            <!-- Two paths side by side -->
+            <div style="display: flex; gap: 14px; flex: 1; min-height: 0;">
+
+              <!-- PATH A: Establishment -->
+              <div style="flex: 0 0 220px; border: 2px solid var(--fg); border-radius: 8px; padding: 16px 18px; display: flex; flex-direction: column; justify-content: center; background: white;">
+                <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: 8px;">Path A</div>
+                <div style="font-size: 15px; font-weight: 700; color: var(--fg); margin-bottom: 6px;">Establishment in the EU</div>
+                <div style="font-size: 11px; color: var(--text-secondary); line-height: 1.5;">Physical presence in a Member State &mdash; registered office, branch, or subsidiary.</div>
+              </div>
+
+              <!-- OR divider -->
+              <div style="display: flex; align-items: center; flex: 0 0 auto;">
+                <span style="font-size: 12px; font-weight: 700; color: var(--fg); opacity: 0.35; writing-mode: vertical-lr; text-orientation: mixed; letter-spacing: 0.15em;">OR</span>
+              </div>
+
+              <!-- PATH B: Factual Criteria -->
+              <div style="flex: 1; border: 2px solid var(--fg); border-radius: 8px; padding: 14px 16px; display: flex; flex-direction: column; background: white;">
+                <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: 6px;">Path B &mdash; In absence of establishment</div>
+                <div style="font-size: 15px; font-weight: 700; color: var(--fg); margin-bottom: 10px;">Factual Criteria</div>
+
+                <!-- Two sub-criteria -->
+                <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                  <div style="flex: 1; background: var(--accent-soft); border: 1px solid var(--border); border-radius: 5px; padding: 8px 12px;">
+                    <div style="font-size: 11px; font-weight: 600; color: var(--fg); margin-bottom: 3px;">Significant number of recipients</div>
+                    <div style="font-size: 9px; color: var(--text-secondary); line-height: 1.4;">In one or more Member States, relative to population</div>
+                  </div>
+                  <div style="display: flex; align-items: center;"><span style="font-size: 9px; font-weight: 700; color: var(--fg); opacity: 0.35;">OR</span></div>
+                  <div style="flex: 1; background: var(--fg); border-radius: 5px; padding: 8px 12px;">
+                    <div style="font-size: 11px; font-weight: 700; color: white; margin-bottom: 3px;">Targeting of activities</div>
+                    <div style="font-size: 9px; color: rgba(255,255,255,0.7); line-height: 1.4;">Towards one or more Member States</div>
+                  </div>
+                </div>
+
+                <!-- Targeting indicators table -->
+                <div style="border-top: 1px solid var(--border); padding-top: 8px;">
+                  <div style="font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); margin-bottom: 6px;">Targeting indicators <span class="mono" style="font-weight: 400;">(Recital 8)</span></div>
+                  <table style="width: 100%; border-collapse: collapse; font-size: 10.5px;">
+                    <tr style="border-bottom: 1px solid var(--border);">
+                      <td style="padding: 5px 8px; font-weight: 600; color: var(--fg); white-space: nowrap; width: 140px;">Language / Currency</td>
+                      <td style="padding: 5px 8px; color: var(--text-secondary);">Use of a language or currency generally used in a Member State</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                      <td style="padding: 5px 8px; font-weight: 600; color: var(--fg); white-space: nowrap;">Products &amp; TLD</td>
+                      <td style="padding: 5px 8px; color: var(--text-secondary);">Ordering of products/services; use of a relevant top-level domain (.de, .fr&hellip;)</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                      <td style="padding: 5px 8px; font-weight: 600; color: var(--fg); white-space: nowrap;">App store availability</td>
+                      <td style="padding: 5px 8px; color: var(--text-secondary);">App available in a national application store</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                      <td style="padding: 5px 8px; font-weight: 600; color: var(--fg); white-space: nowrap;">Local advertising</td>
+                      <td style="padding: 5px 8px; color: var(--text-secondary);">Advertising in local language or directed at local consumers</td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 5px 8px; font-weight: 600; color: var(--fg); white-space: nowrap;">Brussels I bis</td>
+                      <td style="padding: 5px 8px; color: var(--text-secondary);">Directing activities per Reg. 1215/2012, Art. 17(1)(c)</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- Negative rule -->
+            <div style="text-align: center; padding: 6px 16px; border: 1.5px dashed var(--border-strong); border-radius: 5px; opacity: 0.7;">
+              <span style="font-size: 11px; color: var(--fg);">&times;&ensp;Mere technical accessibility of a website does <strong>not</strong> establish substantial connection</span>
+              <span class="mono" style="font-size: 9px; color: var(--text-secondary); margin-left: 8px;">Recital 8</span>
+            </div>
+          </div>
         </div>
 
-        <!-- RIGHT: Legal-Technical Gap -->
-        <div class="anim-fade anim-d4" style="display: flex; flex-direction: column; gap: 16px;">
-          <div style="display: flex; align-items: center; gap: 10px; padding-bottom: 12px; border-bottom: 2px solid var(--fg);">
-            <span style="font-size: 16px; font-weight: 600; color: var(--fg); text-transform: uppercase; letter-spacing: 0.06em;">The Legal-Technical Gap</span>
+        <!-- ── STEP 1: DSA Treemap / Rectangular Cartogram ── -->
+        <div class="substep" data-substep="1" style="position: absolute; inset: 0; display: flex; flex-direction: column;">
+          <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 10px;">
+            <h3 style="font-size: 20px; color: var(--fg);">Intermediary Services &mdash; Classification &amp; Obligations</h3>
           </div>
 
-          <!-- Regulatory complexity block -->
-          <div style="display: flex; gap: 14px; align-items: flex-start; padding: 16px 18px; background: var(--accent-soft); border-left: 3px solid var(--fg); border-radius: 0 6px 6px 0;">
-            <div style="flex-shrink: 0; width: 32px; height: 32px; background: var(--fg); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <!-- TREEMAP: outer container = All Intermediary Services -->
+          <div style="flex: 1; border: 2px solid var(--fg); border-radius: 8px; padding: 8px; display: flex; flex-direction: column; gap: 6px; background: rgba(10,10,10,0.02); position: relative; min-height: 0;">
+
+            <!-- Outer label -->
+            <div style="display: flex; align-items: baseline; gap: 8px;">
+              <span style="font-size: 13px; font-weight: 700; color: var(--fg);">ALL INTERMEDIARY SERVICES</span>
+              <span class="mono" style="font-size: 9px; color: var(--text-secondary);">Arts. 11&ndash;15</span>
+              <span style="font-size: 10px; color: var(--fg); opacity: 0.6;">Points of contact, legal representative, T&amp;Cs, transparency reports</span>
             </div>
-            <div>
-              <span style="font-size: 14px; font-weight: 600; color: var(--fg); text-transform: uppercase; letter-spacing: 0.04em;">Regulatory Complexity</span>
-              <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-top: 4px;">
-                93 articles, 156 recitals, broad territorial reach &mdash; compliance demands span both legal interpretation and deep technical understanding.
-              </p>
+
+            <!-- Main row: Mere Conduit | Caching | HOSTING (big block) -->
+            <div style="flex: 1; display: flex; gap: 6px; min-height: 0;">
+
+              <!-- Mere Conduit -->
+              <div style="flex: 0 0 130px; border: 1.5px solid rgba(10,10,10,0.2); border-radius: 6px; padding: 10px 12px; display: flex; flex-direction: column; background: white;">
+                <span style="font-size: 12px; font-weight: 700; color: var(--fg);">Mere Conduit</span>
+                <span class="mono" style="font-size: 9px; color: var(--text-secondary); margin-top: 2px;">Art. 4</span>
+                <p style="font-size: 10px; color: var(--fg); opacity: 0.65; line-height: 1.4; margin-top: 8px;">Transmit info or provide network access. No selection, no modification.</p>
+              </div>
+
+              <!-- Caching -->
+              <div style="flex: 0 0 120px; border: 1.5px solid rgba(10,10,10,0.2); border-radius: 6px; padding: 10px 12px; display: flex; flex-direction: column; background: white;">
+                <span style="font-size: 12px; font-weight: 700; color: var(--fg);">Caching</span>
+                <span class="mono" style="font-size: 9px; color: var(--text-secondary); margin-top: 2px;">Art. 5</span>
+                <p style="font-size: 10px; color: var(--fg); opacity: 0.65; line-height: 1.4; margin-top: 8px;">Automatic temporary storage for efficient onward transmission.</p>
+              </div>
+
+              <!-- HOSTING — largest block, contains nested subsets -->
+              <div style="flex: 1; border: 2px solid rgba(10,10,10,0.35); border-radius: 6px; padding: 8px; display: flex; flex-direction: column; gap: 5px; background: rgba(10,10,10,0.03);">
+
+                <!-- Hosting label row -->
+                <div style="display: flex; align-items: baseline; gap: 6px;">
+                  <span style="font-size: 12px; font-weight: 700; color: var(--fg);">HOSTING</span>
+                  <span class="mono" style="font-size: 9px; color: var(--text-secondary);">Arts. 16&ndash;18</span>
+                  <span style="font-size: 10px; color: var(--fg); opacity: 0.6;">Notice &amp; action mechanisms, statement of reasons</span>
+                </div>
+
+                <!-- Inner row: Online Platforms block | Search Engines -->
+                <div style="flex: 1; display: flex; gap: 5px; min-height: 0;">
+
+                  <!-- ONLINE PLATFORMS — nested inside hosting -->
+                  <div style="flex: 1; border: 2px solid rgba(10,10,10,0.5); border-radius: 5px; padding: 7px; display: flex; flex-direction: column; gap: 4px; background: rgba(10,10,10,0.04);">
+
+                    <!-- Platform label row -->
+                    <div style="display: flex; align-items: baseline; gap: 6px;">
+                      <span style="font-size: 11px; font-weight: 700; color: var(--fg);">ONLINE PLATFORMS</span>
+                      <span class="mono" style="font-size: 9px; color: var(--text-secondary);">Arts. 20&ndash;28</span>
+                      <span style="font-size: 10px; color: var(--fg); opacity: 0.6;">Complaints, dispute settlement, trusted flaggers</span>
+                    </div>
+
+                    <!-- Marketplace nested inside platforms -->
+                    <div style="flex: 1; display: flex; gap: 4px; min-height: 0;">
+                      <div style="flex: 1; border: 1.5px solid rgba(10,10,10,0.6); border-radius: 4px; padding: 8px 10px; display: flex; flex-direction: column; background: rgba(10,10,10,0.05);">
+                        <span style="font-size: 11px; font-weight: 700; color: var(--fg);">Online Marketplaces</span>
+                        <span class="mono" style="font-size: 9px; color: var(--text-secondary); margin-top: 1px;">Arts. 29&ndash;32</span>
+                        <p style="font-size: 10px; color: var(--fg); opacity: 0.65; line-height: 1.4; margin-top: 6px;">Trader traceability (Art.&nbsp;30), compliance by design (Art.&nbsp;31), right to information (Art.&nbsp;32)</p>
+                      </div>
+
+                      <!-- General platform space -->
+                      <div style="flex: 0 0 160px; border-radius: 4px; padding: 8px 10px; display: flex; flex-direction: column; background: rgba(10,10,10,0.02); border: 1px dashed rgba(10,10,10,0.15);">
+                        <span style="font-size: 10px; font-weight: 600; color: var(--fg); opacity: 0.5;">General platforms</span>
+                        <p style="font-size: 10px; color: var(--fg); opacity: 0.5; line-height: 1.4; margin-top: 4px;">Store &amp; disseminate to the public at request of recipient</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Online Search Engines — sibling of platforms, inside hosting -->
+                  <div style="flex: 0 0 140px; border: 1.5px solid rgba(10,10,10,0.3); border-radius: 5px; padding: 8px 10px; display: flex; flex-direction: column; background: white;">
+                    <span style="font-size: 11px; font-weight: 700; color: var(--fg);">Online Search Engines</span>
+                    <span class="mono" style="font-size: 9px; color: var(--text-secondary); margin-top: 1px;">Art. 4(j)</span>
+                    <p style="font-size: 10px; color: var(--fg); opacity: 0.65; line-height: 1.4; margin-top: 6px;">Index &amp; search all websites based on queries in any format</p>
+                  </div>
+                </div>
+              </div>
             </div>
+
+            <!-- Bottom row: VLOP | VLOSE | Micro/Small exemptions -->
+            <div style="display: flex; gap: 6px; flex: 0 0 auto;">
+              <div style="flex: 1; padding: 10px 14px; background: var(--fg); border-radius: 5px; display: flex; flex-direction: column;">
+                <div style="display: flex; align-items: baseline; gap: 6px;">
+                  <span style="font-size: 12px; font-weight: 700; color: white;">VLOP</span>
+                  <span class="mono" style="font-size: 9px; color: rgba(255,255,255,0.7);">Arts. 33&ndash;43</span>
+                </div>
+                <p style="font-size: 10px; color: rgba(255,255,255,0.85); line-height: 1.4; margin-top: 3px;">Very Large Online Platforms (45M+ monthly users). Risk assessment, systemic risk mitigation, audits, data access, crisis protocols.</p>
+              </div>
+              <div style="flex: 1; padding: 10px 14px; background: rgba(10,10,10,0.85); border-radius: 5px; display: flex; flex-direction: column;">
+                <div style="display: flex; align-items: baseline; gap: 6px;">
+                  <span style="font-size: 12px; font-weight: 700; color: white;">VLOSE</span>
+                  <span class="mono" style="font-size: 9px; color: rgba(255,255,255,0.7);">Arts. 33&ndash;43</span>
+                </div>
+                <p style="font-size: 10px; color: rgba(255,255,255,0.85); line-height: 1.4; margin-top: 3px;">Very Large Online Search Engines (45M+ monthly users). Same enhanced obligations as VLOP: risk assessment, audits, researcher access.</p>
+              </div>
+              <div style="flex: 0 0 220px; padding: 10px 14px; border: 1.5px dashed rgba(10,10,10,0.35); border-radius: 5px; background: white; display: flex; flex-direction: column;">
+                <div style="display: flex; align-items: baseline; gap: 6px;">
+                  <span style="font-size: 12px; font-weight: 700; color: var(--fg);">Micro / Small</span>
+                  <span class="mono" style="font-size: 9px; color: var(--text-secondary);">Arts. 19, 29</span>
+                </div>
+                <p style="font-size: 10px; color: var(--fg); opacity: 0.65; line-height: 1.4; margin-top: 3px;">Exempt from platform &amp; marketplace obligations. 12-month grace period. Overridden if designated VLOP.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── STEP 2: The Legal-Technical Gap ── -->
+        <div class="substep" data-substep="2" style="position: absolute; inset: 0; display: flex; flex-direction: column;">
+          <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px;">
+            <h3 style="font-size: 20px; color: var(--fg);">The Legal-Technical Gap</h3>
           </div>
 
-          <!-- Technical expertise block -->
-          <div style="display: flex; gap: 14px; align-items: flex-start; padding: 16px 18px; background: var(--accent-soft); border-left: 3px solid rgba(10,10,10,0.4); border-radius: 0 6px 6px 0;">
-            <div style="flex-shrink: 0; width: 32px; height: 32px; background: rgba(10,10,10,0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <!-- Main split layout -->
+          <div style="flex: 1; display: flex; gap: 0; min-height: 0; overflow: hidden; border-radius: 10px; border: 2px solid var(--fg);">
+
+            <!-- LEFT: Legal Expertise -->
+            <div style="flex: 1; display: flex; flex-direction: column; padding: 22px 26px; background: var(--accent-soft); position: relative;">
+              <!-- Icon + title row -->
+              <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 20px;">
+                <div style="width: 48px; height: 48px; border-radius: 50%; background: white; border: 2px solid var(--fg); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--fg)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                </div>
+                <div>
+                  <div style="font-size: 17px; font-weight: 700; color: var(--fg);">Legal Expertise</div>
+                  <div style="font-size: 10px; color: var(--text-secondary); margin-top: 2px;">Regulatory interpretation &amp; compliance mapping</div>
+                </div>
+              </div>
+
+              <!-- Big numbers -->
+              <div style="display: flex; gap: 24px; margin-bottom: 18px;">
+                <div>
+                  <div style="font-size: 38px; font-weight: 800; color: var(--fg); line-height: 1;">93</div>
+                  <div style="font-size: 11px; color: var(--text-secondary); margin-top: 2px;">articles</div>
+                </div>
+                <div>
+                  <div style="font-size: 38px; font-weight: 800; color: var(--fg); line-height: 1;">156</div>
+                  <div style="font-size: 11px; color: var(--text-secondary); margin-top: 2px;">recitals</div>
+                </div>
+                <div>
+                  <div style="font-size: 38px; font-weight: 800; color: var(--fg); line-height: 1;">4</div>
+                  <div style="font-size: 11px; color: var(--text-secondary); margin-top: 2px;">service tiers</div>
+                </div>
+              </div>
+
+              <!-- Obligation clusters -->
+              <div style="display: flex; flex-direction: column; gap: 6px; flex: 1;">
+                <div style="display: flex; align-items: center; gap: 10px; padding: 7px 12px; background: white; border-radius: 5px;">
+                  <span class="mono" style="font-size: 9px; color: var(--text-secondary); flex-shrink: 0; width: 65px;">Arts. 11&ndash;15</span>
+                  <span style="font-size: 11px; color: var(--fg);">Transparency, T&amp;Cs, points of contact</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; padding: 7px 12px; background: white; border-radius: 5px;">
+                  <span class="mono" style="font-size: 9px; color: var(--text-secondary); flex-shrink: 0; width: 65px;">Arts. 16&ndash;18</span>
+                  <span style="font-size: 11px; color: var(--fg);">Notice-and-action, statement of reasons</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; padding: 7px 12px; background: white; border-radius: 5px;">
+                  <span class="mono" style="font-size: 9px; color: var(--text-secondary); flex-shrink: 0; width: 65px;">Arts. 20&ndash;32</span>
+                  <span style="font-size: 11px; color: var(--fg);">Complaint handling, trusted flaggers, traceability</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; padding: 7px 12px; background: white; border-radius: 5px;">
+                  <span class="mono" style="font-size: 9px; color: var(--text-secondary); flex-shrink: 0; width: 65px;">Arts. 33&ndash;43</span>
+                  <span style="font-size: 11px; color: var(--fg);">Risk assessment, audits, data access, crisis response</span>
+                </div>
+              </div>
+
+              <!-- Fade toward gap -->
+              <div style="position: absolute; right: 0; top: 0; bottom: 0; width: 40px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.5));"></div>
             </div>
-            <div>
-              <span style="font-size: 14px; font-weight: 600; color: var(--fg); text-transform: uppercase; letter-spacing: 0.04em;">Technical Expertise Required</span>
-              <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-top: 4px;">
-                Obligations sit at the intersection of law and technology
-                <span style="color: var(--text-muted); font-style: italic;">(recommendation algorithms, content moderation, profiling, dark patterns)</span>.
-              </p>
+
+            <!-- CENTER: The Gap -->
+            <div style="flex: 0 0 80px; background: var(--fg); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+              <!-- Diagonal hatching pattern -->
+              <svg width="80" height="100%" style="position: absolute; inset: 0; opacity: 0.08;">
+                <defs><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="8" stroke="white" stroke-width="1.5"/></pattern></defs>
+                <rect width="100%" height="100%" fill="url(#hatch)"/>
+              </svg>
+
+              <!-- Arrows pointing outward -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" opacity="0.3" style="margin-bottom: 4px;"><polyline points="15 18 9 12 15 6"/></svg>
+
+              <!-- GAP label -->
+              <div style="writing-mode: vertical-lr; text-orientation: mixed; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                <span class="mono" style="font-size: 13px; font-weight: 800; color: white; letter-spacing: 0.25em;">GAP</span>
+              </div>
+
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" opacity="0.3" style="margin-top: 4px;"><polyline points="9 18 15 12 9 6"/></svg>
+
+              <!-- Bottom label -->
+              <div style="position: absolute; bottom: 10px; text-align: center;">
+                <div style="font-size: 7px; color: rgba(255,255,255,0.45); letter-spacing: 0.08em; text-transform: uppercase;">Few fluent</div>
+                <div style="font-size: 7px; color: rgba(255,255,255,0.45); letter-spacing: 0.08em; text-transform: uppercase;">in both</div>
+              </div>
             </div>
+
+            <!-- RIGHT: Technical Expertise -->
+            <div style="flex: 1; display: flex; flex-direction: column; padding: 22px 26px; background: var(--fg); position: relative; color: white;">
+              <!-- Fade from gap -->
+              <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 40px; background: linear-gradient(to left, transparent, rgba(10,10,10,0.3));"></div>
+
+              <!-- Icon + title row -->
+              <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 20px;">
+                <div style="width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.12); border: 2px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                </div>
+                <div>
+                  <div style="font-size: 17px; font-weight: 700; color: white;">Technical Expertise</div>
+                  <div style="font-size: 10px; color: rgba(255,255,255,0.5); margin-top: 2px;">Systems, algorithms &amp; infrastructure &mdash; <span style="color: rgba(255,255,255,0.65);">Harmonised standards, Art. 44</span></div>
+                </div>
+              </div>
+
+              <!-- Technical domain cards -->
+              <div style="display: flex; flex-direction: column; gap: 8px; flex: 1;">
+                <div style="padding: 10px 14px; background: rgba(255,255,255,0.08); border-radius: 6px; border-left: 3px solid rgba(255,255,255,0.4);">
+                  <div style="font-size: 12px; font-weight: 600; color: white;">Recommendation algorithms</div>
+                  <div style="font-size: 10px; color: rgba(255,255,255,0.5); margin-top: 2px;">Transparency of main parameters &mdash; Art. 27</div>
+                </div>
+                <div style="padding: 10px 14px; background: rgba(255,255,255,0.08); border-radius: 6px; border-left: 3px solid rgba(255,255,255,0.4);">
+                  <div style="font-size: 12px; font-weight: 600; color: white;">Automated content moderation</div>
+                  <div style="font-size: 10px; color: rgba(255,255,255,0.5); margin-top: 2px;">Notice-and-action mechanisms &mdash; Arts. 16&ndash;17</div>
+                </div>
+                <div style="padding: 10px 14px; background: rgba(255,255,255,0.08); border-radius: 6px; border-left: 3px solid rgba(255,255,255,0.4);">
+                  <div style="font-size: 12px; font-weight: 600; color: white;">Profiling &amp; behavioural tracking</div>
+                  <div style="font-size: 10px; color: rgba(255,255,255,0.5); margin-top: 2px;">Online advertising transparency &mdash; Art. 26</div>
+                </div>
+                <div style="padding: 10px 14px; background: rgba(255,255,255,0.08); border-radius: 6px; border-left: 3px solid rgba(255,255,255,0.4);">
+                  <div style="font-size: 12px; font-weight: 600; color: white;">Dark pattern detection</div>
+                  <div style="font-size: 10px; color: rgba(255,255,255,0.5); margin-top: 2px;">Interface design restrictions &mdash; Art. 25</div>
+                </div>
+              </div>
+            </div>
+
           </div>
 
-          <!-- Opportunity block -->
-          <div style="display: flex; gap: 14px; align-items: flex-start; padding: 16px 18px; background: var(--accent-soft); border-left: 3px solid rgba(10,10,10,0.2); border-radius: 0 6px 6px 0;">
-            <div style="flex-shrink: 0; width: 32px; height: 32px; background: rgba(10,10,10,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            </div>
-            <div>
-              <span style="font-size: 14px; font-weight: 600; color: var(--fg); text-transform: uppercase; letter-spacing: 0.04em;">Compliance Barrier</span>
-              <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-top: 4px;">
-                Few practitioners are fluent in both domains &mdash; creating a gap and opportunity for AI-assisted legal analysis.
-              </p>
-            </div>
+          <!-- Bottom takeaway -->
+          <div style="margin-top: 8px; text-align: center; padding: 8px 0;">
+            <span style="font-size: 12px; color: var(--fg); opacity: 0.7;">Few practitioners are fluent in both domains &mdash; </span>
+            <span style="font-size: 12px; font-weight: 700; color: var(--fg);">creating an opportunity for LLM-assisted compliance tools.</span>
           </div>
         </div>
 
@@ -812,278 +1282,204 @@
   </div>
 
   <!-- ============================
-       SLIDE — AI is eating software
+       SLIDE — 'Something Big Is Happening' — Really? (merged, animated)
        ============================ -->
-  <div class="slide">
+  <div class="slide exclusive-steps" data-steps="2">
     <div class="slide-inner" style="padding: 48px 64px;">
       <div class="slide-header anim-fade anim-d1">
         <span class="logo">Corinna</span>
         <span class="tag"><span class="tag-dot"></span> Context</span>
       </div>
 
-      <!-- Title + subtitle row -->
-      <div style="margin-bottom: 20px;">
-        <h2 class="anim-fade anim-d2" style="font-size: 38px; line-height: 1.1; margin-bottom: 8px;">AI is eating legal SaaS</h2>
-        <p class="anim-fade anim-d3" style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; max-width: 700px;">
-          In February 2026, Anthropic announced legal automation capabilities &mdash; contract review, NDA triage, compliance workflows &mdash; sending shockwaves through traditional legal software markets.
-        </p>
-      </div>
+      <h2 class="anim-fade anim-d2" style="font-size: 32px; line-height: 1.1; margin-bottom: 4px;">&lsquo;Something Big Is Happening&rsquo; &mdash; Really?</h2>
+      <p class="anim-fade anim-d3" style="font-size: 12px; color: var(--fg); opacity: 0.6; margin-bottom: 12px; max-width: 700px;">
+        In February 2026, Anthropic announced legal automation capabilities &mdash; sending shockwaves through traditional legal software markets.
+      </p>
 
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; flex: 1; align-items: start;">
+      <div style="flex: 1; position: relative; min-height: 0;">
 
-        <!-- LEFT: macOS browser mockup -->
-        <div style="display: flex; flex-direction: column; gap: 0;">
-          <!-- macOS-style browser window -->
-          <div class="anim-fade anim-d4" style="border-radius: 8px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06); border: 1px solid var(--border);">
-            <!-- Title bar -->
-            <div style="background: var(--bg); padding: 7px 12px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border);">
-              <div style="display: flex; gap: 5px;">
-                <div style="width: 8px; height: 8px; border-radius: 50%; background: #ff5f57;"></div>
-                <div style="width: 8px; height: 8px; border-radius: 50%; background: #febc2e;"></div>
-                <div style="width: 8px; height: 8px; border-radius: 50%; background: #28c840;"></div>
-              </div>
-              <div style="flex: 1; text-align: center;">
-                <div style="display: inline-flex; align-items: center; gap: 4px; background: rgba(0,0,0,0.04); border-radius: 4px; padding: 2px 10px;">
-                  <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3.5" fill="none" stroke="rgba(0,0,0,0.3)" stroke-width="0.8"/><path d="M4 2v2h2" fill="none" stroke="rgba(0,0,0,0.3)" stroke-width="0.8" stroke-linecap="round"/></svg>
-                  <span style="font-size: 9px; color: var(--text-muted); font-family: var(--font-sans);">claude.ai/plugins/legal</span>
+        <!-- ── STEP 0: All-in-one overview ── -->
+        <div class="substep" data-substep="0" style="position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr; gap: 12px 20px;">
+
+          <!-- TOP-LEFT: Compact browser mockup -->
+          <div style="display: flex; flex-direction: column;">
+            <div style="border-radius: 7px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.1); border: 1px solid var(--border);">
+              <div style="background: var(--bg); padding: 5px 10px; display: flex; align-items: center; gap: 6px; border-bottom: 1px solid var(--border);">
+                <div style="display: flex; gap: 4px;">
+                  <div style="width: 7px; height: 7px; border-radius: 50%; background: #ff5f57;"></div>
+                  <div style="width: 7px; height: 7px; border-radius: 50%; background: #febc2e;"></div>
+                  <div style="width: 7px; height: 7px; border-radius: 50%; background: #28c840;"></div>
+                </div>
+                <div style="flex: 1; text-align: center;">
+                  <span style="font-size: 8px; color: var(--text-secondary); font-family: var(--font-sans); background: rgba(0,0,0,0.04); border-radius: 3px; padding: 1px 8px;">claude.ai/plugins/legal</span>
                 </div>
               </div>
-              <div style="width: 36px;"></div>
-            </div>
-            <!-- Page content mockup -->
-            <div style="background: #faf9f7; padding: 20px 22px;">
-              <!-- Breadcrumb -->
-              <div style="display: flex; align-items: center; gap: 4px; margin-bottom: 14px;">
-                <span style="font-size: 9px; color: var(--text-muted);">Plugin</span>
-                <span style="font-size: 9px; color: var(--text-faint);">/</span>
-                <span style="font-size: 9px; color: var(--text-secondary);">Legal</span>
-              </div>
-              <!-- Main content -->
-              <div style="display: flex; justify-content: space-between; align-items: start; gap: 16px;">
-                <div style="flex: 1;">
-                  <h3 style="font-family: var(--font-serif); font-size: 26px; color: var(--fg); margin-bottom: 8px; letter-spacing: -0.01em;">Legal</h3>
-                  <p style="font-size: 10px; color: var(--text-secondary); line-height: 1.5; max-width: 240px;">Speed up contract review, NDA triage, and compliance workflows for in-house legal teams.</p>
-                </div>
-                <div style="display: flex; flex-direction: column; gap: 8px; min-width: 110px;">
-                  <div style="display: flex; align-items: center; gap: 5px;">
-                    <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4" fill="none" stroke="#2e7d6f" stroke-width="1"/><path d="M3 5l1.5 1.5L7 4" fill="none" stroke="#2e7d6f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    <span style="font-size: 8px; color: var(--text-muted);">Anthropic Verified</span>
-                  </div>
+              <div style="background: #faf9f7; padding: 14px 16px;">
+                <div style="display: flex; justify-content: space-between; align-items: start; gap: 12px;">
                   <div>
-                    <span style="font-size: 7px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em;">Install in</span>
-                    <p style="font-size: 10px; font-weight: 600; color: var(--fg);">Claude Cowork</p>
+                    <h3 style="font-family: var(--font-serif); font-size: 20px; color: var(--fg); margin-bottom: 5px;">Legal</h3>
+                    <p style="font-size: 9px; color: var(--fg); opacity: 0.6; line-height: 1.45; max-width: 200px;">Contract review, NDA triage, and compliance workflows for in-house legal teams.</p>
                   </div>
-                  <div>
-                    <span style="font-size: 7px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em;">Made by</span>
-                    <p style="font-size: 10px; font-weight: 600; color: var(--fg);">Anthropic</p>
+                  <div style="display: flex; flex-direction: column; gap: 5px; min-width: 90px;">
+                    <div style="display: flex; align-items: center; gap: 4px;">
+                      <svg width="8" height="8" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4" fill="none" stroke="#2e7d6f" stroke-width="1"/><path d="M3 5l1.5 1.5L7 4" fill="none" stroke="#2e7d6f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      <span style="font-size: 7px; color: var(--text-secondary);">Anthropic Verified</span>
+                    </div>
+                    <div>
+                      <span style="font-size: 6px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Made by</span>
+                      <p style="font-size: 9px; font-weight: 600; color: var(--fg);">Anthropic</p>
+                    </div>
+                  </div>
+                </div>
+                <div style="height: 1px; background: var(--border); margin: 8px 0;"></div>
+                <div style="display: flex; flex-wrap: wrap; gap: 3px;">
+                  <span class="mono" style="font-size: 6px; padding: 2px 6px; border: 1px solid var(--border); color: var(--text-secondary); border-radius: 3px;">Contract Review</span>
+                  <span class="mono" style="font-size: 6px; padding: 2px 6px; border: 1px solid var(--border); color: var(--text-secondary); border-radius: 3px;">NDA Triage</span>
+                  <span class="mono" style="font-size: 6px; padding: 2px 6px; border: 1px solid var(--border); color: var(--text-secondary); border-radius: 3px;">Compliance</span>
+                  <span class="mono" style="font-size: 6px; padding: 2px 6px; border: 1px solid var(--border); color: var(--text-secondary); border-radius: 3px;">Risk Analysis</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TOP-RIGHT: Stock price chart (compact, top 5) -->
+          <div style="display: flex; flex-direction: column;">
+            <p class="mono" style="font-size: 9px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;">Stock price impact &mdash; announcement day</p>
+            <div style="display: flex; flex-direction: column; gap: 5px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 10px; color: var(--fg); font-weight: 500; width: 105px; text-align: right; flex-shrink: 0;">Thomson Reuters</span>
+                <div style="flex: 1; height: 22px; background: var(--accent-soft); position: relative; overflow: hidden;">
+                  <div style="position: absolute; right: 0; top: 0; bottom: 0; width: 90%; background: linear-gradient(to left, #c62828, #e57373); display: flex; align-items: center; padding-left: 8px;">
+                    <span class="mono" style="font-size: 10px; color: white; font-weight: 600;">&minus;18%</span>
                   </div>
                 </div>
               </div>
-              <!-- Divider -->
-              <div style="height: 1px; background: var(--border); margin: 12px 0;"></div>
-              <!-- Feature tags -->
-              <div style="display: flex; flex-wrap: wrap; gap: 4px;">
-                <span class="mono" style="font-size: 7px; padding: 2px 7px; border: 1px solid var(--border); color: var(--text-muted); border-radius: 3px;">Contract Review</span>
-                <span class="mono" style="font-size: 7px; padding: 2px 7px; border: 1px solid var(--border); color: var(--text-muted); border-radius: 3px;">NDA Triage</span>
-                <span class="mono" style="font-size: 7px; padding: 2px 7px; border: 1px solid var(--border); color: var(--text-muted); border-radius: 3px;">Compliance</span>
-                <span class="mono" style="font-size: 7px; padding: 2px 7px; border: 1px solid var(--border); color: var(--text-muted); border-radius: 3px;">Legal Briefings</span>
-                <span class="mono" style="font-size: 7px; padding: 2px 7px; border: 1px solid var(--border); color: var(--text-muted); border-radius: 3px;">Risk Analysis</span>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 10px; color: var(--fg); font-weight: 500; width: 105px; text-align: right; flex-shrink: 0;">RELX</span>
+                <div style="flex: 1; height: 22px; background: var(--accent-soft); position: relative; overflow: hidden;">
+                  <div style="position: absolute; right: 0; top: 0; bottom: 0; width: 70%; background: linear-gradient(to left, #c62828, #e57373); display: flex; align-items: center; padding-left: 8px;">
+                    <span class="mono" style="font-size: 10px; color: white; font-weight: 600;">&minus;14%</span>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- RIGHT: Bar chart -->
-        <div class="anim-fade anim-d3" style="display: flex; flex-direction: column; gap: 0;">
-          <p class="mono" style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px;">Stock price impact &mdash; announcement day</p>
-
-          <!-- Chart bars -->
-          <div style="display: flex; flex-direction: column; gap: 8px;">
-            <!-- Thomson Reuters -18% -->
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <span style="font-size: 12px; color: var(--fg); font-weight: 500; width: 130px; text-align: right; flex-shrink: 0;">Thomson Reuters</span>
-              <div style="flex: 1; height: 28px; background: var(--accent-soft); position: relative; overflow: hidden;">
-                <div class="anim-fade anim-d4" style="position: absolute; right: 0; top: 0; bottom: 0; width: 90%; background: linear-gradient(to left, #c62828, #e57373); display: flex; align-items: center; justify-content: flex-start; padding-left: 10px;">
-                  <span class="mono" style="font-size: 11px; color: white; font-weight: 600;">&minus;18%</span>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 10px; color: var(--fg); font-weight: 500; width: 105px; text-align: right; flex-shrink: 0;">Wolters Kluwer</span>
+                <div style="flex: 1; height: 22px; background: var(--accent-soft); position: relative; overflow: hidden;">
+                  <div style="position: absolute; right: 0; top: 0; bottom: 0; width: 65%; background: linear-gradient(to left, #c62828, #e57373); display: flex; align-items: center; padding-left: 8px;">
+                    <span class="mono" style="font-size: 10px; color: white; font-weight: 600;">&minus;13%</span>
+                  </div>
+                </div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 10px; color: var(--fg); font-weight: 500; width: 105px; text-align: right; flex-shrink: 0;">LSEG</span>
+                <div style="flex: 1; height: 22px; background: var(--accent-soft); position: relative; overflow: hidden;">
+                  <div style="position: absolute; right: 0; top: 0; bottom: 0; width: 65%; background: linear-gradient(to left, #c62828, #e57373); display: flex; align-items: center; padding-left: 8px;">
+                    <span class="mono" style="font-size: 10px; color: white; font-weight: 600;">&minus;13%</span>
+                  </div>
+                </div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 10px; color: var(--fg); font-weight: 500; width: 105px; text-align: right; flex-shrink: 0;">Sage</span>
+                <div style="flex: 1; height: 22px; background: var(--accent-soft); position: relative; overflow: hidden;">
+                  <div style="position: absolute; right: 0; top: 0; bottom: 0; width: 50%; background: linear-gradient(to left, #c62828, #e57373); display: flex; align-items: center; padding-left: 8px;">
+                    <span class="mono" style="font-size: 10px; color: white; font-weight: 600;">&minus;10%</span>
+                  </div>
                 </div>
               </div>
             </div>
-            <!-- Relx -14% -->
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <span style="font-size: 12px; color: var(--fg); font-weight: 500; width: 130px; text-align: right; flex-shrink: 0;">RELX</span>
-              <div style="flex: 1; height: 28px; background: var(--accent-soft); position: relative; overflow: hidden;">
-                <div class="anim-fade anim-d5" style="position: absolute; right: 0; top: 0; bottom: 0; width: 70%; background: linear-gradient(to left, #c62828, #e57373); display: flex; align-items: center; justify-content: flex-start; padding-left: 10px;">
-                  <span class="mono" style="font-size: 11px; color: white; font-weight: 600;">&minus;14%</span>
-                </div>
-              </div>
-            </div>
-            <!-- Wolters Kluwer -13% -->
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <span style="font-size: 12px; color: var(--fg); font-weight: 500; width: 130px; text-align: right; flex-shrink: 0;">Wolters Kluwer</span>
-              <div style="flex: 1; height: 28px; background: var(--accent-soft); position: relative; overflow: hidden;">
-                <div class="anim-fade anim-d5" style="position: absolute; right: 0; top: 0; bottom: 0; width: 65%; background: linear-gradient(to left, #c62828, #e57373); display: flex; align-items: center; justify-content: flex-start; padding-left: 10px;">
-                  <span class="mono" style="font-size: 11px; color: white; font-weight: 600;">&minus;13%</span>
-                </div>
-              </div>
-            </div>
-            <!-- LSEG -13% -->
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <span style="font-size: 12px; color: var(--fg); font-weight: 500; width: 130px; text-align: right; flex-shrink: 0;">LSEG</span>
-              <div style="flex: 1; height: 28px; background: var(--accent-soft); position: relative; overflow: hidden;">
-                <div class="anim-fade anim-d5" style="position: absolute; right: 0; top: 0; bottom: 0; width: 65%; background: linear-gradient(to left, #c62828, #e57373); display: flex; align-items: center; justify-content: flex-start; padding-left: 10px;">
-                  <span class="mono" style="font-size: 11px; color: white; font-weight: 600;">&minus;13%</span>
-                </div>
-              </div>
-            </div>
-            <!-- Sage -10% -->
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <span style="font-size: 12px; color: var(--fg); font-weight: 500; width: 130px; text-align: right; flex-shrink: 0;">Sage</span>
-              <div style="flex: 1; height: 28px; background: var(--accent-soft); position: relative; overflow: hidden;">
-                <div class="anim-fade anim-d6" style="position: absolute; right: 0; top: 0; bottom: 0; width: 50%; background: linear-gradient(to left, #c62828, #e57373); display: flex; align-items: center; justify-content: flex-start; padding-left: 10px;">
-                  <span class="mono" style="font-size: 11px; color: white; font-weight: 600;">&minus;10%</span>
-                </div>
-              </div>
-            </div>
-            <!-- Pearson -8% -->
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <span style="font-size: 12px; color: var(--fg); font-weight: 500; width: 130px; text-align: right; flex-shrink: 0;">Pearson</span>
-              <div style="flex: 1; height: 28px; background: var(--accent-soft); position: relative; overflow: hidden;">
-                <div class="anim-fade anim-d7" style="position: absolute; right: 0; top: 0; bottom: 0; width: 40%; background: linear-gradient(to left, #c62828, #e57373); display: flex; align-items: center; justify-content: flex-start; padding-left: 10px;">
-                  <span class="mono" style="font-size: 11px; color: white; font-weight: 600;">&minus;8%</span>
-                </div>
-              </div>
-            </div>
-            <!-- Experian -7% -->
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <span style="font-size: 12px; color: var(--fg); font-weight: 500; width: 130px; text-align: right; flex-shrink: 0;">Experian</span>
-              <div style="flex: 1; height: 28px; background: var(--accent-soft); position: relative; overflow: hidden;">
-                <div class="anim-fade anim-d8" style="position: absolute; right: 0; top: 0; bottom: 0; width: 35%; background: linear-gradient(to left, #c62828, #e57373); display: flex; align-items: center; justify-content: flex-start; padding-left: 10px;">
-                  <span class="mono" style="font-size: 11px; color: white; font-weight: 600;">&minus;7%</span>
-                </div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-top: 4px;">
+              <span style="width: 105px;"></span>
+              <div style="flex: 1; border-top: 1px solid var(--border); display: flex; justify-content: space-between; padding-top: 2px;">
+                <span class="mono" style="font-size: 8px; color: var(--text-secondary);">0%</span>
+                <span class="mono" style="font-size: 8px; color: var(--text-secondary);">&minus;20%</span>
               </div>
             </div>
           </div>
 
-          <!-- Axis label -->
-          <div style="display: flex; align-items: center; gap: 12px; margin-top: 8px;">
-            <span style="width: 130px;"></span>
-            <div style="flex: 1; border-top: 1px solid var(--border); display: flex; justify-content: space-between; padding-top: 4px;">
-              <span class="mono" style="font-size: 9px; color: var(--text-faint);">0%</span>
-              <span class="mono" style="font-size: 9px; color: var(--text-faint);">&minus;20%</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="slide-footer anim-fade anim-d8">
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============================
-       SLIDE — AI and Legal Services: Promise, Investment, Structural Limits
-       ============================ -->
-  <div class="slide" data-steps="2">
-    <div class="slide-inner" style="padding: 40px 56px;">
-      <div class="slide-header anim-fade anim-d1">
-        <span class="logo">Corinna</span>
-        <span class="tag"><span class="tag-dot"></span> Context</span>
-      </div>
-
-      <h2 class="anim-fade anim-d2" style="font-size: 28px; margin-bottom: 20px;">AI and Legal Services: Promise, Investment &amp; Structural Limits</h2>
-
-      <div style="flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;">
-
-        <!-- LEFT: Opportunity + Reality pipeline -->
-        <div style="display: flex; flex-direction: column; gap: 0;">
-
-          <!-- THE OPPORTUNITY -->
-          <div class="anim-fade anim-d3" style="padding: 16px 18px; border: 1px solid #2e7d6f; background: rgba(46,125,111,0.04);">
+          <!-- BOTTOM-LEFT: The Opportunity -->
+          <div style="padding: 14px 18px; border: 2px solid #2e7d6f; background: rgba(46,125,111,0.04); border-radius: 7px; display: flex; flex-direction: column; justify-content: center;">
             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
-              <span style="font-size: 14px;">&#9650;</span>
-              <span style="font-size: 13px; font-weight: 600; color: #2e7d6f; text-transform: uppercase; letter-spacing: 0.06em;">The Opportunity</span>
+              <span style="font-size: 14px; color: #2e7d6f;">&#9650;</span>
+              <span style="font-size: 12px; font-weight: 600; color: #2e7d6f; text-transform: uppercase; letter-spacing: 0.06em;">The Opportunity</span>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 6px;">
-              <div style="display: flex; align-items: baseline; gap: 8px;">
-                <span style="font-size: 22px; font-weight: 700; color: #2e7d6f; font-family: var(--font-mono);">$2.4B</span>
-                <span style="font-size: 12px; color: var(--text-secondary);">record legal tech funding in 2025</span>
+            <div style="display: flex; gap: 32px; margin-bottom: 10px;">
+              <div>
+                <span style="font-size: 28px; font-weight: 700; color: #2e7d6f; font-family: var(--font-mono);">$2.4B</span>
+                <div style="font-size: 10px; color: var(--fg); opacity: 0.65;">record legal tech funding in 2025</div>
+                <div style="font-size: 9px; color: var(--fg); opacity: 0.45;">Crunchbase (2025)</div>
               </div>
-              <div style="display: flex; align-items: baseline; gap: 8px;">
-                <span style="font-size: 22px; font-weight: 700; color: #2e7d6f; font-family: var(--font-mono);">44%</span>
-                <span style="font-size: 12px; color: var(--text-secondary);">of legal tasks automatable (Goldman Sachs)</span>
+              <div>
+                <span style="font-size: 28px; font-weight: 700; color: #2e7d6f; font-family: var(--font-mono);">44%</span>
+                <div style="font-size: 10px; color: var(--fg); opacity: 0.65;">of legal tasks automatable</div>
+                <div style="font-size: 9px; color: var(--fg); opacity: 0.45;">Goldman Sachs (2023)</div>
               </div>
             </div>
+            <div style="font-size: 11px; color: var(--fg); opacity: 0.6; font-style: italic;">But does AI capability translate to better legal outcomes?</div>
           </div>
 
-          <!-- FUNNEL ARROW -->
-          <div style="display: flex; justify-content: center; padding: 4px 0;">
-            <svg width="24" height="20" viewBox="0 0 24 20"><polygon points="4,0 20,0 12,20" fill="#2e7d6f" opacity="0.3"/></svg>
-          </div>
-
-          <!-- THE BOTTLENECKS -->
-          <div class="substep" data-substep="0" style="border: 2px solid #c62828; padding: 16px 18px; background: rgba(198,40,40,0.03);">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+          <!-- BOTTOM-RIGHT: Three Bottlenecks -->
+          <div style="padding: 14px 18px; border: 2px solid #c62828; background: rgba(198,40,40,0.03); border-radius: 7px; display: flex; flex-direction: column; justify-content: center;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
               <span style="font-size: 14px; color: #c62828;">&#9660;</span>
-              <span style="font-size: 13px; font-weight: 600; color: #c62828; text-transform: uppercase; letter-spacing: 0.06em;">Three Bottlenecks</span>
+              <span style="font-size: 12px; font-weight: 600; color: #c62828; text-transform: uppercase; letter-spacing: 0.06em;">Three Bottlenecks</span>
             </div>
-            <p style="font-size: 11px; font-style: italic; color: var(--text-muted); margin-bottom: 10px;">
-              &ldquo;AI Won&rsquo;t Automatically Make Legal Services Cheaper&rdquo; &mdash; Lawfare, Feb. 2026
+            <p style="font-size: 9px; font-style: italic; color: var(--fg); opacity: 0.5; margin-bottom: 10px;">
+              Curl, Kapoor &amp; Narayanan, &ldquo;AI Won&rsquo;t Automatically Make Legal Services Cheaper&rdquo; &mdash; Lawfare, Feb. 2026
             </p>
             <div style="display: flex; flex-direction: column; gap: 8px;">
               <div style="display: flex; align-items: start; gap: 10px;">
                 <div class="step-number" style="width: 22px; height: 22px; font-size: 10px; background: #c62828; flex-shrink: 0;">1</div>
                 <div>
-                  <span style="font-size: 12px; font-weight: 600; color: var(--fg);">Regulatory barriers</span>
-                  <p style="font-size: 10px; color: var(--text-muted); line-height: 1.4;">UPL laws, entity restrictions limit AI deployment</p>
+                  <span style="font-size: 11px; font-weight: 600; color: var(--fg);">Regulatory barriers</span>
+                  <p style="font-size: 10px; color: var(--fg); opacity: 0.6; line-height: 1.4;">UPL laws &amp; entity restrictions limit AI deployment</p>
                 </div>
               </div>
               <div style="display: flex; align-items: start; gap: 10px;">
                 <div class="step-number" style="width: 22px; height: 22px; font-size: 10px; background: #c62828; flex-shrink: 0;">2</div>
                 <div>
-                  <span style="font-size: 12px; font-weight: 600; color: var(--fg);">Adversarial dynamics</span>
-                  <p style="font-size: 10px; color: var(--text-muted); line-height: 1.4;">Arms races &mdash; both sides escalate (cf. e-discovery)</p>
+                  <span style="font-size: 11px; font-weight: 600; color: var(--fg);">Adversarial dynamics</span>
+                  <p style="font-size: 10px; color: var(--fg); opacity: 0.6; line-height: 1.4;">Arms races &mdash; both sides escalate (cf. e-discovery)</p>
                 </div>
               </div>
               <div style="display: flex; align-items: start; gap: 10px;">
                 <div class="step-number" style="width: 22px; height: 22px; font-size: 10px; background: #c62828; flex-shrink: 0;">3</div>
                 <div>
-                  <span style="font-size: 12px; font-weight: 600; color: var(--fg);">Human oversight limits</span>
-                  <p style="font-size: 10px; color: var(--text-muted); line-height: 1.4;">Judges &amp; lawyers process at human speed</p>
+                  <span style="font-size: 11px; font-weight: 600; color: var(--fg);">Human oversight limits</span>
+                  <p style="font-size: 10px; color: var(--fg); opacity: 0.6; line-height: 1.4;">Judges &amp; lawyers process at human speed</p>
                 </div>
               </div>
             </div>
           </div>
-
-          <!-- FUNNEL ARROW 2 -->
-          <div class="substep" data-substep="0" style="display: flex; justify-content: center; padding: 4px 0;">
-            <svg width="24" height="20" viewBox="0 0 24 20"><polygon points="4,0 20,0 12,20" fill="#c62828" opacity="0.3"/></svg>
-          </div>
-
-          <!-- OUTCOME -->
-          <div class="substep" data-substep="0" style="padding: 10px 18px; border: 1px dashed var(--border-strong); text-align: center;">
-            <span style="font-size: 12px; color: var(--text-muted);">AI capability &ne; cheaper / better legal outcomes</span>
-          </div>
         </div>
 
-        <!-- RIGHT: Amodei framework -->
-        <div class="substep" data-substep="1" style="display: flex; flex-direction: column; gap: 0;">
-          <div style="padding: 18px; border: 1px solid var(--border); background: rgba(255,255,255,0.5); backdrop-filter: blur(8px);">
+        <!-- ── STEP 1: Returns to Intelligence + AI Snake Oil ── -->
+        <div class="substep" data-substep="1" style="position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: stretch;">
+
+          <!-- LEFT: AI Snake Oil book -->
+          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; border: 1px solid var(--border); border-radius: 8px; background: var(--accent-soft);">
+            <img src="Snake Oil.jpg" alt="AI Snake Oil book cover" style="width: 180px; border-radius: 6px; box-shadow: 0 6px 24px rgba(0,0,0,0.15); margin-bottom: 18px;">
+            <span style="font-size: 16px; font-weight: 700; color: var(--fg); margin-bottom: 4px;">AI Snake Oil</span>
+            <span style="font-size: 12px; color: var(--text-secondary); margin-bottom: 12px;">Arvind Narayanan &amp; Sayash Kapoor (2024)</span>
+            <p style="font-size: 12px; color: var(--fg); opacity: 0.7; line-height: 1.6; text-align: center; max-width: 340px;">
+              The &ldquo;returns to intelligence&rdquo; framework helps distinguish where AI genuinely improves outcomes vs. where bottlenecks are systemic.
+            </p>
+          </div>
+
+          <!-- RIGHT: Returns to Intelligence framework -->
+          <div style="padding: 24px; border: 1px solid var(--border); background: rgba(255,255,255,0.5); backdrop-filter: blur(8px); border-radius: 8px; display: flex; flex-direction: column;">
             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
               <span class="mono" style="font-size: 10px; padding: 3px 10px; background: var(--fg); color: white; letter-spacing: 0.06em;">CONCEPTUAL FRAME</span>
             </div>
-            <h3 style="font-size: 18px; line-height: 1.3; margin-bottom: 14px;">Returns to Intelligence</h3>
-            <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 16px; font-style: italic;">After Dario Amodei (2025)</p>
+            <h3 style="font-size: 18px; line-height: 1.3; margin-bottom: 4px;">Returns to Intelligence</h3>
+            <p style="font-size: 11px; color: var(--fg); opacity: 0.5; margin-bottom: 20px; font-style: italic;">After Dario Amodei (2025)</p>
 
             <!-- High returns -->
-            <div style="margin-bottom: 16px;">
+            <div style="margin-bottom: 20px;">
               <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
                 <div style="width: 10px; height: 10px; background: #2e7d6f;"></div>
                 <span style="font-size: 13px; font-weight: 600; color: var(--fg);">High returns to intelligence</span>
               </div>
-              <p style="font-size: 11px; color: var(--text-secondary); line-height: 1.5; padding-left: 18px; margin-bottom: 6px;">
+              <p style="font-size: 11px; color: var(--fg); opacity: 0.65; line-height: 1.5; padding-left: 18px; margin-bottom: 6px;">
                 Smarter agent &rarr; faster, better output
               </p>
               <div style="padding-left: 18px; display: flex; flex-wrap: wrap; gap: 4px;">
@@ -1093,8 +1489,7 @@
               </div>
             </div>
 
-            <!-- Divider -->
-            <div style="width: 100%; height: 1px; background: var(--border); margin-bottom: 16px;"></div>
+            <div style="width: 100%; height: 1px; background: var(--border); margin-bottom: 20px;"></div>
 
             <!-- Low returns -->
             <div>
@@ -1102,7 +1497,7 @@
                 <div style="width: 10px; height: 10px; background: #c62828;"></div>
                 <span style="font-size: 13px; font-weight: 600; color: var(--fg);">Low returns to intelligence</span>
               </div>
-              <p style="font-size: 11px; color: var(--text-secondary); line-height: 1.5; padding-left: 18px; margin-bottom: 6px;">
+              <p style="font-size: 11px; color: var(--fg); opacity: 0.65; line-height: 1.5; padding-left: 18px; margin-bottom: 6px;">
                 Bottleneck is not brainpower but system speed limits
               </p>
               <div style="padding-left: 18px; display: flex; flex-wrap: wrap; gap: 4px;">
@@ -1111,206 +1506,213 @@
                 <span class="mono" style="font-size: 9px; padding: 3px 8px; border: 1px solid #c62828; color: #c62828; background: rgba(198,40,40,0.04);">Court procedures</span>
               </div>
             </div>
-          </div>
 
-          <!-- Corinna positioning -->
-          <div style="margin-top: 12px; padding: 12px 18px; border: 2px solid var(--fg); background: white; text-align: center;">
-            <p style="font-size: 12px; color: var(--fg); font-weight: 500;">
-              Corinna targets the <strong>high-return</strong> zone: structured compliance assessment
-            </p>
+            <!-- Sources -->
+            <div style="margin-top: auto; padding-top: 14px;">
+              <p class="mono" style="font-size: 9px; color: var(--fg); opacity: 0.4;">
+                Sources: Amodei, &ldquo;Machines of Loving Grace&rdquo; (2025) &middot; Narayanan &amp; Kapoor, <em>AI Snake Oil</em> (2024)
+              </p>
+            </div>
           </div>
         </div>
 
       </div>
 
-      <!-- Sources -->
-      <div class="anim-fade anim-d4" style="margin-top: 8px;">
-        <p class="mono" style="font-size: 9px; color: var(--text-faint);">
-          Sources: Crunchbase (2025) &middot; Goldman Sachs &middot; Curl, Kapoor &amp; Narayanan, Lawfare (2026) &middot; Amodei (2025)
-        </p>
+      <div class="slide-footer anim-fade anim-d5">
+        <span></span>
+        <span style="font-size: 11px; color: var(--text-secondary); font-style: italic;">&mdash; Matt Shumer, CEO &amp; Co-Founder of OthersideAI</span>
       </div>
     </div>
   </div>
 
   <!-- ============================
-       SLIDE — Comparison: Questionnaire vs LLM (multi-step storytelling)
+       SLIDE — From Theory to Practice: Comparison + Solution
        ============================ -->
-  <div class="slide" data-steps="5">
+  <div class="slide comparison-slide" data-steps="4">
     <div class="slide-inner" style="padding: 40px 56px; position: relative;">
       <div class="slide-header anim-fade anim-d1">
         <span class="logo">Corinna</span>
         <span class="tag"><span class="tag-dot"></span> The Problem</span>
       </div>
 
-      <!-- Main content area — fixed height, relative for overlays -->
-      <div style="flex: 1; display: grid; grid-template-columns: 1fr 40px 1fr; align-items: stretch; position: relative; overflow: hidden;">
+      <h2 class="anim-fade anim-d2" style="font-size: 26px; margin-bottom: 2px;">From Theory to Practice</h2>
+      <p class="anim-fade anim-d2" style="font-size: 13px; color: var(--text-secondary); margin-bottom: 10px;">Solutions for assisted compliance assessment</p>
+
+      <!-- Main content area -->
+      <div style="flex: 1; display: flex; gap: 14px; position: relative; overflow: visible; min-height: 0;">
 
         <!-- ═══ LEFT: Questionnaire ═══ -->
-        <div class="anim-fade anim-d2" style="display: flex; flex-direction: column; gap: 0; position: relative;">
-          <h3 style="font-size: 19px; text-align: center; margin-bottom: 10px;">Questionnaire-Based Tools</h3>
-          <div style="border: 1px solid var(--border); background: rgba(255,255,255,0.5); backdrop-filter: blur(8px); overflow: hidden; flex: 1;">
-            <div style="padding: 7px 12px; background: var(--accent-soft); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 6px;">
+        <div class="comp-left anim-fade anim-d2" style="flex: 1; display: flex; flex-direction: column; gap: 6px; position: relative; min-width: 0;">
+          <h3 style="font-size: 15px; text-align: center; margin-bottom: 2px;">Questionnaire-Based Tools</h3>
+          <div id="compQuestionnaireWindow" style="border: 1px solid var(--border); background: rgba(255,255,255,0.5); backdrop-filter: blur(8px); overflow: hidden; border-radius: 6px; flex: 1;">
+            <div style="padding: 6px 12px; background: var(--accent-soft); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 5px;">
               <span style="width: 7px; height: 7px; border-radius: 50%; background: #e57373;"></span>
-              <span style="width: 7px; height: 7px; border-radius: 50%; background: #ffd54f;"></span>
-              <span style="width: 7px; height: 7px; border-radius: 50%; background: #81c784;"></span>
+              <span style="width: 7px; height: 7px; border-radius: 50%; background: #febc2e;"></span>
+              <span style="width: 7px; height: 7px; border-radius: 50%; background: #28c840;"></span>
               <span class="mono" style="font-size: 9px; color: var(--text-faint); margin-left: 4px;">DSA Self-Assessment Form</span>
             </div>
-            <div style="padding: 12px;">
-              <p style="font-size: 10px; font-weight: 600; color: var(--fg); margin-bottom: 6px;">Section 1 &mdash; Service Classification</p>
-              <p style="font-size: 9px; color: var(--text-muted); margin-bottom: 8px;">Does your service qualify as an intermediary service under Art. 3(g) DSA?</p>
-              <div style="display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px;">
-                <label style="display: flex; align-items: center; gap: 6px; font-size: 9px; color: var(--text-secondary);">
-                  <span style="width: 11px; height: 11px; border: 1.5px solid var(--border-strong); border-radius: 2px; display: inline-block; flex-shrink: 0;"></span>
+            <div style="padding: 14px 16px;">
+              <p style="font-size: 11px; font-weight: 600; color: var(--fg); margin-bottom: 5px;">Section 1 &mdash; Service Classification</p>
+              <p style="font-size: 10px; color: var(--text-muted); margin-bottom: 8px;">Does your service qualify as an intermediary service under Art. 3(g) DSA?</p>
+              <div style="display: flex; flex-direction: column; gap: 5px; margin-bottom: 12px;">
+                <label style="display: flex; align-items: center; gap: 6px; font-size: 10px; color: var(--text-secondary);">
+                  <span class="comp-checkbox" style="width: 12px; height: 12px; border: 1.5px solid var(--border-strong); border-radius: 2px; display: inline-block; flex-shrink: 0;"></span>
                   Mere Conduit (Art. 4)
                 </label>
-                <label style="display: flex; align-items: center; gap: 6px; font-size: 9px; color: var(--text-secondary);">
-                  <span style="width: 11px; height: 11px; border: 1.5px solid var(--border-strong); border-radius: 2px; display: inline-block; flex-shrink: 0; background: var(--fg);"></span>
+                <label style="display: flex; align-items: center; gap: 6px; font-size: 10px; color: var(--text-secondary);">
+                  <span class="comp-checkbox comp-cb-1" style="width: 12px; height: 12px; border: 1.5px solid var(--border-strong); border-radius: 2px; display: inline-block; flex-shrink: 0;"></span>
                   Hosting Provider (Art. 6)
                 </label>
-                <label style="display: flex; align-items: center; gap: 6px; font-size: 9px; color: var(--text-secondary);">
-                  <span style="width: 11px; height: 11px; border: 1.5px solid var(--border-strong); border-radius: 2px; display: inline-block; flex-shrink: 0;"></span>
+                <label style="display: flex; align-items: center; gap: 6px; font-size: 10px; color: var(--text-secondary);">
+                  <span class="comp-checkbox comp-cb-2" style="width: 12px; height: 12px; border: 1.5px solid var(--border-strong); border-radius: 2px; display: inline-block; flex-shrink: 0;"></span>
                   Online Platform (Art. 3(i))
                 </label>
-                <label style="display: flex; align-items: center; gap: 6px; font-size: 9px; color: var(--text-secondary);">
-                  <span style="width: 11px; height: 11px; border: 1.5px solid var(--border-strong); border-radius: 2px; display: inline-block; flex-shrink: 0;"></span>
+                <label style="display: flex; align-items: center; gap: 6px; font-size: 10px; color: var(--text-secondary);">
+                  <span class="comp-checkbox" style="width: 12px; height: 12px; border: 1.5px solid var(--border-strong); border-radius: 2px; display: inline-block; flex-shrink: 0;"></span>
                   Very Large Online Platform
                 </label>
               </div>
               <div style="border-top: 1px solid var(--border); padding-top: 8px;">
-                <p style="font-size: 10px; font-weight: 600; color: var(--fg); margin-bottom: 4px;">Section 2 &mdash; User Metrics</p>
-                <p style="font-size: 9px; color: var(--text-muted); margin-bottom: 4px;">Average monthly active recipients in the EU:</p>
-                <div style="border: 1px solid var(--border); padding: 4px 8px; background: white; font-size: 9px; color: var(--text-faint);">Enter number&hellip;</div>
+                <p style="font-size: 11px; font-weight: 600; color: var(--fg); margin-bottom: 4px;">Section 2 &mdash; User Metrics</p>
+                <p style="font-size: 10px; color: var(--text-muted); margin-bottom: 4px;">Average monthly active recipients in the EU:</p>
+                <div style="border: 1px solid var(--border); padding: 5px 10px; background: white; font-size: 10px; color: var(--text-faint); position: relative;">
+                  Enter number&hellip;
+                  <span class="comp-input-fill" style="position: absolute; inset: 0; padding: 5px 10px; background: white; color: var(--fg); font-size: 10px; font-weight: 500;">4,200,000</span>
+                </div>
               </div>
               <div style="border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px;">
-                <p style="font-size: 10px; font-weight: 600; color: var(--fg); margin-bottom: 4px;">Section 3 &mdash; Establishment</p>
-                <p style="font-size: 9px; color: var(--text-muted);">Is the provider established in an EU Member State? <span style="color: var(--border-strong);">&hellip;</span></p>
+                <p style="font-size: 11px; font-weight: 600; color: var(--fg); margin-bottom: 4px;">Section 3 &mdash; Establishment</p>
+                <p style="font-size: 10px; color: var(--text-muted);">Is the provider established in an EU Member State?</p>
+                <div style="display: flex; gap: 8px; margin-top: 4px;">
+                  <label style="display: flex; align-items: center; gap: 5px; font-size: 10px; color: var(--text-secondary);">
+                    <span class="comp-checkbox comp-cb-3" style="width: 12px; height: 12px; border: 1.5px solid var(--border-strong); border-radius: 50%; display: inline-block; flex-shrink: 0;"></span>
+                    Yes
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 5px; font-size: 10px; color: var(--text-secondary);">
+                    <span class="comp-checkbox" style="width: 12px; height: 12px; border: 1.5px solid var(--border-strong); border-radius: 50%; display: inline-block; flex-shrink: 0;"></span>
+                    No
+                  </label>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- OVERLAY: Questionnaire problems (covers the mockup) -->
-          <div class="substep" data-substep="0" style="position: absolute; inset: 28px 0 0 0; display: flex; flex-direction: column; justify-content: center; z-index: 5;">
-            <div style="background: rgba(250,250,249,0.92); backdrop-filter: blur(6px); border: 2px solid #c62828; padding: 20px 18px; display: flex; flex-direction: column; gap: 10px;">
-              <div style="display: flex; align-items: baseline; gap: 8px;">
-                <span style="color: #c62828; font-size: 15px; flex-shrink: 0;">&#9888;</span>
-                <div>
-                  <span style="font-size: 12px; font-weight: 600; color: #c62828;">Expert-Dependent</span>
-                  <p style="font-size: 10px; color: var(--text-secondary); line-height: 1.5; margin-top: 2px;">Requires deep legal expertise to answer correctly. Non-specialists risk misclassifying their service.</p>
-                </div>
-              </div>
-              <div style="display: flex; align-items: baseline; gap: 8px;">
-                <span style="color: #c62828; font-size: 15px; flex-shrink: 0;">&#9888;</span>
-                <div>
-                  <span style="font-size: 12px; font-weight: 600; color: #c62828;">Too Rigid</span>
-                  <p style="font-size: 10px; color: var(--text-secondary); line-height: 1.5; margin-top: 2px;">Fixed question trees cannot adapt to edge cases or novel business models.</p>
-                </div>
-              </div>
-              <div style="display: flex; align-items: baseline; gap: 8px;">
-                <span style="color: #c62828; font-size: 15px; flex-shrink: 0;">&#9888;</span>
-                <div>
-                  <span style="font-size: 12px; font-weight: 600; color: #c62828;">Hard to Maintain</span>
-                  <p style="font-size: 10px; color: var(--text-secondary); line-height: 1.5; margin-top: 2px;">Every regulatory update requires manual restructuring of the entire questionnaire.</p>
-                </div>
-              </div>
+          <!-- Red problems BELOW the window -->
+          <div class="substep" data-substep="1" style="display: flex; gap: 8px;">
+            <div style="display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-left: 3px solid #c62828; background: rgba(198,40,40,0.04); border-radius: 0 4px 4px 0; flex: 1;">
+              <span style="color: #c62828; font-size: 13px; flex-shrink: 0;">&#9888;</span>
+              <span style="font-size: 12px; font-weight: 600; color: #c62828;">Expert-Dependent</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-left: 3px solid #c62828; background: rgba(198,40,40,0.04); border-radius: 0 4px 4px 0; flex: 1;">
+              <span style="color: #c62828; font-size: 13px; flex-shrink: 0;">&#9888;</span>
+              <span style="font-size: 12px; font-weight: 600; color: #c62828;">Too Rigid</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-left: 3px solid #c62828; background: rgba(198,40,40,0.04); border-radius: 0 4px 4px 0; flex: 1;">
+              <span style="color: #c62828; font-size: 13px; flex-shrink: 0;">&#9888;</span>
+              <span style="font-size: 12px; font-weight: 600; color: #c62828;">Hard to Maintain</span>
             </div>
           </div>
         </div>
 
-        <!-- ═══ CENTER: VS divider ═══ -->
-        <div style="display: flex; align-items: center; justify-content: center;">
+        <!-- ═══ CENTER: VS ═══ -->
+        <div class="comp-vs" style="display: flex; align-items: center; justify-content: center; flex: 0 0 32px;">
           <span class="mono" style="font-size: 11px; color: var(--text-faint); letter-spacing: 0.1em;">VS</span>
         </div>
 
         <!-- ═══ RIGHT: LLM Chat ═══ -->
-        <div class="anim-fade anim-d3" style="display: flex; flex-direction: column; gap: 0; position: relative;">
-          <h3 style="font-size: 19px; text-align: center; margin-bottom: 10px;">LLM-Based Assistance</h3>
-          <div style="border: 1px solid var(--border); background: rgba(255,255,255,0.5); backdrop-filter: blur(8px); overflow: hidden; flex: 1; display: flex; flex-direction: column;">
-            <div style="padding: 7px 12px; background: var(--accent-soft); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 6px;">
+        <div class="comp-right anim-fade anim-d3" style="flex: 1; display: flex; flex-direction: column; gap: 6px; position: relative; min-width: 0;">
+          <h3 style="font-size: 15px; text-align: center; margin-bottom: 2px;">LLM-Based Assistance</h3>
+          <div style="border: 1px solid var(--border); background: rgba(255,255,255,0.5); backdrop-filter: blur(8px); overflow: hidden; border-radius: 6px; display: flex; flex-direction: column; flex: 1;">
+            <div style="padding: 6px 12px; background: var(--accent-soft); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 5px;">
               <span style="width: 7px; height: 7px; border-radius: 50%; background: #e57373;"></span>
-              <span style="width: 7px; height: 7px; border-radius: 50%; background: #ffd54f;"></span>
-              <span style="width: 7px; height: 7px; border-radius: 50%; background: #81c784;"></span>
+              <span style="width: 7px; height: 7px; border-radius: 50%; background: #febc2e;"></span>
+              <span style="width: 7px; height: 7px; border-radius: 50%; background: #28c840;"></span>
               <span class="mono" style="font-size: 9px; color: var(--text-faint); margin-left: 4px;">ChatBot &mdash; DSA Assistant</span>
             </div>
-            <div style="padding: 10px; flex: 1; display: flex; flex-direction: column; gap: 7px;">
+            <div style="padding: 12px; flex: 1; display: flex; flex-direction: column; gap: 8px;">
               <!-- User attaches DSA -->
-              <div class="substep" data-substep="1" style="align-self: flex-end; background: var(--accent-soft); padding: 7px 10px; max-width: 88%; border-radius: 2px;">
+              <div class="substep" data-substep="2" style="align-self: flex-end; background: var(--accent-soft); padding: 8px 10px; max-width: 88%; border-radius: 2px;">
                 <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 3px; padding: 3px 6px; border: 1px solid var(--border); background: white;">
                   <span style="font-size: 11px;">&#128196;</span>
-                  <span style="font-size: 8px; color: var(--fg); font-weight: 500;">DSA_Regulation_EU_2022-2065.pdf</span>
+                  <span style="font-size: 9px; color: var(--fg); font-weight: 500;">DSA_Regulation_EU_2022-2065.pdf</span>
                   <span class="mono" style="font-size: 7px; color: var(--text-faint); margin-left: auto;">4.2 MB</span>
                 </div>
-                <p style="font-size: 9px; color: var(--text-secondary);">I uploaded the full DSA. What obligations apply to my hosting service?</p>
+                <p style="font-size: 10px; color: var(--text-secondary);">I uploaded the full DSA. What obligations apply to my hosting service?</p>
               </div>
               <!-- Bot response -->
-              <div class="substep" data-substep="1" style="align-self: flex-start; border: 1px solid var(--border); padding: 7px 10px; max-width: 90%; background: white;">
-                <p style="font-size: 9px; color: var(--text-secondary); line-height: 1.5;">
+              <div class="substep" data-substep="2" style="align-self: flex-start; border: 1px solid var(--border); padding: 8px 10px; max-width: 90%; background: white;">
+                <p style="font-size: 10px; color: var(--text-secondary); line-height: 1.5;">
                   Hosting services must implement notice-and-action mechanisms (Art. 16), provide statements of reasons (Art. 17), and notify authorities of criminal offenses (Art. 18)&hellip;
                 </p>
               </div>
               <!-- Hallucination question -->
-              <div class="substep" data-substep="2" style="align-self: flex-end; background: var(--accent-soft); padding: 7px 10px; max-width: 88%; border-radius: 2px;">
-                <p style="font-size: 9px; color: var(--text-secondary);">Can you cite relevant case law on hosting provider liability?</p>
+              <div class="substep" data-substep="2" style="align-self: flex-end; background: var(--accent-soft); padding: 8px 10px; max-width: 88%; border-radius: 2px;">
+                <p style="font-size: 10px; color: var(--text-secondary);">Can you cite relevant case law on hosting provider liability?</p>
               </div>
               <!-- Hallucinated response -->
-              <div class="substep" data-substep="2" style="align-self: flex-start; border: 1px solid var(--border); padding: 7px 10px; max-width: 90%; background: white; position: relative;">
-                <p style="font-size: 9px; color: var(--text-secondary); line-height: 1.5;">
+              <div class="substep" data-substep="2" style="align-self: flex-start; border: 1px solid var(--border); padding: 8px 10px; max-width: 90%; background: white; position: relative;">
+                <p style="font-size: 10px; color: var(--text-secondary); line-height: 1.5;">
                   In <em>Rehnberg v. Digital Services Board</em> [2024] EUECJ C-412/23, the Court held that&hellip; Additionally, <em>Kessler v. Platform GmbH</em> (T-287/23) established&hellip;
                 </p>
                 <div style="position: absolute; top: -5px; right: -5px; background: #c62828; color: white; font-size: 7px; padding: 2px 5px; font-family: var(--font-mono); letter-spacing: 0.05em;">FABRICATED</div>
               </div>
             </div>
             <!-- Input bar -->
-            <div style="border-top: 1px solid var(--border); padding: 7px 10px; display: flex; align-items: center; gap: 6px;">
+            <div style="border-top: 1px solid var(--border); padding: 6px 10px; display: flex; align-items: center; gap: 6px;">
               <span style="font-size: 9px; color: var(--text-faint);">&#128206; Add files</span>
               <div style="flex: 1; border: 1px solid var(--border); padding: 3px 8px; font-size: 9px; color: var(--text-faint); background: white;">Ask about the DSA&hellip;</div>
             </div>
           </div>
 
-          <!-- OVERLAY: LLM problems (covers the chat mockup) -->
-          <div class="substep" data-substep="3" style="position: absolute; inset: 28px 0 0 0; display: flex; flex-direction: column; justify-content: center; z-index: 5;">
-            <div style="background: rgba(250,250,249,0.92); backdrop-filter: blur(6px); border: 2px solid #c62828; padding: 20px 18px; display: flex; flex-direction: column; gap: 10px;">
-              <div style="display: flex; align-items: baseline; gap: 8px;">
-                <span style="color: #c62828; font-size: 15px; flex-shrink: 0;">&#9888;</span>
-                <div>
-                  <span style="font-size: 12px; font-weight: 600; color: #c62828;">Hallucinations</span>
-                  <p style="font-size: 9px; color: var(--text-secondary); line-height: 1.5; margin-top: 2px;">LLMs fabricate citations. In <em>Ayinde v Haringey / Al-Haroun v Qatar National Bank</em> [2025] EWHC 1383, lawyers submitted five non-existent AI-generated authorities &mdash; the court warned of wasted-costs orders and regulatory referrals.</p>
-                </div>
-              </div>
-              <div style="display: flex; align-items: baseline; gap: 8px;">
-                <span style="color: #c62828; font-size: 15px; flex-shrink: 0;">&#9888;</span>
-                <div>
-                  <span style="font-size: 12px; font-weight: 600; color: #c62828;">Context &amp; Architecture Limits</span>
-                  <p style="font-size: 9px; color: var(--text-secondary); line-height: 1.5; margin-top: 2px;">Bounded by model context window, prompt design, and architecture. Long regulations get truncated or misunderstood.</p>
-                </div>
-              </div>
-              <div style="display: flex; align-items: baseline; gap: 8px;">
-                <span style="color: #c62828; font-size: 15px; flex-shrink: 0;">&#9888;</span>
-                <div>
-                  <span style="font-size: 12px; font-weight: 600; color: #c62828;">Privacy Concerns</span>
-                  <p style="font-size: 9px; color: var(--text-secondary); line-height: 1.5; margin-top: 2px;">Third-party ToS may expose sensitive company data. Not suitable for confidential compliance work.</p>
-                </div>
-              </div>
+          <!-- Red problems BELOW the window -->
+          <div class="substep" data-substep="3" style="display: flex; gap: 8px;">
+            <div style="display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-left: 3px solid #c62828; background: rgba(198,40,40,0.04); border-radius: 0 4px 4px 0; flex: 1;">
+              <span style="color: #c62828; font-size: 13px; flex-shrink: 0;">&#9888;</span>
+              <span style="font-size: 12px; font-weight: 600; color: #c62828;">Hallucinations</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-left: 3px solid #c62828; background: rgba(198,40,40,0.04); border-radius: 0 4px 4px 0; flex: 1;">
+              <span style="color: #c62828; font-size: 13px; flex-shrink: 0;">&#9888;</span>
+              <span style="font-size: 12px; font-weight: 600; color: #c62828;">Context Limits</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-left: 3px solid #c62828; background: rgba(198,40,40,0.04); border-radius: 0 4px 4px 0; flex: 1;">
+              <span style="color: #c62828; font-size: 13px; flex-shrink: 0;">&#9888;</span>
+              <span style="font-size: 12px; font-weight: 600; color: #c62828;">Privacy Concerns</span>
             </div>
           </div>
         </div>
 
       </div>
 
-      <!-- ═══ SUBSTEP 4: Solution overlay — centered over everything ═══ -->
-      <div class="substep" data-substep="4" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 20; background: rgba(250,250,249,0.85); backdrop-filter: blur(8px);">
-        <div style="display: flex; align-items: center; gap: 24px; max-width: 800px; width: 100%; padding: 0 48px;">
-          <div style="flex: 1; height: 2px; background: linear-gradient(to right, transparent, var(--fg));"></div>
-          <div style="border: 2px solid var(--fg); padding: 28px 40px; background: rgba(255,255,255,0.95); text-align: center; box-shadow: 0 0 60px rgba(10,10,10,0.08);">
-            <p class="mono" style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 8px;">The Solution</p>
-            <p style="font-family: var(--font-serif); font-size: 28px; color: var(--fg); line-height: 1.25; max-width: 400px;">A purpose-built system designed by legal &amp; CS experts</p>
-            <div style="width: 32px; height: 1px; background: var(--border-strong); margin: 14px auto 10px;"></div>
-            <p style="font-size: 12px; color: var(--text-muted); line-height: 1.6; max-width: 380px; margin: 0 auto;">Combining the structure of compliance frameworks with the flexibility of LLMs &mdash; in a controlled, domain-specific architecture.</p>
-          </div>
-          <div style="flex: 1; height: 2px; background: linear-gradient(to left, transparent, var(--fg));"></div>
+      <div class="slide-footer anim-fade anim-d4">
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================
+       SLIDE — AI and Law Book Quote
+       ============================ -->
+  <div class="slide">
+    <div class="slide-inner">
+      <div class="slide-header anim-fade anim-d1">
+        <span class="logo">Corinna</span>
+        <span class="tag"><span class="tag-dot"></span> AI &amp; Law</span>
+      </div>
+      <div class="grid-2" style="align-items: center;">
+        <div class="anim-fade anim-d2" style="display: flex; justify-content: center;">
+          <img src="AI and Law book.jpg" alt="Artificial Intelligence and Legal Analytics" style="max-height: 420px; border-radius: 8px; box-shadow: 0 8px 32px rgba(0,0,0,0.12);" />
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <blockquote class="anim-fade anim-d3" style="font-family: var(--font-serif); font-size: 22px; line-height: 1.7; font-style: italic; border-left: 3px solid var(--fg); padding-left: 24px; color: var(--fg);">
+            &ldquo;These legal apps will support conceptual legal information retrieval and enable cognitive computing, enabling a collaboration between humans and computers in which each performs the kinds of intelligent activities that they can do best.&rdquo;
+          </blockquote>
+          <p class="anim-fade anim-d4" style="font-size: 14px; color: var(--text-muted); padding-left: 24px;">
+            &mdash; Ashley, K.D. (2017) <em>Artificial Intelligence and Legal Analytics: New Tools for Law Practice in the Digital Age.</em> Cambridge: Cambridge University Press.
+          </p>
         </div>
       </div>
-
-      <div class="slide-footer anim-fade anim-d4">
+      <div class="slide-footer anim-fade anim-d5">
         <span></span>
         <span></span>
       </div>
@@ -1371,287 +1773,6 @@
     </div>
   </div>
 
-  <!-- ============================
-       SLIDE — Theoretical Framework (animated between two papers)
-       ============================ -->
-  <div class="slide exclusive-steps" data-steps="2">
-    <div class="slide-inner" style="padding: 48px 64px;">
-      <div class="slide-header anim-fade anim-d1">
-        <span class="logo">Corinna</span>
-        <span class="tag"><span class="tag-dot"></span> Academic Context</span>
-      </div>
-
-      <h2 class="anim-fade anim-d2" style="font-size: 32px; margin-bottom: 8px;">Theoretical Framework</h2>
-      <p class="anim-fade anim-d3" style="font-size: 15px; color: var(--text-secondary); line-height: 1.6; max-width: 700px; margin-bottom: 24px;">
-        The evolution of Legal AI: from <strong style="color: var(--fg);">static analysis</strong> to <strong style="color: var(--fg);">agentic reasoning</strong>.
-      </p>
-
-      <!-- Three-column layout: CLAUDETTE | ENGEL | CORINNA -->
-      <div style="flex: 1; display: flex; flex-direction: column; gap: 0; position: relative; min-height: 0;">
-
-        <!-- STEP 0: CLAUDETTE -->
-        <div class="substep" data-substep="0" style="position: absolute; inset: 0; display: grid; grid-template-columns: 200px 1fr; gap: 36px; align-items: start;">
-          <div class="anim-fade anim-d4">
-            <img src="Claudette.png" alt="CLAUDETTE paper" style="width: 100%; object-fit: contain; border-radius: 4px; box-shadow: 0 6px 24px rgba(0,0,0,0.1);" />
-          </div>
-          <div style="display: flex; flex-direction: column; gap: 16px;">
-            <div style="display: flex; align-items: center; gap: 10px;">
-              <span class="mono" style="font-size: 10px; padding: 3px 10px; background: var(--fg); color: white; letter-spacing: 0.06em;">MACHINE LEARNING</span>
-              <span class="mono" style="font-size: 10px; color: var(--text-faint);">Lippi et al.</span>
-            </div>
-            <h3 style="font-size: 22px; line-height: 1.3;">CLAUDETTE: Detecting Unfair Clauses</h3>
-            <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px;">
-              <li style="display: flex; align-items: baseline; gap: 10px; font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
-                <span style="width: 6px; height: 6px; background: var(--fg); flex-shrink: 0; transform: translateY(2px);"></span>
-                Used <strong style="color: var(--fg);">SVMs and CNNs</strong> to detect unfair clauses in Terms of Service
-              </li>
-              <li style="display: flex; align-items: baseline; gap: 10px; font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
-                <span style="width: 6px; height: 6px; background: var(--fg); flex-shrink: 0; transform: translateY(2px);"></span>
-                Static classification approach &mdash; pattern matching on contract language
-              </li>
-              <li style="display: flex; align-items: baseline; gap: 10px; font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
-                <span style="width: 6px; height: 6px; background: var(--fg); flex-shrink: 0; transform: translateY(2px);"></span>
-                Limited to pre-trained categories, no reasoning about novel provisions
-              </li>
-            </ul>
-            <div style="margin-top: auto; padding: 12px 16px; border: 1px solid var(--border-strong); background: var(--accent-soft);">
-              <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">Pioneering work in legal AI &mdash; but constrained by the ML paradigm of its time.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- STEP 1: ENGEL & KRUSE (replaces CLAUDETTE) -->
-        <div class="substep" data-substep="1" style="position: absolute; inset: 0; display: grid; grid-template-columns: 200px 1fr; gap: 36px; align-items: start;">
-          <div>
-            <img src="ENGEL.png" alt="Engel &amp; Kruse paper" style="width: 100%; object-fit: contain; border-radius: 4px; box-shadow: 0 6px 24px rgba(0,0,0,0.1);" />
-          </div>
-          <div style="display: flex; flex-direction: column; gap: 16px;">
-            <div style="display: flex; align-items: center; gap: 10px;">
-              <span class="mono" style="font-size: 10px; padding: 3px 10px; background: var(--fg); color: white; letter-spacing: 0.06em;">LLM CAPABILITIES</span>
-              <span class="mono" style="font-size: 10px; color: var(--text-faint);">Engel &amp; Kruse 2025</span>
-            </div>
-            <h3 style="font-size: 22px; line-height: 1.3;">LLMs as Legal Experts</h3>
-            <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px;">
-              <li style="display: flex; align-items: baseline; gap: 10px; font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
-                <span style="width: 6px; height: 6px; background: var(--fg); flex-shrink: 0; transform: translateY(2px);"></span>
-                LLMs can <strong style="color: var(--fg);">summarize jurisprudence</strong> and generate commentaries comparable to human experts
-              </li>
-              <li style="display: flex; align-items: baseline; gap: 10px; font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
-                <span style="width: 6px; height: 6px; background: var(--fg); flex-shrink: 0; transform: translateY(2px);"></span>
-                Key requirement: a <strong style="color: var(--fg);">structured pipeline</strong> to guide the model
-              </li>
-              <li style="display: flex; align-items: baseline; gap: 10px; font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
-                <span style="width: 6px; height: 6px; background: var(--fg); flex-shrink: 0; transform: translateY(2px);"></span>
-                Enables <strong style="color: var(--fg);">statutory reasoning</strong> and <strong style="color: var(--fg);">subsumption</strong> (applying facts to rules)
-              </li>
-            </ul>
-            <div style="margin-top: auto; padding: 12px 16px; border-left: 3px solid var(--fg); background: var(--accent-soft);">
-              <p style="font-size: 13px; color: var(--fg); line-height: 1.5; font-style: italic;">
-                &ldquo;We do not let the structure guiding the analysis emerge from the case law, but externally provide this expert knowledge to the LLM.&rdquo;
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- STEP 2: CORINNA (replaces ENGEL) -->
-        <div class="substep" data-substep="2" style="position: absolute; inset: 0; display: flex; flex-direction: column; gap: 20px;">
-          <div style="display: flex; align-items: center; gap: 10px;">
-            <span class="mono" style="font-size: 10px; padding: 3px 10px; background: var(--fg); color: white; letter-spacing: 0.06em;">OUR APPROACH</span>
-          </div>
-          <h3 style="font-size: 22px; line-height: 1.3;">Corinna: Agentic Compliance</h3>
-          <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px;">
-            <li style="display: flex; align-items: baseline; gap: 10px; font-size: 15px; color: var(--text-secondary); line-height: 1.6;">
-              <span style="width: 6px; height: 6px; background: var(--fg); flex-shrink: 0; transform: translateY(2px);"></span>
-              Applies LLM generative capability to <strong style="color: var(--fg);">regulatory compliance</strong>
-            </li>
-            <li style="display: flex; align-items: baseline; gap: 10px; font-size: 15px; color: var(--text-secondary); line-height: 1.6;">
-              <span style="width: 6px; height: 6px; background: var(--fg); flex-shrink: 0; transform: translateY(2px);"></span>
-              Unlike CLAUDETTE&rsquo;s static ML, uses LLMs for <strong style="color: var(--fg);">statutory reasoning &amp; subsumption</strong>
-            </li>
-            <li style="display: flex; align-items: baseline; gap: 10px; font-size: 15px; color: var(--text-secondary); line-height: 1.6;">
-              <span style="width: 6px; height: 6px; background: var(--fg); flex-shrink: 0; transform: translateY(2px);"></span>
-              Wraps the LLM in a <strong style="color: var(--fg);">structured multi-agent pipeline</strong> &mdash; architecture enforces the legal logic
-            </li>
-          </ul>
-          <!-- Timeline -->
-          <div style="margin-top: auto; display: flex; align-items: center; gap: 0;">
-            <div style="padding: 10px 18px; border: 1px solid var(--border-strong); background: var(--accent-soft); text-align: center;">
-              <p class="mono" style="font-size: 10px; color: var(--text-muted); font-weight: 600;">CLAUDETTE</p>
-              <p style="font-size: 11px; color: var(--text-faint); margin-top: 2px;">ML / Static</p>
-            </div>
-            <div style="flex: 1; height: 2px; background: linear-gradient(to right, var(--border-strong), var(--fg));"></div>
-            <div style="padding: 10px 18px; border: 1px solid var(--border-strong); background: var(--accent-soft); text-align: center;">
-              <p class="mono" style="font-size: 10px; color: var(--text-muted); font-weight: 600;">ENGEL &amp; KRUSE</p>
-              <p style="font-size: 11px; color: var(--text-faint); margin-top: 2px;">LLM / Structured</p>
-            </div>
-            <div style="flex: 1; height: 2px; background: var(--fg);"></div>
-            <div style="width: 0; height: 0; border-top: 7px solid transparent; border-bottom: 7px solid transparent; border-left: 10px solid var(--fg);"></div>
-            <div style="padding: 10px 18px; border: 2px solid var(--fg); background: var(--fg); text-align: center;">
-              <p class="mono" style="font-size: 10px; color: white; font-weight: 600;">CORINNA</p>
-              <p style="font-size: 11px; color: rgba(255,255,255,0.7); margin-top: 2px;">LLM / Agentic</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="slide-footer anim-fade anim-d5">
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============================
-       SLIDE — AI and Law Book Quote
-       ============================ -->
-  <div class="slide">
-    <div class="slide-inner">
-      <div class="slide-header anim-fade anim-d1">
-        <span class="logo">Corinna</span>
-        <span class="tag"><span class="tag-dot"></span> AI &amp; Law</span>
-      </div>
-      <div class="grid-2" style="align-items: center;">
-        <div class="anim-fade anim-d2" style="display: flex; justify-content: center;">
-          <img src="AI and Law book.jpg" alt="Artificial Intelligence and Legal Analytics" style="max-height: 420px; border-radius: 8px; box-shadow: 0 8px 32px rgba(0,0,0,0.12);" />
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 24px;">
-          <blockquote class="anim-fade anim-d3" style="font-family: var(--font-serif); font-size: 22px; line-height: 1.7; font-style: italic; border-left: 3px solid var(--fg); padding-left: 24px; color: var(--fg);">
-            &ldquo;These legal apps will support conceptual legal information retrieval and enable cognitive computing, enabling a collaboration between humans and computers in which each performs the kinds of intelligent activities that they can do best.&rdquo;
-          </blockquote>
-          <p class="anim-fade anim-d4" style="font-size: 14px; color: var(--text-muted); padding-left: 24px;">
-            &mdash; Ashley, K.D. (2017) <em>Artificial Intelligence and Legal Analytics: New Tools for Law Practice in the Digital Age.</em> Cambridge: Cambridge University Press.
-          </p>
-        </div>
-      </div>
-      <div class="slide-footer anim-fade anim-d5">
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============================
-       SLIDE — The Tech Lawyer (Guadamuz 2025)
-       ============================ -->
-  <div class="slide" data-steps="3">
-    <div class="slide-inner" style="padding: 40px 56px;">
-      <div class="slide-header anim-fade anim-d1">
-        <span class="logo">Corinna</span>
-        <span class="tag"><span class="tag-dot"></span> Interdisciplinarity</span>
-      </div>
-
-      <h2 class="anim-fade anim-d2" style="font-size: 32px; margin-bottom: 6px;">The &ldquo;Tech Lawyer&rdquo; &amp; the Translation Problem</h2>
-      <p class="anim-fade anim-d3" style="font-size: 12px; color: var(--text-muted); margin-bottom: 18px;">After Guadamuz (2025)</p>
-
-      <div style="flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;">
-
-        <!-- LEFT COLUMN -->
-        <div style="display: flex; flex-direction: column; gap: 16px;">
-
-          <!-- The Translation Crisis -->
-          <div class="anim-fade anim-d3" style="border: 1px solid #c62828; padding: 16px 18px; background: rgba(198,40,40,0.03);">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
-              <span style="font-size: 13px; font-weight: 600; color: #c62828; text-transform: uppercase; letter-spacing: 0.06em;">The Translation Crisis</span>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 8px;">
-              <div style="display: flex; align-items: start; gap: 8px;">
-                <span style="width: 5px; height: 5px; background: #c62828; flex-shrink: 0; margin-top: 6px;"></span>
-                <span style="font-size: 11px; color: var(--text-secondary); line-height: 1.5;">Courts decide AI&rsquo;s fate via <strong style="color: var(--fg);">metaphors</strong>: is a training set a &ldquo;mixtape&rdquo;? A &ldquo;compressed database&rdquo;? A &ldquo;synthetic brain&rdquo;?</span>
-              </div>
-              <div style="display: flex; align-items: start; gap: 8px;">
-                <span style="width: 5px; height: 5px; background: #c62828; flex-shrink: 0; margin-top: 6px;"></span>
-                <span style="font-size: 11px; color: var(--text-secondary); line-height: 1.5;">Lawyers rely on expert witnesses who struggle to connect technical explanations to legal elements</span>
-              </div>
-              <div style="display: flex; align-items: start; gap: 8px;">
-                <span style="width: 5px; height: 5px; background: #c62828; flex-shrink: 0; margin-top: 6px;"></span>
-                <span style="font-size: 11px; color: var(--text-secondary); line-height: 1.5;"><strong style="color: var(--fg);">Diverging rulings</strong> on the same tech: Getty Images (London) vs. GEMA (Munich) &mdash; opposite conclusions on whether models &ldquo;store&rdquo; data</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- The Tech Lawyer -->
-          <div class="substep" data-substep="0" style="border: 1px solid #2e7d6f; padding: 16px 18px; background: rgba(46,125,111,0.03);">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
-              <span style="font-size: 13px; font-weight: 600; color: #2e7d6f; text-transform: uppercase; letter-spacing: 0.06em;">The Tech Lawyer: Dual Fluency</span>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 6px;">
-              <div style="display: flex; align-items: center; gap: 8px; padding: 6px 12px; background: rgba(46,125,111,0.06); border-left: 2px solid #2e7d6f;">
-                <span style="font-size: 11px; color: var(--fg);">Parse a <strong>dataset</strong> as easily as a <strong>contract</strong></span>
-              </div>
-              <div style="display: flex; align-items: center; gap: 8px; padding: 6px 12px; background: rgba(46,125,111,0.06); border-left: 2px solid #2e7d6f;">
-                <span style="font-size: 11px; color: var(--fg);">Understand the architecture of a <strong>neural network</strong> and of a <strong>legal argument</strong></span>
-              </div>
-              <div style="display: flex; align-items: center; gap: 8px; padding: 6px 12px; background: rgba(46,125,111,0.06); border-left: 2px solid #2e7d6f;">
-                <span style="font-size: 11px; color: var(--fg);">Know which simplifications are <strong>permissible</strong> vs. <strong>misleading</strong></span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Quote -->
-          <div class="substep" data-substep="0" style="border-left: 3px solid var(--fg); padding: 10px 16px; background: var(--accent-soft);">
-            <p style="font-family: var(--font-serif); font-style: italic; font-size: 12px; color: var(--fg); line-height: 1.5;">
-              &ldquo;This kind of translation is an art form &hellip; requires a deep enough understanding of the tech to know which simplifications are permissible and which are misleading.&rdquo;
-            </p>
-            <p class="mono" style="font-size: 9px; color: var(--text-muted); margin-top: 4px;">&mdash; Guadamuz, 2025</p>
-          </div>
-        </div>
-
-        <!-- RIGHT COLUMN -->
-        <div style="display: flex; flex-direction: column; gap: 16px;">
-
-          <!-- Connection to Engel/Kruse & Corinna -->
-          <div class="substep" data-substep="1" style="border: 1px solid var(--border); padding: 16px 18px; background: rgba(255,255,255,0.5);">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
-              <span class="mono" style="font-size: 10px; padding: 3px 10px; background: var(--fg); color: white; letter-spacing: 0.06em;">CONNECTION</span>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 10px;">
-              <div style="display: flex; align-items: start; gap: 10px;">
-                <div class="step-number" style="width: 22px; height: 22px; font-size: 10px; flex-shrink: 0;">1</div>
-                <p style="font-size: 11px; color: var(--text-secondary); line-height: 1.5;"><strong style="color: var(--fg);">Engel &amp; Kruse&rsquo;s pipeline</strong> requires a tech lawyer: the LLM cannot infer doctrine alone &mdash; someone must teach it the doctrinal framework through prompts</p>
-              </div>
-              <div style="display: flex; align-items: start; gap: 10px;">
-                <div class="step-number" style="width: 22px; height: 22px; font-size: 10px; flex-shrink: 0;">2</div>
-                <p style="font-size: 11px; color: var(--text-secondary); line-height: 1.5;"><strong style="color: var(--fg);">Corinna</strong> embodies the same logic: dual fluency designs the agent pipeline, encodes the DSA&rsquo;s structure, crafts the classification logic</p>
-              </div>
-              <div style="padding: 8px 12px; border: 2px solid var(--fg); text-align: center; margin-top: 4px;">
-                <span style="font-size: 12px; font-weight: 600; color: var(--fg);">The tech lawyer is not replaced &mdash; the tech lawyer is the architect</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- From expertise to infrastructure -->
-          <div class="substep" data-substep="2" style="border: 1px solid var(--border); padding: 16px 18px; background: rgba(255,255,255,0.5);">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
-              <span class="mono" style="font-size: 10px; padding: 3px 10px; background: #2e7d6f; color: white; letter-spacing: 0.06em;">SCALABILITY</span>
-            </div>
-            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 10px;">
-              <div style="text-align: center; flex: 1;">
-                <span style="font-size: 11px; color: var(--text-muted);">Individual expertise</span>
-                <p style="font-size: 9px; color: var(--text-faint);">rare, high-value</p>
-              </div>
-              <div style="display: flex; align-items: center;">
-                <svg width="32" height="16" viewBox="0 0 32 16"><path d="M0 8h28M24 3l6 5-6 5" fill="none" stroke="var(--fg)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              <div style="text-align: center; flex: 1;">
-                <span style="font-size: 11px; color: var(--fg); font-weight: 600;">Reusable pipeline</span>
-                <p style="font-size: 9px; color: var(--text-muted);">scalable, updatable</p>
-              </div>
-            </div>
-            <p style="font-size: 11px; color: var(--text-secondary); line-height: 1.5;">
-              Encode the tech lawyer&rsquo;s expertise into a tool: compliance assessment run by a non-specialist, commentary updated automatically. <strong style="color: var(--fg);">Knowledge multiplied, not replaced.</strong>
-            </p>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="slide-footer anim-fade anim-d4">
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
 
   <!-- ============================
        SLIDE — Corinna Acronym Reveal
@@ -2842,6 +2963,11 @@
         setTimeout(function() { w.classList.add('show'); }, i * 100 + 50);
       });
     }
+    // Comparison slide: questionnaire fill animation on step 0
+    if (slide.classList.contains('comparison-slide') && index === 0) {
+      var w = document.getElementById('compQuestionnaireWindow');
+      if (w) w.classList.add('comp-fill-anim');
+    }
   }
 
   function hideAllSubsteps(slide) {
@@ -2855,6 +2981,11 @@
       slide.querySelectorAll('.acronym-word').forEach(function(w) {
         w.classList.remove('show');
       });
+    }
+    // Comparison slide reset
+    if (slide.classList.contains('comparison-slide')) {
+      var w = document.getElementById('compQuestionnaireWindow');
+      if (w) w.classList.remove('comp-fill-anim');
     }
   }
 

@@ -1688,45 +1688,56 @@
   <div class="slide">
     <div class="slide-inner" style="padding: 48px 64px;">
       <div class="slide-header anim-fade anim-d1">
-        <span class="logo">Corinna</span>
         <span class="tag"><span class="tag-dot"></span> Thesis</span>
       </div>
 
       <h2 class="anim-fade anim-d2" style="font-size: 34px; margin-bottom: 6px;">LLMs as a Regulatory Compliance Advisor</h2>
       <p class="anim-fade anim-d3" style="font-size: 15px; color: var(--text-muted); margin-bottom: 40px; font-style: italic;">
-        From commentary writing to compliance assessment (Engel &amp; Kruse 2025)
+        From commentary writing to compliance assessment
       </p>
 
-      <div style="display: flex; flex-direction: column; gap: 24px; max-width: 900px;">
+      <div style="flex: 1; display: flex; gap: 48px; align-items: center;">
+        <div style="display: flex; flex-direction: column; gap: 24px; flex: 1;">
 
-        <div class="anim-fade anim-d4" style="display: flex; gap: 20px; align-items: flex-start;">
-          <div style="width: 32px; height: 32px; background: var(--fg); color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0;">1</div>
-          <p style="font-size: 16px; color: var(--text-secondary); line-height: 1.7;">
-            Engel &amp; Kruse (2025) show LLMs can produce <strong style="color: var(--fg);">structured legal commentaries</strong> when the doctrinal structure is provided externally &mdash; not discovered by the model.
-          </p>
+          <div class="anim-fade anim-d4" style="display: flex; gap: 20px; align-items: flex-start;">
+            <div style="width: 32px; height: 32px; background: var(--fg); color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0;">1</div>
+            <p style="font-size: 16px; color: var(--text-secondary); line-height: 1.7;">
+              Engel &amp; Kruse (2025) show LLMs can produce <strong style="color: var(--fg);">structured legal commentaries</strong> when the doctrinal structure is provided externally &mdash; not discovered by the model.
+            </p>
+          </div>
+
+          <div class="anim-fade anim-d5" style="display: flex; gap: 20px; align-items: flex-start;">
+            <div style="width: 32px; height: 32px; background: var(--fg); color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0;">2</div>
+            <p style="font-size: 16px; color: var(--text-secondary); line-height: 1.7;">
+              The same logic applies to regulatory compliance: <strong style="color: var(--fg);">encode the regulation&rsquo;s structure</strong> into the pipeline and let the LLM fill in the substance. The solution must be <strong style="color: var(--fg);">resilient to prompt sensitivity</strong> &mdash; prompts need to be tested and refined by domain experts to ensure the best possible output for each specific task.
+            </p>
+          </div>
+
+          <div class="anim-fade anim-d6" style="display: flex; gap: 20px; align-items: flex-start;">
+            <div style="width: 32px; height: 32px; background: var(--fg); color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0;">3</div>
+            <p style="font-size: 16px; color: var(--text-secondary); line-height: 1.7;">
+              Every output is <strong style="color: var(--fg);">traceable</strong> to specific articles, and the user validates or overrides at each step &mdash; the LLM never acts alone.
+            </p>
+          </div>
+
+          <div class="anim-fade anim-d7" style="display: flex; gap: 20px; align-items: flex-start;">
+            <div style="width: 32px; height: 32px; background: var(--fg); color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0;">4</div>
+            <p style="font-size: 16px; color: var(--text-secondary); line-height: 1.7;">
+              Key advantage is <strong style="color: var(--fg);">timing</strong>: a structured first draft in minutes, not weeks &mdash; helping laypeople understand the output and the legal framework itself. The tool must also be <strong style="color: var(--fg);">easily updatable</strong>, so that changes in law, case law, and guidelines can be integrated with minimal effort.
+            </p>
+          </div>
+
+          <div class="anim-fade anim-d8" style="display: flex; gap: 20px; align-items: flex-start;">
+            <div style="width: 32px; height: 32px; background: var(--fg); color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0;">5</div>
+            <p style="font-size: 16px; color: var(--text-secondary); line-height: 1.7;">
+              The user must be able to <strong style="color: var(--fg);">interact and ask questions</strong> &mdash; and the tool needs to respond with <strong style="color: var(--fg);">factual accuracy</strong>, grounded in the actual legal sources.
+            </p>
+          </div>
+
         </div>
-
-        <div class="anim-fade anim-d5" style="display: flex; gap: 20px; align-items: flex-start;">
-          <div style="width: 32px; height: 32px; background: var(--fg); color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0;">2</div>
-          <p style="font-size: 16px; color: var(--text-secondary); line-height: 1.7;">
-            Same logic applies to regulatory compliance: Corinna <strong style="color: var(--fg);">encodes the DSA&rsquo;s structure</strong> into the pipeline and lets the LLM fill in the substance.
-          </p>
+        <div class="anim-fade anim-d5" style="flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+          <img src="ENGEL.png" alt="Engel &amp; Kruse 2025" style="max-height: 380px; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
         </div>
-
-        <div class="anim-fade anim-d6" style="display: flex; gap: 20px; align-items: flex-start;">
-          <div style="width: 32px; height: 32px; background: var(--fg); color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0;">3</div>
-          <p style="font-size: 16px; color: var(--text-secondary); line-height: 1.7;">
-            Every output is <strong style="color: var(--fg);">traceable</strong> to specific DSA articles, and the user validates or overrides at each step &mdash; the LLM never acts alone.
-          </p>
-        </div>
-
-        <div class="anim-fade anim-d7" style="display: flex; gap: 20px; align-items: flex-start;">
-          <div style="width: 32px; height: 32px; background: var(--fg); color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0;">4</div>
-          <p style="font-size: 16px; color: var(--text-secondary); line-height: 1.7;">
-            Key advantage is <strong style="color: var(--fg);">timing</strong>: a structured first draft in minutes, not weeks &mdash; making compliance accessible to SMEs.
-          </p>
-        </div>
-
       </div>
 
       <div class="slide-footer anim-fade anim-d8">

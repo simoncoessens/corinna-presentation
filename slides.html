@@ -800,78 +800,200 @@
   <!-- ============================
        SLIDE — Interdisciplinarity in the AI Era
        ============================ -->
-  <div class="slide">
+  <style>
+    /* Nexus animations — only play when .nexus-booting is added */
+    @keyframes nexus-scroll {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-380px); }
+      50.5%,100% { transform: translateY(-380px); }
+    }
+    @keyframes nexus-blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
+    @keyframes nexus-glitch {
+      0%,48% { opacity: 1; filter: none; }
+      49% { opacity: 0.3; filter: blur(1.5px); transform: translateX(3px); }
+      49.5% { opacity: 1; filter: none; transform: translateX(-2px); }
+      50% { opacity: 0.5; filter: saturate(4) brightness(1.3); transform: translateX(1px); }
+      50.5% { opacity: 1; filter: none; transform: translateX(0); }
+      51%,100% { opacity: 1; filter: none; transform: translateX(0); }
+    }
+    @keyframes nexus-red-flash {
+      0%,49% { box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05); }
+      49.5% { box-shadow: inset 0 0 30px rgba(198,40,40,0.4); }
+      51%,100% { box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05); }
+    }
+    /* Idle state: no animation */
+    .nexus-screen-inner { animation: none !important; }
+    .nexus-scroll-content { animation: none !important; }
+    .nexus-screen { animation: none !important; }
+    .nexus-cursor { animation: none !important; opacity: 0 !important; }
+    /* Active state: animations play */
+    .nexus-booting .nexus-screen { animation: nexus-red-flash 15s forwards !important; }
+    .nexus-booting .nexus-screen-inner { animation: nexus-glitch 15s forwards !important; }
+    .nexus-booting .nexus-scroll-content { animation: nexus-scroll 15s cubic-bezier(0.12,0,0.2,1) forwards !important; }
+    .nexus-booting .nexus-cursor { animation: nexus-blink 1s 15s step-end infinite !important; opacity: 0 !important; }
+  </style>
+  <div class="slide nexus-slide" data-steps="2">
     <div class="slide-inner" style="padding: 48px 64px;">
       <div class="slide-header anim-fade anim-d1">
+        <span class="logo">Corinna</span>
         <span class="tag"><span class="tag-dot"></span> Interdisciplinarity</span>
       </div>
 
-      <h2 class="anim-fade anim-d2" style="font-size: 38px; margin-bottom: 6px;">Why jurists must understand technology</h2>
-      <p class="anim-fade anim-d2" style="font-size: 14px; color: var(--text-secondary); margin-bottom: 32px;">Not to become computer scientists &mdash; but to work effectively across disciplines</p>
+      <h2 class="anim-fade anim-d2" style="font-size: 36px; margin-bottom: 6px;">Why jurists must understand technology</h2>
+      <p class="anim-fade anim-d2" style="font-size: 14px; color: var(--text-secondary); margin-bottom: 24px;">Not to become computer scientists &mdash; but to work effectively across disciplines</p>
 
-      <div style="flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
+      <div style="flex: 1; display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: center;">
 
-        <!-- LEFT COLUMN -->
-        <div style="display: flex; flex-direction: column; gap: 20px;">
-
-          <!-- The Translation Crisis -->
-          <div class="anim-fade anim-d3" style="border: 1px solid #c62828; padding: 18px 20px; background: rgba(198,40,40,0.03);">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
-              <span style="font-size: 13px; font-weight: 600; color: #c62828; text-transform: uppercase; letter-spacing: 0.06em;">The Translation Crisis</span>
+        <!-- LEFT: Galaxy Nexus phone — always visible -->
+        <div class="anim-fade anim-d2" id="nexusPhone" style="display: flex; align-items: center; justify-content: center;">
+          <div style="width: 210px; position: relative;">
+            <div style="background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 40%, #111 100%); border-radius: 32px 32px 38px 38px; padding: 20px 10px 36px; box-shadow: 0 16px 48px rgba(0,0,0,0.4), 0 2px 0 rgba(255,255,255,0.04), inset 0 1px 0 rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.06);">
+              <!-- Top sensors -->
+              <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 10px;">
+                <div style="width: 5px; height: 5px; border-radius: 50%; background: radial-gradient(circle, #333 40%, #222 100%); border: 1px solid #3a3a3a;"></div>
+                <div style="width: 40px; height: 4px; background: linear-gradient(90deg, #2a2a2a, #3a3a3a, #2a2a2a); border-radius: 2px;"></div>
+                <div style="width: 5px; height: 5px; border-radius: 50%; background: radial-gradient(circle, #333 40%, #222 100%); border: 1px solid #3a3a3a;"></div>
+              </div>
+              <!-- Screen -->
+              <div class="nexus-screen" style="background: #000; border-radius: 3px; overflow: hidden; height: 340px; position: relative;">
+                <div class="nexus-screen-inner" style="position: absolute; inset: 0; padding: 10px 7px; overflow: hidden;">
+                  <div class="nexus-scroll-content" style="font-family: var(--font-mono); font-size: 6px; line-height: 1.65;">
+                    <div style="color: #4a4;">&#9608;&#9608;&#9608; FASTBOOT MODE &#9608;&#9608;&#9608;</div>
+                    <div style="color: #aaa;">Booting Linux 3.0.31-g6fb96c7</div>
+                    <div style="color: #666;">Samsung Galaxy Nexus (maguro)</div>
+                    <div style="color: #666;">Board: tuna rev 09</div>
+                    <div style="color: #aaa;">CPU: ARMv7 Cortex-A9 (OMAP4460)</div>
+                    <div style="color: #666;">Memory: 1024MB LPDDR2</div>
+                    <div style="color: #666;">Serial: 014E07DA12005018</div>
+                    <div style="color: #aaa;">[ 0.000000] Initializing cgroups</div>
+                    <div style="color: #666;">[ 0.001234] CPU: OMAP4460 ES2.1</div>
+                    <div style="color: #666;">[ 0.008120] Security Framework init</div>
+                    <div style="color: #aaa;">[ 0.045200] NET: Registered proto</div>
+                    <div style="color: #666;">[ 0.078100] OMAP Watchdog Timer</div>
+                    <div style="color: #666;">[ 0.092300] omap_i2c 48070000.i2c</div>
+                    <div style="color: #aaa;">[ 0.112000] mmcblk0: mmc0:0001</div>
+                    <div style="color: #666;">[ 0.189000] mmcblk0p1: boot</div>
+                    <div style="color: #666;">[ 0.234000] mmcblk0p10: system</div>
+                    <div style="color: #aaa;">[ 0.312000] mmcblk0p11: userdata</div>
+                    <div style="color: #666;">[ 0.398000] tuna_gpio_init</div>
+                    <div style="color: #aaa;">[ 0.456000] Display: DSI init</div>
+                    <div style="color: #666;">[ 0.523000] EXT4-fs (mmcblk0p9)</div>
+                    <div style="color: #666;">[ 0.612000] EXT4-fs: recovery</div>
+                    <div style="color: #aaa;">[ 0.678000] EXT4-fs: warning:</div>
+                    <div style="color: #666;">  maximal mount count reached</div>
+                    <div style="color: #aaa;">[ 0.734000] EXT4-fs: clean, 24576</div>
+                    <div style="color: #666;">[ 0.756000] SELinux: Loading</div>
+                    <div style="color: #aaa;">[ 0.789000] SELinux: Initializing</div>
+                    <div style="color: #666;">[ 0.812000] init: loading props</div>
+                    <div style="color: #aaa;">[ 0.867000] init: /dev/cpuctl</div>
+                    <div style="color: #666;">[ 0.934000] healthd: wakealarm</div>
+                    <div style="color: #aaa;">[ 0.978000] servicemanager: 0.0</div>
+                    <div style="color: #666;">[ 1.023000] vold: Volume mgr</div>
+                    <div style="color: #666;">[ 1.045000] binder: init proc 1</div>
+                    <div style="color: #aaa;">[ 1.089000] netd: starting</div>
+                    <div style="color: #666;">[ 1.112000] installd: created</div>
+                    <div style="color: #aaa;">[ 1.156000] adb: ready</div>
+                    <div style="color: #666;">[ 1.234000] zygote: preloading</div>
+                    <div style="color: #aaa;">[ 1.287000] VFS: Mounting root</div>
+                    <div style="color: #666;">[ 1.345000] EXT4-fs error (device</div>
+                    <div style="color: #666;">  mmcblk0p9): ext4_find_entry</div>
+                    <div style="color: #aaa;">[ 1.389000] EXT4-fs error (dev</div>
+                    <div style="color: #666;">  mmcblk0p9): __ext4_get_inode</div>
+                    <div style="color: #aaa;">[ 1.423000] EXT4-fs warning:</div>
+                    <div style="color: #666;">  too many errors, forcing</div>
+                    <div style="color: #666;">  filesystem to read-only</div>
+                    <div style="color: #aaa;">[ 1.456000] Aborting journal on</div>
+                    <div style="color: #666;">  device mmcblk0p9-8.</div>
+                    <div style="color: #aaa;">[ 1.489000] EXT4-fs (mmcblk0p9):</div>
+                    <div style="color: #666;">  error: ext4_journal_check_start</div>
+                    <div style="color: #c62828; margin-top: 4px;">[ 1.534000] &#9888; BUG: unable to</div>
+                    <div style="color: #c62828;">  handle kernel NULL pointer</div>
+                    <div style="color: #c62828;">  dereference at virtual addr</div>
+                    <div style="color: #c62828;">  00000048</div>
+                    <div style="color: #888;">[ 1.567000] Internal error:</div>
+                    <div style="color: #888;">  Oops: 17 [#1] PREEMPT SMP ARM</div>
+                    <div style="color: #888;">---[ cut here ]---</div>
+                    <div style="color: #ff4444; font-weight: bold;">Kernel panic - not syncing:</div>
+                    <div style="color: #ff4444;">VFS: Unable to mount root fs</div>
+                    <div style="color: #ff4444;">on unknown-block(0,0)</div>
+                    <div style="color: #888; margin-top: 2px;">Pid: 1, comm: swapper/0</div>
+                    <div style="color: #888;">Tainted: G&ensp;&ensp;D&ensp;W&ensp;3.0.31</div>
+                    <div style="color: #888;">Hardware name: Tuna</div>
+                    <div style="color: #888;">Backtrace:</div>
+                    <div style="color: #555;">&nbsp;[&lt;c003a1e8&gt;] (panic+0x68/0x1dc)</div>
+                    <div style="color: #555;">&nbsp;[&lt;c0571b24&gt;] (mount_root+0x134)</div>
+                    <div style="color: #555;">&nbsp;[&lt;c0571cdc&gt;] (prepare_ns+0x130)</div>
+                    <div style="color: #555;">&nbsp;[&lt;c0008974&gt;] (kernel_init+0x1e4)</div>
+                    <div style="color: #555;">&nbsp;[&lt;c000f1a8&gt;] (do_exit+0x6a8)</div>
+                    <div style="color: #555;">&nbsp;[&lt;c0013fcc&gt;] (ret_from_fork+0x14)</div>
+                    <div style="color: #888;">---[ end Kernel panic ]---</div>
+                    <div style="color: #ff4444; margin-top: 4px; font-weight: bold;">&#9608; FATAL: CANNOT CONTINUE &#9608;</div>
+                    <div style="color: #ff4444;">&#9608; DEVICE HALTED &#9608;</div>
+                    <div style="color: #c62828;">eMMC: write-protect violation</div>
+                    <div style="color: #c62828;">NAND: uncorrectable ECC error</div>
+                    <div style="color: #c62828;">block 0x0004f: read failed</div>
+                    <div style="color: #888; margin-top: 3px;">Attempting reboot in 30s...</div>
+                    <div style="color: #ff4444;">Reboot failed: no bootable</div>
+                    <div style="color: #ff4444;">partition found</div>
+                    <div style="color: #ff4444; margin-top: 4px; font-weight: bold;">*** BRICKED ***</div>
+                  </div>
+                </div>
+                <!-- Blinking cursor after freeze -->
+                <div class="nexus-cursor" style="position: absolute; bottom: 8px; left: 9px; font-family: var(--font-mono); font-size: 7px; color: #c62828;">&#9608;</div>
+              </div>
+              <!-- Chin -->
+              <div style="height: 16px; margin-top: 8px;"></div>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 10px;">
-              <div style="display: flex; align-items: start; gap: 8px;">
-                <span style="width: 5px; height: 5px; background: #c62828; flex-shrink: 0; margin-top: 6px;"></span>
-                <span style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;">Courts decide AI&rsquo;s fate via <strong style="color: var(--fg);">metaphors</strong>: is a training set a &ldquo;mixtape&rdquo;? A &ldquo;compressed database&rdquo;? A &ldquo;synthetic brain&rdquo;?</span>
-              </div>
-              <div style="display: flex; align-items: start; gap: 8px;">
-                <span style="width: 5px; height: 5px; background: #c62828; flex-shrink: 0; margin-top: 6px;"></span>
-                <span style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;">Lawyers rely on expert witnesses who struggle to connect technical explanations to legal elements</span>
-              </div>
-              <div style="display: flex; align-items: start; gap: 8px;">
-                <span style="width: 5px; height: 5px; background: #c62828; flex-shrink: 0; margin-top: 6px;"></span>
-                <span style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;"><strong style="color: var(--fg);">Diverging rulings</strong> on the same tech: Getty Images (London) vs. GEMA (Munich) &mdash; opposite conclusions on whether models &ldquo;store&rdquo; data</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Quote -->
-          <div class="anim-fade anim-d4" style="border-left: 3px solid var(--fg); padding: 12px 18px; background: var(--accent-soft);">
-            <p style="font-family: var(--font-serif); font-style: italic; font-size: 13px; color: var(--fg); line-height: 1.6;">
-              &ldquo;This kind of translation is an art form &hellip; requires a deep enough understanding of the tech to know which simplifications are permissible and which are misleading.&rdquo;
-            </p>
-            <p class="mono" style="font-size: 9px; color: var(--text-secondary); margin-top: 6px;">&mdash; Guadamuz, 2025</p>
+            <!-- Edge reflection -->
+            <div style="position: absolute; top: 40px; left: 0; width: 2px; height: 60%; background: linear-gradient(180deg, transparent, rgba(255,255,255,0.06), transparent); border-radius: 1px;"></div>
           </div>
         </div>
 
-        <!-- RIGHT COLUMN -->
-        <div style="display: flex; flex-direction: column; gap: 20px;">
+        <!-- RIGHT: Content boxes — revealed on step 1 -->
+        <div class="substep" data-substep="1" style="display: flex; flex-direction: column; gap: 20px;">
 
-          <!-- Interdisciplinary capacity -->
-          <div class="anim-fade anim-d4" style="border: 1px solid #2e7d6f; padding: 18px 20px; background: rgba(46,125,111,0.03);">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+          <!-- The Translation Crisis -->
+          <div style="border: 1px solid #c62828; padding: 20px 24px; background: rgba(198,40,40,0.03); transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
+              <span style="font-size: 13px; font-weight: 600; color: #c62828; text-transform: uppercase; letter-spacing: 0.06em;">The Translation Crisis</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="display: flex; align-items: start; gap: 10px;">
+                <span style="width: 5px; height: 5px; background: #c62828; flex-shrink: 0; margin-top: 7px;"></span>
+                <span style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">Courts decide AI&rsquo;s fate via <strong style="color: var(--fg);">metaphors</strong>: is a training set a &ldquo;mixtape&rdquo;? A &ldquo;compressed database&rdquo;? A &ldquo;synthetic brain&rdquo;?</span>
+              </div>
+              <div style="display: flex; align-items: start; gap: 10px;">
+                <span style="width: 5px; height: 5px; background: #c62828; flex-shrink: 0; margin-top: 7px;"></span>
+                <span style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">Lawyers rely on expert witnesses who struggle to connect technical explanations to legal elements</span>
+              </div>
+              <div style="display: flex; align-items: start; gap: 10px;">
+                <span style="width: 5px; height: 5px; background: #c62828; flex-shrink: 0; margin-top: 7px;"></span>
+                <span style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;"><strong style="color: var(--fg);">Diverging rulings</strong> on the same tech: Getty Images (London) vs. GEMA (Munich) &mdash; opposite conclusions on whether models &ldquo;store&rdquo; data</span>
+              </div>
+            </div>
+            <p style="font-family: var(--font-mono); font-size: 9px; color: var(--text-muted); margin-top: 10px;">After Guadamuz (2025)</p>
+          </div>
+
+          <!-- Interdisciplinary Fluency -->
+          <div style="border: 1px solid #2e7d6f; padding: 20px 24px; background: rgba(46,125,111,0.03); transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
               <span style="font-size: 13px; font-weight: 600; color: #2e7d6f; text-transform: uppercase; letter-spacing: 0.06em;">Interdisciplinary Fluency</span>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 8px;">
-              <div style="display: flex; align-items: center; gap: 8px; padding: 8px 14px; background: rgba(46,125,111,0.06); border-left: 2px solid #2e7d6f;">
-                <span style="font-size: 12px; color: var(--fg);">Understand how <strong>AI systems work</strong> to regulate them effectively</span>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="display: flex; align-items: start; gap: 10px;">
+                <span style="width: 5px; height: 5px; background: #2e7d6f; flex-shrink: 0; margin-top: 7px;"></span>
+                <span style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">Understand how <strong style="color: var(--fg);">AI systems work</strong> to regulate them effectively</span>
               </div>
-              <div style="display: flex; align-items: center; gap: 8px; padding: 8px 14px; background: rgba(46,125,111,0.06); border-left: 2px solid #2e7d6f;">
-                <span style="font-size: 12px; color: var(--fg);">Building AI-based legal tools requires <strong>dialogue between law and engineering</strong></span>
+              <div style="display: flex; align-items: start; gap: 10px;">
+                <span style="width: 5px; height: 5px; background: #2e7d6f; flex-shrink: 0; margin-top: 7px;"></span>
+                <span style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">Building AI-based legal tools requires <strong style="color: var(--fg);">dialogue between law and engineering</strong></span>
               </div>
-              <div style="display: flex; align-items: center; gap: 8px; padding: 8px 14px; background: rgba(46,125,111,0.06); border-left: 2px solid #2e7d6f;">
-                <span style="font-size: 12px; color: var(--fg);">Know which simplifications are <strong>permissible</strong> vs. <strong>misleading</strong></span>
+              <div style="display: flex; align-items: start; gap: 10px;">
+                <span style="width: 5px; height: 5px; background: #2e7d6f; flex-shrink: 0; margin-top: 7px;"></span>
+                <span style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">Know which simplifications are <strong style="color: var(--fg);">permissible</strong> vs. <strong style="color: var(--fg);">misleading</strong></span>
               </div>
             </div>
           </div>
-
-          <!-- Key takeaway -->
-          <div class="anim-fade anim-d5" style="padding: 18px 20px; border: 2px solid var(--fg); text-align: center;">
-            <p style="font-size: 14px; font-weight: 600; color: var(--fg); line-height: 1.6;">
-              The jurist is not replaced by AI &mdash;<br/>the jurist who understands technology becomes the architect
-            </p>
-          </div>
-
         </div>
       </div>
 
@@ -1686,57 +1808,57 @@
        SLIDE — LLMs as a Regulatory Compliance Advisor
        ============================ -->
   <div class="slide">
-    <div class="slide-inner" style="padding: 48px 64px;">
-      <div class="slide-header anim-fade anim-d1">
+    <div class="slide-inner" style="padding: 40px 64px;">
+      <div class="slide-header anim-fade anim-d1" style="padding-bottom: 20px; margin-bottom: 24px;">
         <span class="tag"><span class="tag-dot"></span> Thesis</span>
       </div>
 
-      <h2 class="anim-fade anim-d2" style="font-size: 34px; margin-bottom: 6px;">LLMs as a Regulatory Compliance Advisor</h2>
-      <p class="anim-fade anim-d3" style="font-size: 15px; color: var(--text-muted); margin-bottom: 40px; font-style: italic;">
+      <h2 class="anim-fade anim-d2" style="font-size: 30px; margin-bottom: 4px;">LLMs as a Regulatory Compliance Advisor</h2>
+      <p class="anim-fade anim-d3" style="font-size: 14px; color: var(--text-muted); margin-bottom: 24px; font-style: italic;">
         From commentary writing to compliance assessment
       </p>
 
-      <div style="flex: 1; display: flex; gap: 48px; align-items: center;">
-        <div style="display: flex; flex-direction: column; gap: 24px; flex: 1;">
+      <div style="flex: 1; display: flex; gap: 40px; align-items: center;">
+        <div style="display: flex; flex-direction: column; gap: 16px; flex: 1;">
 
-          <div class="anim-fade anim-d4" style="display: flex; gap: 20px; align-items: flex-start;">
-            <div style="width: 32px; height: 32px; background: var(--fg); color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0;">1</div>
-            <p style="font-size: 16px; color: var(--text-secondary); line-height: 1.7;">
+          <div class="anim-fade anim-d4" style="display: flex; gap: 16px; align-items: flex-start;">
+            <div style="width: 28px; height: 28px; background: var(--fg); color: white; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0;">1</div>
+            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
               Engel &amp; Kruse (2025) show LLMs can produce <strong style="color: var(--fg);">structured legal commentaries</strong> when the doctrinal structure is provided externally &mdash; not discovered by the model.
             </p>
           </div>
 
-          <div class="anim-fade anim-d5" style="display: flex; gap: 20px; align-items: flex-start;">
-            <div style="width: 32px; height: 32px; background: var(--fg); color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0;">2</div>
-            <p style="font-size: 16px; color: var(--text-secondary); line-height: 1.7;">
-              The same logic applies to regulatory compliance: <strong style="color: var(--fg);">encode the regulation&rsquo;s structure</strong> into the pipeline and let the LLM fill in the substance. The solution must be <strong style="color: var(--fg);">resilient to prompt sensitivity</strong> &mdash; prompts need to be tested and refined by domain experts to ensure the best possible output for each specific task.
+          <div class="anim-fade anim-d5" style="display: flex; gap: 16px; align-items: flex-start;">
+            <div style="width: 28px; height: 28px; background: var(--fg); color: white; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0;">2</div>
+            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
+              The same logic applies to regulatory compliance: <strong style="color: var(--fg);">encode the regulation&rsquo;s structure</strong> into the pipeline and let the LLM fill in the substance. The solution must be <strong style="color: var(--fg);">resilient to prompt sensitivity</strong> &mdash; prompts need to be tested and refined by domain experts.
             </p>
           </div>
 
-          <div class="anim-fade anim-d6" style="display: flex; gap: 20px; align-items: flex-start;">
-            <div style="width: 32px; height: 32px; background: var(--fg); color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0;">3</div>
-            <p style="font-size: 16px; color: var(--text-secondary); line-height: 1.7;">
+          <div class="anim-fade anim-d6" style="display: flex; gap: 16px; align-items: flex-start;">
+            <div style="width: 28px; height: 28px; background: var(--fg); color: white; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0;">3</div>
+            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
               Every output is <strong style="color: var(--fg);">traceable</strong> to specific articles, and the user validates or overrides at each step &mdash; the LLM never acts alone.
             </p>
           </div>
 
-          <div class="anim-fade anim-d7" style="display: flex; gap: 20px; align-items: flex-start;">
-            <div style="width: 32px; height: 32px; background: var(--fg); color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0;">4</div>
-            <p style="font-size: 16px; color: var(--text-secondary); line-height: 1.7;">
-              Key advantage is <strong style="color: var(--fg);">timing</strong>: a structured first draft in minutes, not weeks &mdash; helping laypeople understand the output and the legal framework itself. The tool must also be <strong style="color: var(--fg);">easily updatable</strong>, so that changes in law, case law, and guidelines can be integrated with minimal effort.
+          <div class="anim-fade anim-d7" style="display: flex; gap: 16px; align-items: flex-start;">
+            <div style="width: 28px; height: 28px; background: var(--fg); color: white; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0;">4</div>
+            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
+              Key advantage is <strong style="color: var(--fg);">timing</strong>: a structured first draft in minutes, not weeks &mdash; helping laypeople understand the legal framework. The tool must be <strong style="color: var(--fg);">easily updatable</strong> as law, case law, and guidelines evolve.
             </p>
           </div>
 
-          <div class="anim-fade anim-d8" style="display: flex; gap: 20px; align-items: flex-start;">
-            <div style="width: 32px; height: 32px; background: var(--fg); color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0;">5</div>
-            <p style="font-size: 16px; color: var(--text-secondary); line-height: 1.7;">
+          <div class="anim-fade anim-d8" style="display: flex; gap: 16px; align-items: flex-start;">
+            <div style="width: 28px; height: 28px; background: var(--fg); color: white; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0;">5</div>
+            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
               The user must be able to <strong style="color: var(--fg);">interact and ask questions</strong> &mdash; and the tool needs to respond with <strong style="color: var(--fg);">factual accuracy</strong>, grounded in the actual legal sources.
             </p>
           </div>
 
         </div>
         <div class="anim-fade anim-d5" style="flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
-          <img src="ENGEL.png" alt="Engel &amp; Kruse 2025" style="max-height: 380px; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
+          <img src="ENGEL.png" alt="Engel &amp; Kruse 2025" style="max-height: 340px; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
         </div>
       </div>
 
@@ -2572,18 +2694,18 @@
        SLIDE 8 — Design Goals / Prototyping
        ============================ -->
   <div class="slide">
-    <div class="slide-inner">
+    <div class="slide-inner" style="padding: 48px 64px;">
       <div class="slide-header anim-fade anim-d1">
         <span class="tag"><span class="tag-dot"></span> Design Goals</span>
       </div>
-      <div style="display: grid; grid-template-columns: 1fr 1fr auto; gap: 48px; align-items: start; flex: 1;">
-        <div style="display: flex; flex-direction: column; gap: 24px;">
-          <h2 class="anim-fade anim-d2" style="font-size: 40px;">What we want to achieve</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr auto; gap: 36px; align-items: start; flex: 1;">
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <h2 class="anim-fade anim-d2" style="font-size: 36px;">What we want to achieve</h2>
           <ul class="clean">
-            <li class="anim-fade anim-d3" style="font-size: 16px;">The human always decides &mdash; the system pauses before assessment</li>
-            <li class="anim-fade anim-d3" style="font-size: 16px;">Prompt sensitivity reduced through model selection and prompt engineering until acceptable results</li>
-            <li class="anim-fade anim-d4" style="font-size: 16px;">AI research can be bypassed entirely</li>
-            <li class="anim-fade anim-d4" style="font-size: 16px;">Flexible system &mdash; legal experts can add case law, guidelines, or other elements</li>
+            <li class="anim-fade anim-d3" style="font-size: 15px;">The human always decides &mdash; the system pauses before assessment</li>
+            <li class="anim-fade anim-d3" style="font-size: 15px;">Prompt sensitivity reduced through model selection and prompt engineering until acceptable results</li>
+            <li class="anim-fade anim-d4" style="font-size: 15px;">AI research can be bypassed entirely</li>
+            <li class="anim-fade anim-d4" style="font-size: 15px;">Flexible system &mdash; legal experts can add case law, guidelines, or other elements</li>
           </ul>
         </div>
         <div style="display: flex; flex-direction: column; gap: 0;">
@@ -2621,7 +2743,7 @@
           </div>
         </div>
         <div class="anim-fade anim-d5" style="display: flex; align-items: center; justify-content: center;">
-          <img src="ENGEL.png" alt="Engel" style="max-height: 380px; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
+          <img src="ENGEL.png" alt="Engel" style="max-height: 340px; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);" />
         </div>
       </div>
       <div class="slide-footer anim-fade anim-d8">
@@ -2940,6 +3062,11 @@
       var w = document.getElementById('compQuestionnaireWindow');
       if (w) w.classList.add('comp-fill-anim');
     }
+    // Nexus slide: start boot animation on step 0
+    if (slide.classList.contains('nexus-slide') && index === 0) {
+      var phone = document.getElementById('nexusPhone');
+      if (phone) phone.classList.add('nexus-booting');
+    }
   }
 
   function hideAllSubsteps(slide) {
@@ -2958,6 +3085,11 @@
     if (slide.classList.contains('comparison-slide')) {
       var w = document.getElementById('compQuestionnaireWindow');
       if (w) w.classList.remove('comp-fill-anim');
+    }
+    // Nexus slide reset
+    if (slide.classList.contains('nexus-slide')) {
+      var phone = document.getElementById('nexusPhone');
+      if (phone) phone.classList.remove('nexus-booting');
     }
   }
 

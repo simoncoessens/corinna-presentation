@@ -821,16 +821,18 @@
       49.5% { box-shadow: inset 0 0 30px rgba(198,40,40,0.4); }
       51%,100% { box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05); }
     }
-    /* Idle state: no animation */
-    .nexus-screen-inner { animation: none !important; }
+    /* Idle state: lock screen visible, kernel hidden */
+    .nexus-screen-inner { animation: none !important; opacity: 0; transition: opacity 0.4s ease; }
     .nexus-scroll-content { animation: none !important; }
     .nexus-screen { animation: none !important; }
     .nexus-cursor { animation: none !important; opacity: 0 !important; }
-    /* Active state: animations play */
-    .nexus-booting .nexus-screen { animation: nexus-red-flash 15s forwards !important; }
-    .nexus-booting .nexus-screen-inner { animation: nexus-glitch 15s forwards !important; }
-    .nexus-booting .nexus-scroll-content { animation: nexus-scroll 15s cubic-bezier(0.12,0,0.2,1) forwards !important; }
-    .nexus-booting .nexus-cursor { animation: nexus-blink 1s 15s step-end infinite !important; opacity: 0 !important; }
+    .nexus-lockscreen { opacity: 1; transition: opacity 0.5s ease; }
+    /* Active state: lock screen hides, kernel animations play */
+    .nexus-booting .nexus-lockscreen { opacity: 0 !important; pointer-events: none; }
+    .nexus-booting .nexus-screen-inner { opacity: 1; animation: nexus-glitch 15s 0.5s forwards !important; }
+    .nexus-booting .nexus-screen { animation: nexus-red-flash 15s 0.5s forwards !important; }
+    .nexus-booting .nexus-scroll-content { animation: nexus-scroll 15s 0.5s cubic-bezier(0.12,0,0.2,1) forwards !important; }
+    .nexus-booting .nexus-cursor { animation: nexus-blink 1s 15.5s step-end infinite !important; opacity: 0 !important; }
   </style>
   <div class="slide nexus-slide" data-steps="2">
     <div class="slide-inner" style="padding: 48px 64px;">
@@ -840,7 +842,7 @@
       </div>
 
       <h2 class="anim-fade anim-d2" style="font-size: 36px; margin-bottom: 6px;">Why jurists must understand technology</h2>
-      <p class="anim-fade anim-d2" style="font-size: 14px; color: var(--text-secondary); margin-bottom: 24px;">Not to become computer scientists &mdash; but to work effectively across disciplines</p>
+      <p class="anim-fade anim-d2" style="font-size: 14px; color: var(--text-secondary); margin-bottom: 24px;">Not (necessarily) to become computer scientists, but to work effectively across disciplines</p>
 
       <div style="flex: 1; display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: center;">
 
@@ -938,6 +940,36 @@
                     <div style="color: #ff4444; margin-top: 4px; font-weight: bold;">*** BRICKED ***</div>
                   </div>
                 </div>
+                <!-- Lock screen overlay -->
+                <div class="nexus-lockscreen" style="position: absolute; inset: 0; background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 2;">
+                  <!-- Status bar -->
+                  <div style="position: absolute; top: 0; left: 0; right: 0; padding: 4px 8px; display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-family: var(--font-mono); font-size: 5px; color: rgba(255,255,255,0.5);">TIM</span>
+                    <div style="display: flex; gap: 3px; align-items: center;">
+                      <span style="font-family: var(--font-mono); font-size: 5px; color: rgba(255,255,255,0.5);">4G</span>
+                      <div style="width: 10px; height: 5px; border: 1px solid rgba(255,255,255,0.4); border-radius: 1px; position: relative;"><div style="position: absolute; left: 1px; top: 1px; bottom: 1px; width: 60%; background: rgba(255,255,255,0.6); border-radius: 0.5px;"></div></div>
+                    </div>
+                  </div>
+                  <!-- Time -->
+                  <div id="nexusClock" style="font-family: var(--font-sans); font-size: 48px; font-weight: 200; color: white; letter-spacing: 2px; line-height: 1;">10:30</div>
+                  <!-- Date -->
+                  <div id="nexusDate" style="font-family: var(--font-sans); font-size: 9px; color: rgba(255,255,255,0.6); margin-top: 4px; letter-spacing: 0.5px;">Wed, 19 February</div>
+                  <!-- Notifications area -->
+                  <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 4px; width: 80%;">
+                    <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(4px); border-radius: 4px; padding: 6px 8px; display: flex; align-items: center; gap: 6px;">
+                      <div style="width: 10px; height: 10px; border-radius: 2px; background: #4285f4; display: flex; align-items: center; justify-content: center;"><span style="font-size: 5px; color: white; font-weight: bold;">G</span></div>
+                      <div>
+                        <div style="font-size: 5px; color: rgba(255,255,255,0.8); font-weight: 500;">Google Calendar</div>
+                        <div style="font-size: 4.5px; color: rgba(255,255,255,0.5);">SNIP Conference &mdash; 10:45</div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Swipe hint -->
+                  <div style="position: absolute; bottom: 16px; display: flex; flex-direction: column; align-items: center; gap: 3px;">
+                    <div style="width: 2px; height: 10px; background: rgba(255,255,255,0.3); border-radius: 1px;"></div>
+                    <span style="font-size: 5px; color: rgba(255,255,255,0.35); letter-spacing: 0.5px;">Swipe to unlock</span>
+                  </div>
+                </div>
                 <!-- Blinking cursor after freeze -->
                 <div class="nexus-cursor" style="position: absolute; bottom: 8px; left: 9px; font-family: var(--font-mono); font-size: 7px; color: #c62828;">&#9608;</div>
               </div>
@@ -964,7 +996,7 @@
               </div>
               <div style="display: flex; align-items: start; gap: 10px;">
                 <span style="width: 5px; height: 5px; background: #c62828; flex-shrink: 0; margin-top: 7px;"></span>
-                <span style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">Lawyers rely on expert witnesses who struggle to connect technical explanations to legal elements</span>
+                <span style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">Lawyers depend on technical experts who often struggle to <strong style="color: var(--fg);">bridge the gap</strong> between how systems work and what the law requires</span>
               </div>
               <div style="display: flex; align-items: start; gap: 10px;">
                 <span style="width: 5px; height: 5px; background: #c62828; flex-shrink: 0; margin-top: 7px;"></span>
@@ -986,7 +1018,7 @@
               </div>
               <div style="display: flex; align-items: start; gap: 10px;">
                 <span style="width: 5px; height: 5px; background: #2e7d6f; flex-shrink: 0; margin-top: 7px;"></span>
-                <span style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">Building AI-based legal tools requires <strong style="color: var(--fg);">dialogue between law and engineering</strong></span>
+                <span style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">Building AI-based legal tools requires <strong style="color: var(--fg);">dialogue between lawyers and computer scientists</strong></span>
               </div>
               <div style="display: flex; align-items: start; gap: 10px;">
                 <span style="width: 5px; height: 5px; background: #2e7d6f; flex-shrink: 0; margin-top: 7px;"></span>
@@ -3195,6 +3227,22 @@
   });
 
   update();
+
+  // Nexus lock screen clock — synced to Rome (Europe/Rome)
+  function updateNexusClock() {
+    var now = new Date();
+    var rome = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Rome' }));
+    var h = String(rome.getHours()).padStart(2, '0');
+    var m = String(rome.getMinutes()).padStart(2, '0');
+    var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    var clockEl = document.getElementById('nexusClock');
+    var dateEl = document.getElementById('nexusDate');
+    if (clockEl) clockEl.textContent = h + ':' + m;
+    if (dateEl) dateEl.textContent = days[rome.getDay()] + ', ' + rome.getDate() + ' ' + months[rome.getMonth()];
+  }
+  updateNexusClock();
+  setInterval(updateNexusClock, 10000);
 
 })();
 </script>

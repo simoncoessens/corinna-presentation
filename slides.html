@@ -2198,117 +2198,87 @@
       <h1 class="anim-fade anim-d2" style="font-size: clamp(48px, 7vw, 96px); letter-spacing: -0.02em;">How it works</h1>
       <div class="anim-fade anim-d3 divider anim-line" style="margin: 8px auto;"></div>
       <p class="anim-fade anim-d4" style="font-style: italic; font-size: 18px; max-width: 480px; color: var(--text-muted);">
-        A multi-agent system for DSA compliance assessment
+        Context, constraints, and the role of the human
       </p>
     </div>
   </div>
 
   <!-- ============================
-       SLIDE 6 — Architecture Overview
+       SLIDE 6 — What is an Agent?
        ============================ -->
   <div class="slide">
     <div class="slide-inner" style="padding: 48px 64px;">
       <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 24px; border-bottom: 1px solid var(--border); margin-bottom: 32px;">
-        <h2 class="anim-fade anim-d1" style="font-size: 38px;">The Agents</h2>
+        <h2 class="anim-fade anim-d1" style="font-size: 38px;">What is an Agent?</h2>
         <div class="anim-fade anim-d1" style="display: flex; align-items: center; gap: 16px;">
           <img src="langgraph_logo.png" alt="LangGraph" style="height: 40px; object-fit: contain;" />
           <img src="deepseek_logo.png" alt="DeepSeek" style="height: 20px; object-fit: contain;" />
-          <img src="logo_tavily.png" alt="Tavily" style="height: 18px; object-fit: contain;" />
         </div>
       </div>
 
-      <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 32px;">
+      <div class="grid-2" style="gap: 56px; align-items: start;">
+        <!-- Left: explanation -->
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <p class="anim-fade anim-d2" style="font-size: 16px; line-height: 1.7; color: var(--text-secondary);">
+            An agent is a <strong style="color: var(--fg);">language model (LLM)</strong> that can use <strong style="color: var(--fg);">tools</strong>. It reasons about what to do, calls a tool, observes the result, then decides the next step.
+          </p>
 
-        <!-- The 4 agents as a pipeline -->
-        <div style="display: flex; align-items: stretch; gap: 0;">
-          <div class="flow-step anim-fade anim-d2" style="padding: 24px;">
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-              <div class="step-number">1</div>
-              <h3 style="font-size: 16px;">Company Matcher</h3>
+          <!-- ReAct loop diagram -->
+          <div class="anim-fade anim-d3" style="display: flex; align-items: center; gap: 0; padding: 20px 24px; border: 1px solid var(--border); background: rgba(255,255,255,0.5);">
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 0 16px;">
+              <span class="mono" style="font-size: 11px; padding: 6px 12px; background: var(--fg); color: white;">Reason</span>
             </div>
-            <p style="font-size: 13px; line-height: 1.5; color: var(--text-muted); margin-bottom: 14px;">
-              Identify the exact legal entity
-            </p>
-            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-              <span class="mono" style="font-size: 9px; padding: 3px 8px; background: var(--fg); color: white; text-transform: uppercase; letter-spacing: 0.04em;">Web Search</span>
+            <span style="color: var(--text-faint); font-size: 18px;">&rarr;</span>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 0 16px;">
+              <span class="mono" style="font-size: 11px; padding: 6px 12px; background: var(--fg); color: white;">Use tool</span>
             </div>
-          </div>
-          <div class="flow-step anim-fade anim-d3" style="padding: 24px;">
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-              <div class="step-number">2</div>
-              <h3 style="font-size: 16px;">Deep Research</h3>
+            <span style="color: var(--text-faint); font-size: 18px;">&rarr;</span>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 0 16px;">
+              <span class="mono" style="font-size: 11px; padding: 6px 12px; background: var(--fg); color: white;">Observe</span>
             </div>
-            <p style="font-size: 13px; line-height: 1.5; color: var(--text-muted); margin-bottom: 14px;">
-              16 parallel sub-agents research the company
-            </p>
-            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-              <span class="mono" style="font-size: 9px; padding: 3px 8px; background: var(--fg); color: white; text-transform: uppercase; letter-spacing: 0.04em;">Web Search</span>
+            <span style="color: var(--text-faint); font-size: 18px;">&rarr;</span>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 0 16px;">
+              <span class="mono" style="font-size: 11px; padding: 6px 12px; border: 1px solid var(--border-strong); color: var(--text-muted);">&#8635; repeat</span>
             </div>
           </div>
-          <div class="flow-step anim-fade anim-d4" style="padding: 24px; background: rgba(10,10,10,0.03);">
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-              <div class="step-number" style="background: transparent; border: 1.5px solid var(--fg); color: var(--fg);">&#10003;</div>
-              <h3 style="font-size: 16px;">Human Validation</h3>
+
+          <p class="anim-fade anim-d4" style="font-size: 15px; line-height: 1.7; color: var(--text-muted);">
+            The LLM decides <em>when</em> and <em>how</em> to use tools &mdash; no human scripts each step.
+          </p>
+        </div>
+
+        <!-- Right: concrete example -->
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <div class="anim-fade anim-d3" style="border: 1px solid var(--border); background: rgba(255,255,255,0.45); backdrop-filter: blur(8px); overflow: hidden;">
+            <div style="padding: 12px 20px; background: var(--accent-soft); display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--border);">
+              <span class="tag"><span class="tag-dot"></span> Our tools</span>
             </div>
-            <p style="font-size: 13px; line-height: 1.5; color: var(--text-muted); margin-bottom: 14px;">
-              User reviews and confirms all findings
-            </p>
-            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-              <span class="mono" style="font-size: 9px; padding: 3px 8px; border: 1px solid var(--border-strong); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em;">Manual</span>
+            <div style="padding: 16px 20px; display: flex; flex-direction: column; gap: 12px;">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <img src="logo_tavily.png" alt="Tavily" style="height: 14px;" />
+                <span style="font-size: 14px; color: var(--text-secondary);">Web Search (Tavily)</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <svg viewBox="0 0 24 24" style="width: 14px; height: 14px; stroke: var(--fg); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                <span style="font-size: 14px; color: var(--text-secondary);">RAG on DSA text</span>
+              </div>
             </div>
           </div>
-          <div class="flow-step anim-fade anim-d5" style="padding: 24px;">
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-              <div class="step-number">3</div>
-              <h3 style="font-size: 16px;">Assessment</h3>
+
+          <div class="anim-fade anim-d5" style="border: 1px solid var(--border); background: rgba(255,255,255,0.45); backdrop-filter: blur(8px); overflow: hidden;">
+            <div style="padding: 12px 20px; background: var(--fg); display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 13px; color: white; font-weight: 500;">Example</span>
             </div>
-            <p style="font-size: 13px; line-height: 1.5; color: var(--text-muted); margin-bottom: 14px;">
-              Evaluate each DSA article against the profile
-            </p>
-            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-              <span class="mono" style="font-size: 9px; padding: 3px 8px; background: var(--fg); color: white; text-transform: uppercase; letter-spacing: 0.04em;">RAG on DSA</span>
+            <div style="padding: 16px 20px; display: flex; flex-direction: column; gap: 10px;">
+              <p style="font-size: 14px; color: var(--fg); font-weight: 500; font-style: italic;">&ldquo;Is Apple an online platform?&rdquo;</p>
+              <div style="display: flex; flex-direction: column; gap: 6px; padding-left: 12px; border-left: 2px solid var(--border-strong);">
+                <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">Agent searches the web for Apple&rsquo;s EU services</p>
+                <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">Reads results, searches DSA text for &ldquo;online platform&rdquo; definition</p>
+                <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">Produces answer with reasoning and sources</p>
+              </div>
             </div>
           </div>
         </div>
-
-        <!-- Corinna Chat bar spanning underneath -->
-        <div class="anim-fade anim-d6" style="display: flex; align-items: center; gap: 16px; padding: 16px 24px; border: 1px solid var(--border); background: rgba(255,255,255,0.4);">
-          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: var(--fg); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          <span style="font-size: 14px; color: var(--fg); font-weight: 500;">Corinna Chat</span>
-          <span style="font-size: 13px; color: var(--text-muted);">&mdash; available at every step</span>
-          <div style="margin-left: auto; display: flex; gap: 6px;">
-            <span class="mono" style="font-size: 9px; padding: 3px 8px; background: var(--fg); color: white; text-transform: uppercase; letter-spacing: 0.04em;">RAG on DSA</span>
-          </div>
-        </div>
-
-        <!-- ReAct pattern + tools legend -->
-        <div class="anim-fade anim-d7" style="display: flex; gap: 24px; align-items: stretch;">
-          <div style="flex: 1; padding: 20px 24px; border: 1px solid var(--border); background: rgba(255,255,255,0.4);">
-            <span class="tag" style="margin-bottom: 12px;"><span class="tag-dot"></span> ReAct Pattern</span>
-            <div style="display: flex; align-items: center; gap: 12px; margin-top: 10px;">
-              <span class="mono" style="font-size: 12px; padding: 4px 10px; background: var(--fg); color: white;">Reason</span>
-              <span style="color: var(--text-faint);">&rarr;</span>
-              <span class="mono" style="font-size: 12px; padding: 4px 10px; background: var(--fg); color: white;">Act</span>
-              <span style="color: var(--text-faint);">&rarr;</span>
-              <span class="mono" style="font-size: 12px; padding: 4px 10px; background: var(--fg); color: white;">Observe</span>
-              <span style="color: var(--text-faint);">&rarr;</span>
-              <span class="mono" style="font-size: 12px; padding: 4px 10px; border: 1px solid var(--border-strong); color: var(--text-muted);">&#8635; loop</span>
-            </div>
-            <p style="font-size: 12px; color: var(--text-muted); margin-top: 10px; line-height: 1.5;">All agents follow this loop &mdash; tools before decisions</p>
-          </div>
-          <div style="padding: 20px 24px; border: 1px solid var(--border); background: rgba(255,255,255,0.4); display: flex; flex-direction: column; gap: 10px; min-width: 220px;">
-            <span class="tag"><span class="tag-dot"></span> Tools</span>
-            <div style="display: flex; align-items: center; gap: 10px; margin-top: 4px;">
-              <img src="logo_tavily.png" alt="Tavily" style="height: 14px;" />
-              <span style="font-size: 13px; color: var(--text-secondary);">Web Search</span>
-            </div>
-            <div style="display: flex; align-items: center; gap: 10px;">
-              <svg viewBox="0 0 24 24" style="width: 14px; height: 14px; stroke: var(--fg); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
-              <span style="font-size: 13px; color: var(--text-secondary);">RAG on DSA text</span>
-            </div>
-          </div>
-        </div>
-
       </div>
 
       <div class="slide-footer anim-fade anim-d8">
@@ -2319,240 +2289,115 @@
   </div>
 
   <!-- ============================
-       SLIDE 6 — Company Matcher (multi-step)
+       SLIDE 7 — Multi-Agent Pipeline
        ============================ -->
-  <div class="slide" data-steps="7">
-    <div class="slide-inner" style="padding: 48px 64px;">
-      <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 24px; border-bottom: 1px solid var(--border); margin-bottom: 28px;">
-        <div style="display: flex; align-items: center; gap: 16px;">
-          <div class="step-number" style="width: 40px; height: 40px; font-size: 16px;">1</div>
-          <h2 style="font-size: 38px;">Company Matcher</h2>
-        </div>
-        <div style="display: flex; align-items: center; gap: 16px;">
-          <img src="langgraph_logo.png" alt="LangGraph" style="height: 40px; object-fit: contain;" />
-          <img src="deepseek_logo.png" alt="DeepSeek" style="height: 20px; object-fit: contain;" />
-          <img src="logo_tavily.png" alt="Tavily" style="height: 18px; object-fit: contain;" />
-        </div>
-      </div>
-
-      <div style="display: flex; gap: 24px; margin-bottom: 24px; font-size: 14px;">
-        <span style="color: var(--text-secondary);">ReAct agent with web search</span>
-        <span style="color: var(--text-faint);">&middot;</span>
-        <span style="color: var(--text-secondary);">Up to 4 iterations</span>
-        <span style="color: var(--text-faint);">&middot;</span>
-        <span style="color: var(--text-secondary);">Identifies the exact legal entity</span>
-      </div>
-
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; flex: 1; align-items: start;">
-
-        <!-- Left column: animated agent trace -->
-        <div style="display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); background: rgba(255,255,255,0.45); backdrop-filter: blur(8px); overflow: hidden;">
-
-          <!-- Step 0: Input (visible on slide enter) -->
-          <div class="substep" data-substep="0" style="padding: 14px 20px; border-bottom: 1px solid var(--border); background: var(--accent-soft);">
-            <span class="mono" style="font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.08em;">Input</span>
-            <p style="font-size: 14px; color: var(--fg); font-weight: 500; margin-top: 4px;">&ldquo;Apple&rdquo; &mdash; United States</p>
-          </div>
-
-          <!-- Step 1: Reason 1 -->
-          <div class="substep" data-substep="1" style="padding: 14px 20px; border-bottom: 1px solid var(--border);">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-              <span class="mono" style="font-size: 9px; padding: 2px 6px; background: var(--fg); color: white; text-transform: uppercase; letter-spacing: 0.05em;">Reason</span>
-              <span style="font-size: 12px; color: var(--text-muted);">Iteration 1</span>
-            </div>
-            <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5; font-style: italic;">
-              &ldquo;Apple&rdquo; is ambiguous &mdash; could be Apple Inc. (tech), Apple Records, Apple Bank. I need to search with country context to disambiguate.
-            </p>
-          </div>
-
-          <!-- Step 2: Search 1 -->
-          <div class="substep" data-substep="2" style="padding: 14px 20px; border-bottom: 1px solid var(--border); background: rgba(250,250,249,0.5);">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-              <span class="mono" style="font-size: 9px; padding: 2px 6px; background: var(--fg); color: white; text-transform: uppercase; letter-spacing: 0.05em;">Search</span>
-              <img src="logo_tavily.png" alt="" style="height: 12px;" />
-            </div>
-            <p class="mono" style="font-size: 12px; color: var(--fg);">&ldquo;Apple company United States digital services&rdquo;</p>
-            <p style="font-size: 11px; color: var(--text-faint); margin-top: 4px; line-height: 1.4;">
-              &rarr; Apple Inc. &mdash; Cupertino, CA. Consumer electronics, software, and online services. CEO: Tim Cook. NASDAQ: AAPL.
-            </p>
-          </div>
-
-          <!-- Step 3: Reason 2 -->
-          <div class="substep" data-substep="3" style="padding: 14px 20px; border-bottom: 1px solid var(--border);">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-              <span class="mono" style="font-size: 9px; padding: 2px 6px; background: var(--fg); color: white; text-transform: uppercase; letter-spacing: 0.05em;">Reason</span>
-              <span style="font-size: 12px; color: var(--text-muted);">Iteration 2</span>
-            </div>
-            <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5; font-style: italic;">
-              Strong match for Apple Inc. Let me verify their EU digital services presence &mdash; this is needed to confirm DSA relevance.
-            </p>
-          </div>
-
-          <!-- Step 4: Search 2 -->
-          <div class="substep" data-substep="4" style="padding: 14px 20px; border-bottom: 1px solid var(--border); background: rgba(250,250,249,0.5);">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-              <span class="mono" style="font-size: 9px; padding: 2px 6px; background: var(--fg); color: white; text-transform: uppercase; letter-spacing: 0.05em;">Search</span>
-              <img src="logo_tavily.png" alt="" style="height: 12px;" />
-            </div>
-            <p class="mono" style="font-size: 12px; color: var(--fg);">&ldquo;Apple Inc digital services EU App Store iCloud&rdquo;</p>
-            <p style="font-size: 11px; color: var(--text-faint); margin-top: 4px; line-height: 1.4;">
-              &rarr; Apple operates App Store, iCloud, Apple Music, Apple TV+ across all EU member states. EU entity: Apple Distribution International Ltd, Cork, Ireland.
-            </p>
-          </div>
-
-          <!-- Step 5: Decision -->
-          <div class="substep" data-substep="5" style="padding: 14px 20px; background: var(--accent-soft);">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-              <span class="mono" style="font-size: 9px; padding: 2px 6px; background: var(--fg); color: white; text-transform: uppercase; letter-spacing: 0.05em;">Decision</span>
-              <span style="font-size: 12px; color: var(--text-muted);">Confident after 2 iterations</span>
-            </div>
-            <p style="font-size: 13px; color: var(--fg); font-weight: 500;">
-              Match: Apple Inc. &mdash; apple.com
-            </p>
-          </div>
-
-        </div>
-
-        <!-- Right column -->
-        <div style="display: flex; flex-direction: column; gap: 16px;">
-
-          <!-- ReAct explanation (always visible) -->
-          <div class="card" style="padding: 20px;">
-            <span class="tag" style="margin-bottom: 10px;"><span class="tag-dot"></span> ReAct Pattern</span>
-            <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 8px;">
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <span class="mono" style="font-size: 10px; padding: 3px 8px; background: var(--fg); color: white;">1</span>
-                <p style="font-size: 13px; line-height: 1.4;"><strong style="color: var(--fg);">Reason</strong> &mdash; Analyze what&rsquo;s known, plan next action</p>
-              </div>
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <span class="mono" style="font-size: 10px; padding: 3px 8px; background: var(--fg); color: white;">2</span>
-                <p style="font-size: 13px; line-height: 1.4;"><strong style="color: var(--fg);">Act</strong> &mdash; Execute a web search via Tavily</p>
-              </div>
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <span class="mono" style="font-size: 10px; padding: 3px 8px; background: var(--fg); color: white;">3</span>
-                <p style="font-size: 13px; line-height: 1.4;"><strong style="color: var(--fg);">Observe</strong> &mdash; Evaluate results, loop or stop</p>
-              </div>
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <span class="mono" style="font-size: 10px; padding: 3px 8px; border: 1px solid var(--border-strong); color: var(--text-muted);">&#8635;</span>
-                <p style="font-size: 13px; line-height: 1.4; color: var(--text-muted);">Up to 4 iterations, stops early when confident</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Result card (appears with decision) -->
-          <div class="substep" data-substep="6">
-            <div class="card" style="padding: 20px; border: 2px solid var(--fg);">
-              <span class="tag" style="margin-bottom: 10px;"><span class="tag-dot"></span> Final Match</span>
-              <div style="margin-top: 8px;">
-                <p style="font-size: 20px; color: var(--fg); font-weight: 500; font-family: var(--font-serif);">Apple Inc.</p>
-                <p style="font-size: 13px; color: var(--text-muted); margin-top: 6px;">apple.com &middot; Cupertino, CA, United States</p>
-                <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border);">
-                  <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
-                    Multinational technology company that designs, develops, and sells consumer electronics, software, and digital services. Operates the App Store, iCloud, Apple Music, and Apple TV+ across all EU member states through its EU subsidiary Apple Distribution International Ltd, based in Cork, Ireland.
-                  </p>
-                </div>
-                <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between;">
-                  <p class="mono" style="font-size: 10px; color: var(--text-faint);">Confidence: high</p>
-                  <p class="mono" style="font-size: 10px; color: var(--fg); background: var(--accent-soft); padding: 3px 10px;">Awaiting user confirmation &rarr;</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="slide-footer">
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============================
-       SLIDE 7 — Deep Research: Overview
-       ============================ -->
-  <div class="slide" data-steps="3">
+  <div class="slide">
     <div class="slide-inner" style="padding: 48px 64px;">
       <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 24px; border-bottom: 1px solid var(--border); margin-bottom: 32px;">
-        <div style="display: flex; align-items: center; gap: 16px;">
-          <div class="step-number" style="width: 40px; height: 40px; font-size: 16px;">2</div>
-          <h2 style="font-size: 38px;">Deep Research</h2>
-        </div>
-        <div style="display: flex; align-items: center; gap: 16px;">
-          <img src="langgraph_logo.png" alt="LangGraph" style="height: 40px; object-fit: contain;" />
-          <img src="deepseek_logo.png" alt="DeepSeek" style="height: 20px; object-fit: contain;" />
-          <img src="logo_tavily.png" alt="Tavily" style="height: 18px; object-fit: contain;" />
+        <h2 class="anim-fade anim-d1" style="font-size: 38px;">Our Multi-Agent System</h2>
+        <span class="anim-fade anim-d1 tag"><span class="tag-dot"></span> LangGraph orchestration</span>
+      </div>
+
+      <p class="anim-fade anim-d2" style="font-size: 15px; color: var(--text-muted); margin-bottom: 24px;">
+        Multiple specialised agents, each with its own tools and legal brief, orchestrated into a single pipeline
+      </p>
+
+      <!-- Vertical flow diagram -->
+      <div style="flex: 1; display: flex; justify-content: center; align-items: center;">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 0; width: 100%; max-width: 720px;">
+
+          <!-- Input node -->
+          <div class="anim-fade anim-d2" style="padding: 14px 32px; border: 1px solid var(--border); background: var(--accent-soft); text-align: center; width: 340px;">
+            <span class="mono" style="font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.08em;">Input</span>
+            <p style="font-size: 14px; color: var(--fg); font-weight: 500; margin-top: 4px;">Company name + country</p>
+          </div>
+
+          <!-- Connector -->
+          <div class="anim-fade anim-d2" style="width: 1px; height: 20px; background: var(--border-strong);"></div>
+
+          <!-- Company Matcher -->
+          <div class="anim-fade anim-d3" style="padding: 14px 32px; border: 1px solid var(--border); background: rgba(255,255,255,0.5); text-align: center; width: 340px;">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+              <div class="step-number" style="width: 24px; height: 24px; font-size: 10px;">1</div>
+              <span style="font-size: 15px; color: var(--fg); font-weight: 500;">Company Matcher Agent</span>
+            </div>
+            <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Identifies exact legal entity via web search</p>
+          </div>
+
+          <!-- Connector -->
+          <div class="anim-fade anim-d3" style="width: 1px; height: 20px; background: var(--border-strong);"></div>
+
+          <!-- Deep Research hub -->
+          <div class="anim-fade anim-d4" style="padding: 16px 32px; background: var(--fg); text-align: center; width: 340px;">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+              <div style="width: 24px; height: 24px; border: 1px solid rgba(255,255,255,0.3); color: white; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 10px;">2</div>
+              <span style="font-size: 15px; color: white; font-weight: 500;">Deep Research Hub</span>
+            </div>
+            <p style="font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 4px;">Spawns 16 parallel research agents</p>
+          </div>
+
+          <!-- Fan-out lines + agent group cards -->
+          <div class="anim-fade anim-d5" style="width: 100%; position: relative; padding: 0;">
+            <svg width="100%" height="32" viewBox="0 0 720 32" preserveAspectRatio="none" style="display: block;">
+              <line x1="360" y1="0" x2="120" y2="32" stroke="#d6d3d1" stroke-width="1" stroke-dasharray="4 3" />
+              <line x1="360" y1="0" x2="360" y2="32" stroke="#d6d3d1" stroke-width="1" stroke-dasharray="4 3" />
+              <line x1="360" y1="0" x2="600" y2="32" stroke="#d6d3d1" stroke-width="1" stroke-dasharray="4 3" />
+            </svg>
+            <div style="display: flex; gap: 16px; width: 100%;">
+              <div style="flex: 1; border: 1px solid var(--border); border-left: 3px solid var(--fg); background: rgba(255,255,255,0.5); padding: 14px 18px;">
+                <p style="font-size: 14px; color: var(--fg); font-weight: 500;">Geographical Scope</p>
+                <p style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">8 questions &mdash; EU presence, users, languages</p>
+              </div>
+              <div style="flex: 0.6; border: 1px solid var(--border); border-left: 3px solid var(--fg); background: rgba(255,255,255,0.5); padding: 14px 18px;">
+                <p style="font-size: 14px; color: var(--fg); font-weight: 500;">Company Size</p>
+                <p style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">2 questions &mdash; staff, turnover</p>
+              </div>
+              <div style="flex: 1; border: 1px solid var(--border); border-left: 3px solid var(--fg); background: rgba(255,255,255,0.5); padding: 14px 18px;">
+                <p style="font-size: 14px; color: var(--fg); font-weight: 500;">Type of Service</p>
+                <p style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">6 questions &mdash; hosting, platform, marketplace</p>
+              </div>
+            </div>
+            <!-- Fan-in lines -->
+            <svg width="100%" height="32" viewBox="0 0 720 32" preserveAspectRatio="none" style="display: block;">
+              <line x1="120" y1="0" x2="360" y2="32" stroke="#d6d3d1" stroke-width="1" stroke-dasharray="4 3" />
+              <line x1="360" y1="0" x2="360" y2="32" stroke="#d6d3d1" stroke-width="1" stroke-dasharray="4 3" />
+              <line x1="600" y1="0" x2="360" y2="32" stroke="#d6d3d1" stroke-width="1" stroke-dasharray="4 3" />
+            </svg>
+          </div>
+
+          <!-- Human Validation -->
+          <div class="anim-fade anim-d6" style="padding: 14px 32px; border: 2px dashed var(--border-strong); background: rgba(255,255,255,0.5); text-align: center; width: 340px;">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+              <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: var(--fg); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              <span style="font-size: 15px; color: var(--fg); font-weight: 500;">Human Validation</span>
+            </div>
+            <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Accept, edit, or skip each finding</p>
+          </div>
+
+          <!-- Connector -->
+          <div class="anim-fade anim-d6" style="width: 1px; height: 20px; background: var(--border-strong);"></div>
+
+          <!-- Assessment Agent -->
+          <div class="anim-fade anim-d7" style="padding: 14px 32px; background: var(--fg); text-align: center; width: 340px;">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+              <div style="width: 24px; height: 24px; border: 1px solid rgba(255,255,255,0.3); color: white; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 10px;">3</div>
+              <span style="font-size: 15px; color: white; font-weight: 500;">Assessment Agent</span>
+            </div>
+            <p style="font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 4px;">Evaluates each DSA article via RAG</p>
+          </div>
+
+          <!-- Connector -->
+          <div class="anim-fade anim-d7" style="width: 1px; height: 20px; background: var(--border-strong);"></div>
+
+          <!-- Output -->
+          <div class="anim-fade anim-d8" style="padding: 14px 32px; border: 2px solid var(--fg); background: rgba(255,255,255,0.5); text-align: center; width: 340px;">
+            <span class="mono" style="font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.08em;">Output</span>
+            <p style="font-size: 14px; color: var(--fg); font-weight: 500; margin-top: 4px;">Compliance Report</p>
+          </div>
         </div>
       </div>
 
-      <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 32px;">
-
-        <!-- Step 0: Input from Company Matcher -->
-        <div class="substep" data-substep="0">
-          <div style="display: flex; align-items: center; gap: 20px; padding: 16px 24px; border: 1px solid var(--border); background: var(--accent-soft); max-width: 560px;">
-            <span class="mono" style="font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.08em; flex-shrink: 0;">From Step 1</span>
-            <div>
-              <p style="font-size: 18px; color: var(--fg); font-weight: 500; font-family: var(--font-serif);">Apple Inc.</p>
-              <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">apple.com &middot; Cupertino, CA &middot; Consumer electronics, software, digital services</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 1: Fan-out visual -->
-        <div class="substep" data-substep="1">
-          <div style="display: flex; align-items: stretch; gap: 0;">
-            <div style="width: 140px; display: flex; align-items: center; justify-content: center; background: var(--fg); padding: 20px;">
-              <div style="text-align: center;">
-                <p style="font-size: 36px; color: white; font-family: var(--font-serif); line-height: 1;">16</p>
-                <p style="font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 4px;">parallel<br/>agents</p>
-              </div>
-            </div>
-            <div style="flex: 1; display: flex; flex-direction: column; gap: 0;">
-              <div style="flex: 1; display: flex; align-items: center; gap: 16px; padding: 16px 24px; border: 1px solid var(--border); border-left: 3px solid var(--fg); background: rgba(255,255,255,0.5);">
-                <div class="step-number" style="width: 28px; height: 28px; font-size: 11px;">1</div>
-                <div>
-                  <p style="font-size: 15px; color: var(--fg); font-weight: 500;">Geographical Scope</p>
-                  <p style="font-size: 12px; color: var(--text-muted);">8 questions &mdash; EU presence, users, languages, currencies, accessibility</p>
-                </div>
-                <span class="mono" style="font-size: 11px; color: var(--text-faint); margin-left: auto;">q00&ndash;q07</span>
-              </div>
-              <div style="flex: 1; display: flex; align-items: center; gap: 16px; padding: 16px 24px; border: 1px solid var(--border); border-top: none; border-left: 3px solid var(--fg); background: rgba(255,255,255,0.5);">
-                <div class="step-number" style="width: 28px; height: 28px; font-size: 11px;">2</div>
-                <div>
-                  <p style="font-size: 15px; color: var(--fg); font-weight: 500;">Company Size</p>
-                  <p style="font-size: 12px; color: var(--text-muted);">2 questions &mdash; staff count, turnover (micro/small enterprise exemption)</p>
-                </div>
-                <span class="mono" style="font-size: 11px; color: var(--text-faint); margin-left: auto;">q08&ndash;q09</span>
-              </div>
-              <div style="flex: 1; display: flex; align-items: center; gap: 16px; padding: 16px 24px; border: 1px solid var(--border); border-top: none; border-left: 3px solid var(--fg); background: rgba(255,255,255,0.5);">
-                <div class="step-number" style="width: 28px; height: 28px; font-size: 11px;">3</div>
-                <div>
-                  <p style="font-size: 15px; color: var(--fg); font-weight: 500;">Type of Service</p>
-                  <p style="font-size: 12px; color: var(--text-muted);">6 questions &mdash; conduit, caching, hosting, platform, search engine, marketplace</p>
-                </div>
-                <span class="mono" style="font-size: 11px; color: var(--text-faint); margin-left: auto;">q10&ndash;q15</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 2: Key insight -->
-        <div class="substep" data-substep="2">
-          <div style="display: flex; align-items: start; gap: 16px; padding: 16px 24px; border: 1px solid var(--border); background: rgba(255,255,255,0.5); max-width: 700px;">
-            <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: var(--fg); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; margin-top: 2px;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-            <div style="display: flex; flex-direction: column; gap: 4px;">
-              <p style="font-size: 14px; color: var(--fg); font-weight: 500;">Each agent receives a legal brief</p>
-              <p style="font-size: 13px; color: var(--text-muted);">Explains what to search for and why it matters under the DSA</p>
-              <p style="font-size: 13px; color: var(--text-muted);">Questions map directly to the classification criteria used in the assessment</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="slide-footer">
+      <div class="slide-footer anim-fade anim-d8">
         <span></span>
         <span></span>
       </div>
@@ -2560,303 +2405,124 @@
   </div>
 
   <!-- ============================
-       SLIDE 8 — Deep Research: The 16 Questions
-       ============================ -->
-  <div class="slide" data-steps="3">
-    <div class="slide-inner" style="padding: 48px 64px;">
-      <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 24px; border-bottom: 1px solid var(--border); margin-bottom: 28px;">
-        <div style="display: flex; align-items: center; gap: 16px;">
-          <div class="step-number" style="width: 40px; height: 40px; font-size: 16px;">2</div>
-          <h2 style="font-size: 38px;">The 16 Questions</h2>
-        </div>
-        <span class="tag"><span class="tag-dot"></span> Deep Research</span>
-      </div>
-
-      <div style="flex: 1; display: flex; gap: 20px; align-items: start;">
-
-        <!-- Section 1: Geographical Scope -->
-        <div class="substep" data-substep="0" style="flex: 1;">
-          <div style="border: 1px solid var(--border); background: rgba(255,255,255,0.45); backdrop-filter: blur(8px); overflow: hidden; height: 100%;">
-            <div style="padding: 12px 20px; background: var(--accent-soft); display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--border);">
-              <div class="step-number" style="width: 24px; height: 24px; font-size: 11px;">1</div>
-              <span style="font-size: 14px; color: var(--fg); font-weight: 500;">Geographical Scope</span>
-            </div>
-            <div style="padding: 10px 20px; display: flex; flex-direction: column; gap: 0;">
-              <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; padding: 8px 0; border-bottom: 1px solid var(--border);"><span class="mono" style="color: var(--text-faint); font-size: 10px; margin-right: 8px;">q00</span>Main establishment or registered office location</p>
-              <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; padding: 8px 0; border-bottom: 1px solid var(--border);"><span class="mono" style="color: var(--text-faint); font-size: 10px; margin-right: 8px;">q01</span>Estimated monthly active EU users</p>
-              <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; padding: 8px 0; border-bottom: 1px solid var(--border);"><span class="mono" style="color: var(--text-faint); font-size: 10px; margin-right: 8px;">q02</span>Interface / support in EU languages</p>
-              <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; padding: 8px 0; border-bottom: 1px solid var(--border);"><span class="mono" style="color: var(--text-faint); font-size: 10px; margin-right: 8px;">q03</span>Transactions in EUR or EU currencies</p>
-              <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; padding: 8px 0; border-bottom: 1px solid var(--border);"><span class="mono" style="color: var(--text-faint); font-size: 10px; margin-right: 8px;">q04</span>EU users can order / access service</p>
-              <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; padding: 8px 0; border-bottom: 1px solid var(--border);"><span class="mono" style="color: var(--text-faint); font-size: 10px; margin-right: 8px;">q05</span>Union-specific TLDs (.eu, .de, .fr&hellip;)</p>
-              <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; padding: 8px 0; border-bottom: 1px solid var(--border);"><span class="mono" style="color: var(--text-faint); font-size: 10px; margin-right: 8px;">q06</span>Mobile app in EU app stores</p>
-              <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; padding: 8px 0;"><span class="mono" style="color: var(--text-faint); font-size: 10px; margin-right: 8px;">q07</span>Accessible from EU IPs (no geo-blocking)</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Section 2: Company Size -->
-        <div class="substep" data-substep="1" style="flex: 0.45;">
-          <div style="border: 1px solid var(--border); background: rgba(255,255,255,0.45); backdrop-filter: blur(8px); overflow: hidden; height: 100%;">
-            <div style="padding: 12px 20px; background: var(--accent-soft); display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--border);">
-              <div class="step-number" style="width: 24px; height: 24px; font-size: 11px;">2</div>
-              <span style="font-size: 14px; color: var(--fg); font-weight: 500;">Company Size</span>
-            </div>
-            <div style="padding: 10px 20px; display: flex; flex-direction: column; gap: 0;">
-              <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; padding: 8px 0; border-bottom: 1px solid var(--border);"><span class="mono" style="color: var(--text-faint); font-size: 10px; margin-right: 8px;">q08</span>Number of staff members</p>
-              <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; padding: 8px 0;"><span class="mono" style="color: var(--text-faint); font-size: 10px; margin-right: 8px;">q09</span>Annual turnover &le;&euro;10M</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Section 3: Type of Service -->
-        <div class="substep" data-substep="2" style="flex: 1;">
-          <div style="border: 1px solid var(--border); background: rgba(255,255,255,0.45); backdrop-filter: blur(8px); overflow: hidden; height: 100%;">
-            <div style="padding: 12px 20px; background: var(--accent-soft); display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--border);">
-              <div class="step-number" style="width: 24px; height: 24px; font-size: 11px;">3</div>
-              <span style="font-size: 14px; color: var(--fg); font-weight: 500;">Type of Service</span>
-            </div>
-            <div style="padding: 10px 20px; display: flex; flex-direction: column; gap: 0;">
-              <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; padding: 8px 0; border-bottom: 1px solid var(--border);"><span class="mono" style="color: var(--text-faint); font-size: 10px; margin-right: 8px;">q10</span>Mere conduit &mdash; transmits without storing</p>
-              <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; padding: 8px 0; border-bottom: 1px solid var(--border);"><span class="mono" style="color: var(--text-faint); font-size: 10px; margin-right: 8px;">q11</span>Caching &mdash; temporary copies for speed</p>
-              <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; padding: 8px 0; border-bottom: 1px solid var(--border);"><span class="mono" style="color: var(--text-faint); font-size: 10px; margin-right: 8px;">q12</span>Search engine &mdash; indexes the web</p>
-              <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; padding: 8px 0; border-bottom: 1px solid var(--border);"><span class="mono" style="color: var(--text-faint); font-size: 10px; margin-right: 8px;">q13</span>Hosting &mdash; stores user content</p>
-              <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; padding: 8px 0; border-bottom: 1px solid var(--border);"><span class="mono" style="color: var(--text-faint); font-size: 10px; margin-right: 8px;">q14</span>Online platform &mdash; disseminates to public</p>
-              <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; padding: 8px 0;"><span class="mono" style="color: var(--text-faint); font-size: 10px; margin-right: 8px;">q15</span>Marketplace &mdash; sellers to consumers</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="slide-footer">
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============================
-       SLIDE 9 — Deep Research: Inside an Agent (q14)
-       ============================ -->
-  <div class="slide" data-steps="4">
-    <div class="slide-inner" style="padding: 48px 64px;">
-      <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 24px; border-bottom: 1px solid var(--border); margin-bottom: 28px;">
-        <div style="display: flex; align-items: center; gap: 16px;">
-          <div class="step-number" style="width: 40px; height: 40px; font-size: 16px;">2</div>
-          <h2 style="font-size: 38px;">Inside a Research Agent</h2>
-        </div>
-        <span class="tag"><span class="tag-dot"></span> Deep Research &mdash; q14</span>
-      </div>
-
-      <!-- Step 0: The question, big and clear -->
-      <div class="substep" data-substep="0" style="margin-bottom: 24px;">
-        <div style="display: flex; align-items: center; gap: 20px; padding: 20px 28px; border: 2px solid var(--fg); background: rgba(255,255,255,0.5);">
-          <span class="mono" style="font-size: 12px; color: var(--text-faint);">q14</span>
-          <div>
-            <p style="font-size: 22px; color: var(--fg); font-family: var(--font-serif);">Does this company operate an online platform?</p>
-            <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">A service that stores and disseminates information to the public at the request of a recipient</p>
-          </div>
-        </div>
-      </div>
-
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; flex: 1; align-items: start;">
-
-        <!-- Left: Legal brief (Step 1) -->
-        <div class="substep" data-substep="1">
-          <div style="border: 1px solid var(--border); background: rgba(255,255,255,0.45); backdrop-filter: blur(8px); overflow: hidden;">
-            <div style="padding: 12px 20px; background: var(--fg); display: flex; align-items: center; gap: 10px;">
-              <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: white; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              <span style="font-size: 13px; color: white; font-weight: 500;">Legal Brief</span>
-              <span style="font-size: 11px; color: rgba(255,255,255,0.5); margin-left: auto;">provided to agent</span>
-            </div>
-            <div style="padding: 20px;">
-              <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 12px;">
-                An online platform is a hosting service that <strong style="color: var(--fg);">stores and disseminates information to the public</strong> at the request of a recipient of the service.
-              </p>
-              <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 12px;">
-                The key legal distinction is <em>dissemination</em> &mdash; making information available to a <strong style="color: var(--fg);">potentially unlimited number</strong> of third parties.
-              </p>
-              <div style="padding: 12px 16px; background: var(--accent-soft); margin-top: 8px;">
-                <p style="font-size: 12px; color: var(--fg); font-weight: 500; margin-bottom: 6px;">Exclusions:</p>
-                <p style="font-size: 12px; color: var(--text-muted); line-height: 1.6;">
-                  Comment sections (ancillary feature), cloud storage (minor), private messaging (finite recipients)
-                </p>
-                <p style="font-size: 12px; color: var(--fg); font-weight: 500; margin-top: 8px;">VLOP threshold:</p>
-                <p style="font-size: 12px; color: var(--text-muted); line-height: 1.6;">&ge;45 million monthly active EU users</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: Search queries (Step 2) + Result (Step 3) -->
-        <div style="display: flex; flex-direction: column; gap: 16px;">
-
-          <div class="substep" data-substep="2">
-            <div style="border: 1px solid var(--border); background: rgba(255,255,255,0.45); backdrop-filter: blur(8px); overflow: hidden;">
-              <div style="padding: 12px 20px; background: var(--accent-soft); display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--border);">
-                <img src="logo_tavily.png" alt="Tavily" style="height: 14px;" />
-                <span style="font-size: 13px; color: var(--fg); font-weight: 500;">Web Search</span>
-                <span style="font-size: 11px; color: var(--text-faint); margin-left: auto;">3 queries</span>
-              </div>
-              <div style="padding: 16px 20px; display: flex; flex-direction: column; gap: 12px;">
-                <div style="display: flex; gap: 12px; align-items: start;">
-                  <span class="mono" style="font-size: 10px; color: var(--text-faint); margin-top: 3px; flex-shrink: 0;">1</span>
-                  <div>
-                    <p class="mono" style="font-size: 11px; color: var(--fg);">&ldquo;Apple Inc user generated content public dissemination&rdquo;</p>
-                    <p style="font-size: 11px; color: var(--text-faint); margin-top: 4px; line-height: 1.4;">&rarr; App Store reviews, Apple Music social features, iMessage public channels&hellip;</p>
-                  </div>
-                </div>
-                <div style="display: flex; gap: 12px; align-items: start;">
-                  <span class="mono" style="font-size: 10px; color: var(--text-faint); margin-top: 3px; flex-shrink: 0;">2</span>
-                  <div>
-                    <p class="mono" style="font-size: 11px; color: var(--fg);">&ldquo;App Store user reviews public visibility scope&rdquo;</p>
-                    <p style="font-size: 11px; color: var(--text-faint); margin-top: 4px; line-height: 1.4;">&rarr; Reviews publicly visible to all App Store visitors, not limited audience&hellip;</p>
-                  </div>
-                </div>
-                <div style="display: flex; gap: 12px; align-items: start;">
-                  <span class="mono" style="font-size: 10px; color: var(--text-faint); margin-top: 3px; flex-shrink: 0;">3</span>
-                  <div>
-                    <p class="mono" style="font-size: 11px; color: var(--fg);">&ldquo;Apple designated VLOP DSA European Commission&rdquo;</p>
-                    <p style="font-size: 11px; color: var(--text-faint); margin-top: 4px; line-height: 1.4;">&rarr; EC designated App Store as VLOP on 25 April 2023 under DSA&hellip;</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="substep" data-substep="3">
-            <div style="border: 2px solid var(--fg); background: rgba(255,255,255,0.45); backdrop-filter: blur(8px); overflow: hidden;">
-              <div style="padding: 12px 20px; background: var(--accent-soft); display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--border);">
-                <span class="mono" style="font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.08em;">Agent Answer</span>
-              </div>
-              <div style="padding: 16px 20px;">
-                <p style="font-size: 14px; color: var(--fg); font-weight: 500; margin-bottom: 8px;">Yes &mdash; Apple operates an online platform</p>
-                <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.6;">
-                  The App Store stores and publicly disseminates user-generated reviews to an unlimited audience. Additionally, the European Commission designated the App Store as a Very Large Online Platform (VLOP) under the DSA on 25 April 2023.
-                </p>
-                <div style="display: flex; align-items: center; gap: 12px; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border);">
-                  <span class="mono" style="font-size: 10px; background: var(--fg); color: white; padding: 3px 10px;">HIGH CONFIDENCE</span>
-                  <span style="font-size: 11px; color: var(--text-faint);">3 sources cited</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="slide-footer">
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============================
-       SLIDE 10 — Deep Research: Complete
-       ============================ -->
-  <div class="slide" data-steps="2">
-    <div class="slide-inner" style="padding: 48px 64px;">
-      <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 24px; border-bottom: 1px solid var(--border); margin-bottom: 28px;">
-        <div style="display: flex; align-items: center; gap: 16px;">
-          <div class="step-number" style="width: 40px; height: 40px; font-size: 16px;">2</div>
-          <h2 style="font-size: 38px;">Research Complete</h2>
-        </div>
-        <span class="tag"><span class="tag-dot"></span> Deep Research</span>
-      </div>
-
-      <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 28px; max-width: 720px;">
-
-        <!-- Step 0: All 16 results -->
-        <div class="substep" data-substep="0">
-          <div style="border: 1px solid var(--border); background: rgba(255,255,255,0.45); backdrop-filter: blur(8px); overflow: hidden;">
-            <div style="padding: 14px 24px; background: var(--accent-soft); display: flex; align-items: center; gap: 12px; border-bottom: 1px solid var(--border);">
-              <span style="font-size: 15px; color: var(--fg); font-weight: 500;">Apple Inc. &mdash; Company Profile</span>
-              <span class="mono" style="font-size: 11px; color: var(--text-faint); margin-left: auto;">16 / 16 answered</span>
-            </div>
-            <div style="padding: 16px 24px; display: flex; flex-direction: column; gap: 10px;">
-              <div style="display: flex; align-items: center; gap: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border);">
-                <div class="step-number" style="width: 24px; height: 24px; font-size: 10px;">1</div>
-                <p style="font-size: 14px; color: var(--fg); font-weight: 500; flex: 1;">Geographical Scope</p>
-                <div style="display: flex; gap: 4px;">
-                  <span class="mono" style="font-size: 9px; background: var(--fg); color: white; padding: 2px 6px;">8/8</span>
-                </div>
-              </div>
-              <div style="display: flex; align-items: center; gap: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border);">
-                <div class="step-number" style="width: 24px; height: 24px; font-size: 10px;">2</div>
-                <p style="font-size: 14px; color: var(--fg); font-weight: 500; flex: 1;">Company Size</p>
-                <div style="display: flex; gap: 4px;">
-                  <span class="mono" style="font-size: 9px; background: var(--fg); color: white; padding: 2px 6px;">2/2</span>
-                </div>
-              </div>
-              <div style="display: flex; align-items: center; gap: 16px;">
-                <div class="step-number" style="width: 24px; height: 24px; font-size: 10px;">3</div>
-                <p style="font-size: 14px; color: var(--fg); font-weight: 500; flex: 1;">Type of Service</p>
-                <div style="display: flex; gap: 4px;">
-                  <span class="mono" style="font-size: 9px; background: var(--fg); color: white; padding: 2px 6px;">6/6</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 1: What each answer contains + handoff -->
-        <div class="substep" data-substep="1">
-          <div style="display: flex; gap: 20px;">
-            <div style="flex: 1; border: 1px solid var(--border); background: rgba(255,255,255,0.45); padding: 20px;">
-              <p style="font-size: 13px; color: var(--fg); font-weight: 500; margin-bottom: 10px;">Each answer contains:</p>
-              <div style="display: flex; flex-direction: column; gap: 6px;">
-                <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5; padding-left: 12px; border-left: 2px solid var(--border-strong);">A structured finding with yes/no + explanation</p>
-                <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5; padding-left: 12px; border-left: 2px solid var(--border-strong);">Confidence level (high / medium / low)</p>
-                <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5; padding-left: 12px; border-left: 2px solid var(--border-strong);">Sources with URLs for verification</p>
-              </div>
-            </div>
-            <div style="flex: 1; border: 2px solid var(--fg); background: rgba(255,255,255,0.45); padding: 20px; display: flex; flex-direction: column; justify-content: center;">
-              <p style="font-size: 14px; color: var(--fg); font-weight: 500; margin-bottom: 6px;">Next step &rarr;</p>
-              <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
-                Full profile presented for <strong style="color: var(--fg);">human validation</strong>
-              </p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="slide-footer">
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============================
-       SLIDE 8 — Design Goals / Prototyping
+       SLIDE 8 — Context is Everything
        ============================ -->
   <div class="slide">
     <div class="slide-inner" style="padding: 48px 64px;">
       <div class="slide-header anim-fade anim-d1">
-        <span class="tag"><span class="tag-dot"></span> Design Goals</span>
+        <span class="tag"><span class="tag-dot"></span> Core Insight</span>
       </div>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: start; flex: 1;">
-        <div style="display: flex; flex-direction: column; gap: 20px;">
-          <h2 class="anim-fade anim-d2" style="font-size: 36px;">What we want to achieve</h2>
-          <ul class="clean">
-            <li class="anim-fade anim-d3" style="font-size: 15px;">The human always decides &mdash; the system pauses before assessment</li>
-            <li class="anim-fade anim-d3" style="font-size: 15px;">Prompt sensitivity reduced through model selection and prompt engineering until acceptable results</li>
-            <li class="anim-fade anim-d4" style="font-size: 15px;">AI research can be bypassed entirely</li>
-            <li class="anim-fade anim-d4" style="font-size: 15px;">Flexible system &mdash; legal experts can add case law, guidelines, or other elements</li>
+
+      <!-- Title + key points -->
+      <div style="display: flex; align-items: start; gap: 56px; margin-bottom: 32px;">
+        <div style="flex: 1;">
+          <h2 class="anim-fade anim-d2" style="font-size: 40px; line-height: 1.1;">It&rsquo;s not about the model.<br/>It&rsquo;s about context.</h2>
+        </div>
+        <div style="flex: 1;">
+          <ul class="clean" style="margin: 0;">
+            <li class="anim-fade anim-d2" style="font-size: 15px;">An LLM needs <strong style="color: var(--fg);">guidance</strong> to produce reliable legal output</li>
+            <li class="anim-fade anim-d3" style="font-size: 15px;">Performance depends on the <strong style="color: var(--fg);">context</strong> you provide</li>
+            <li class="anim-fade anim-d3" style="font-size: 15px;">Each layer narrows degrees of freedom &mdash; from open text to structured legal reasoning</li>
           </ul>
         </div>
+      </div>
+
+      <!-- Full-width stacked context layers -->
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 0; justify-content: center;">
+        <div class="anim-fade anim-d4" style="padding: 20px 28px; border: 1px solid var(--border); border-left: 5px solid rgba(10,10,10,0.15); background: rgba(255,255,255,0.5); display: flex; align-items: center; gap: 24px;">
+          <div style="min-width: 200px;">
+            <span class="mono" style="font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.08em;">Layer 4</span>
+            <p style="font-size: 16px; color: var(--fg); font-weight: 500; margin-top: 4px;">User expertise</p>
+          </div>
+          <div style="width: 1px; height: 32px; background: var(--border);"></div>
+          <p style="font-size: 14px; color: var(--text-muted); line-height: 1.5;">Human validates &amp; overrides each finding</p>
+          <p class="mono" style="font-size: 11px; color: var(--text-faint); margin-left: auto; flex-shrink: 0; white-space: nowrap;">&ldquo;This answer is wrong &mdash; Apple has &gt;45M EU users&rdquo;</p>
+        </div>
+        <div class="anim-fade anim-d5" style="padding: 20px 28px; border: 1px solid var(--border); border-top: none; border-left: 5px solid rgba(10,10,10,0.35); background: rgba(255,255,255,0.5); display: flex; align-items: center; gap: 24px;">
+          <div style="min-width: 200px;">
+            <span class="mono" style="font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.08em;">Layer 3</span>
+            <p style="font-size: 16px; color: var(--fg); font-weight: 500; margin-top: 4px;">Validated research data</p>
+          </div>
+          <div style="width: 1px; height: 32px; background: var(--border);"></div>
+          <p style="font-size: 14px; color: var(--text-muted); line-height: 1.5;">16 verified answers feed the assessment</p>
+          <p class="mono" style="font-size: 11px; color: var(--text-faint); margin-left: auto; flex-shrink: 0; white-space: nowrap;">&ldquo;App Store has 500M+ monthly EU users&rdquo;</p>
+        </div>
+        <div class="anim-fade anim-d6" style="padding: 20px 28px; border: 1px solid var(--border); border-top: none; border-left: 5px solid rgba(10,10,10,0.6); background: rgba(255,255,255,0.5); display: flex; align-items: center; gap: 24px;">
+          <div style="min-width: 200px;">
+            <span class="mono" style="font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.08em;">Layer 2</span>
+            <p style="font-size: 16px; color: var(--fg); font-weight: 500; margin-top: 4px;">RAG on DSA text</p>
+          </div>
+          <div style="width: 1px; height: 32px; background: var(--border);"></div>
+          <p style="font-size: 14px; color: var(--text-muted); line-height: 1.5;">Relevant articles retrieved per question</p>
+          <p class="mono" style="font-size: 11px; color: var(--text-faint); margin-left: auto; flex-shrink: 0; white-space: nowrap;">&ldquo;Art. 33 &mdash; VLOP threshold: &ge;45M monthly active EU users&rdquo;</p>
+        </div>
+        <div class="anim-fade anim-d7" style="padding: 20px 28px; border: 1px solid var(--border); border-top: none; border-left: 5px solid rgba(10,10,10,0.85); background: rgba(255,255,255,0.5); display: flex; align-items: center; gap: 24px;">
+          <div style="min-width: 200px;">
+            <span class="mono" style="font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.08em;">Layer 1</span>
+            <p style="font-size: 16px; color: var(--fg); font-weight: 500; margin-top: 4px;">Legal briefs in prompts</p>
+          </div>
+          <div style="width: 1px; height: 32px; background: var(--border);"></div>
+          <p style="font-size: 14px; color: var(--text-muted); line-height: 1.5;">Definitions &amp; criteria per question</p>
+          <p class="mono" style="font-size: 11px; color: var(--text-faint); margin-left: auto; flex-shrink: 0; white-space: nowrap;">&ldquo;An online platform disseminates to an unlimited audience&rdquo;</p>
+        </div>
+        <div class="anim-fade anim-d8" style="padding: 12px 28px; background: var(--fg); text-align: center;">
+          <span class="mono" style="font-size: 11px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.08em;">Base model &mdash; capable, but needs guidance</span>
+        </div>
+      </div>
+
+      <div class="slide-footer anim-fade anim-d8">
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================
+       SLIDE 9 — The Limits: Human Validation
+       ============================ -->
+  <div class="slide">
+    <div class="slide-inner" style="padding: 48px 64px;">
+      <div class="slide-header anim-fade anim-d1">
+        <span class="tag"><span class="tag-dot"></span> Design Principle</span>
+      </div>
+
+      <div class="grid-2" style="gap: 56px; align-items: start;">
+        <!-- Left column -->
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <h2 class="anim-fade anim-d2" style="font-size: 36px; line-height: 1.15;">AI as first pass,<br/>human as final word</h2>
+
+          <div class="anim-fade anim-d3" style="display: flex; flex-direction: column; gap: 16px;">
+            <div style="display: flex; align-items: start; gap: 14px; padding: 16px 20px; border: 1px solid var(--border); background: rgba(255,255,255,0.5);">
+              <div style="width: 10px; height: 10px; border-radius: 50%; background: #22c55e; flex-shrink: 0; margin-top: 5px;"></div>
+              <div>
+                <p style="font-size: 14px; color: var(--fg); font-weight: 500;">Factual questions</p>
+                <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5; margin-top: 4px;">Agents handle well: &ldquo;Does Apple operate in the EU?&rdquo;, &ldquo;How many employees?&rdquo; &mdash; verifiable via web search</p>
+              </div>
+            </div>
+            <div style="display: flex; align-items: start; gap: 14px; padding: 16px 20px; border: 1px solid var(--border); background: rgba(255,255,255,0.5);">
+              <div style="width: 10px; height: 10px; border-radius: 50%; background: #ef4444; flex-shrink: 0; margin-top: 5px;"></div>
+              <div>
+                <p style="font-size: 14px; color: var(--fg); font-weight: 500;">Legal classification</p>
+                <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5; margin-top: 4px;">Depends on data quality &mdash; &ldquo;Is the App Store an online platform?&rdquo; requires contextual judgment the model cannot guarantee</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="anim-fade anim-d4" style="font-size: 14px; line-height: 1.6; color: var(--text-muted); font-style: italic; border-left: 2px solid var(--border-strong); padding-left: 16px;">
+            The system is designed so that every AI output passes through human review before it affects the legal assessment.
+          </p>
+        </div>
+
+        <!-- Right column: Accept / Edit / Skip -->
         <div style="display: flex; flex-direction: column; gap: 0;">
-          <div class="anim-fade anim-d3" style="display: flex; gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--border);">
+          <div class="anim-fade anim-d3" style="display: flex; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--border);">
             <div class="step-number" style="width: 28px; height: 28px; font-size: 11px; margin-top: 2px;">&#10003;</div>
             <div>
               <p style="font-weight: 500; color: var(--fg); margin-bottom: 4px; font-size: 15px;">Accept</p>
-              <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">The AI finding is correct &mdash; proceed with it as-is.</p>
+              <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">The AI finding is correct &mdash; proceed as-is</p>
             </div>
           </div>
-          <div class="anim-fade anim-d4" style="display: flex; gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--border);">
+          <div class="anim-fade anim-d4" style="display: flex; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--border);">
             <div class="step-number" style="width: 28px; height: 28px; font-size: 11px; margin-top: 2px;">
               <svg viewBox="0 0 24 24" style="width: 14px; height: 14px; stroke: white; fill: none; stroke-width: 2; stroke-linecap: round;"><path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"/></svg>
             </div>
@@ -2865,14 +2531,7 @@
               <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">Override with own knowledge</p>
             </div>
           </div>
-          <div class="anim-fade anim-d5" style="display: flex; gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--border);">
-            <div class="step-number" style="width: 28px; height: 28px; font-size: 11px; margin-top: 2px;">?</div>
-            <div>
-              <p style="font-weight: 500; color: var(--fg); margin-bottom: 4px; font-size: 15px;">Ask for explanation</p>
-              <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">Get a plain-language explanation via chat</p>
-            </div>
-          </div>
-          <div class="anim-fade anim-d6" style="display: flex; gap: 20px; padding: 14px 0;">
+          <div class="anim-fade anim-d5" style="display: flex; gap: 20px; padding: 18px 0;">
             <div class="step-number" style="width: 28px; height: 28px; font-size: 11px; margin-top: 2px;">
               <svg viewBox="0 0 24 24" style="width: 14px; height: 14px; stroke: white; fill: none; stroke-width: 2; stroke-linecap: round;"><path d="M5 12h14"/></svg>
             </div>
@@ -2881,8 +2540,14 @@
               <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">Enter all data manually &mdash; AI research is optional</p>
             </div>
           </div>
+
+          <div class="anim-fade anim-d6" style="margin-top: 24px; display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: var(--accent-soft);">
+            <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: var(--fg); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">See Engel (2024) on prompt sensitivity and human oversight in legal AI systems</p>
+          </div>
         </div>
       </div>
+
       <div class="slide-footer anim-fade anim-d8">
         <span></span>
         <span></span>
@@ -2891,110 +2556,65 @@
   </div>
 
   <!-- ============================
-       SLIDE — Assessment Agent
+       SLIDE 10 — Vision: Guided AI for Legal Assessment
        ============================ -->
-  <div class="slide" data-steps="3">
+  <div class="slide">
     <div class="slide-inner" style="padding: 48px 64px;">
-      <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 24px; border-bottom: 1px solid var(--border); margin-bottom: 28px;">
-        <div style="display: flex; align-items: center; gap: 16px;">
-          <div class="step-number" style="width: 40px; height: 40px; font-size: 16px;">3</div>
-          <h2 style="font-size: 38px;">Assessment Agent</h2>
+      <div class="slide-header anim-fade anim-d1">
+        <span class="logo">Corinna</span>
+        <span class="tag"><span class="tag-dot"></span> Vision</span>
+      </div>
+
+      <div style="display: flex; align-items: start; gap: 56px; margin-bottom: 32px;">
+        <div style="flex: 1;">
+          <h2 class="anim-fade anim-d2" style="font-size: 40px; line-height: 1.1;">Guided AI for<br/>Legal Assessment</h2>
         </div>
-        <div style="display: flex; align-items: center; gap: 16px;">
-          <img src="langgraph_logo.png" alt="LangGraph" style="height: 40px; object-fit: contain;" />
-          <img src="deepseek_logo.png" alt="DeepSeek" style="height: 20px; object-fit: contain;" />
+        <div style="flex: 1;">
+          <ul class="clean" style="margin: 0;">
+            <li class="anim-fade anim-d2" style="font-size: 15px;">The model needs <strong style="color: var(--fg);">guidance</strong> &mdash; legal briefs, structured questions, retrieval from the regulation</li>
+            <li class="anim-fade anim-d3" style="font-size: 15px;">The goal is not autonomous AI judgement, but <strong style="color: var(--fg);">human-directed AI</strong></li>
+            <li class="anim-fade anim-d3" style="font-size: 15px;">Accelerate the work while keeping the expert in control</li>
+          </ul>
         </div>
       </div>
 
-      <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 24px;">
-
-        <!-- Step 0: The two inputs -->
-        <div class="substep" data-substep="0">
-          <div style="display: flex; gap: 16px;">
-            <div style="flex: 1; display: flex; align-items: center; gap: 16px; padding: 16px 24px; border: 1px solid var(--border); background: var(--accent-soft);">
-              <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: var(--fg); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0;"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-              <div>
-                <span class="mono" style="font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.08em;">Input 1</span>
-                <p style="font-size: 14px; color: var(--fg); font-weight: 500; margin-top: 2px;">Validated Company Profile</p>
-                <p style="font-size: 12px; color: var(--text-muted);">16 answers, human-confirmed</p>
-              </div>
+      <!-- Full-width evidence panels -->
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 16px; justify-content: center;">
+        <div style="display: flex; gap: 16px;">
+          <div class="card anim-fade anim-d4" style="flex: 1; padding: 24px; display: flex; flex-direction: column; gap: 10px;">
+            <span class="mono" style="font-size: 10px; padding: 3px 10px; background: var(--fg); color: white; align-self: flex-start; text-transform: uppercase; letter-spacing: 0.06em;">What agents can do</span>
+            <div style="display: flex; flex-direction: column; gap: 0;">
+              <div style="display: flex; align-items: baseline; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--border);"><span style="width: 4px; height: 4px; background: var(--fg); flex-shrink: 0; transform: translateY(-1px);"></span><p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">Gather factual data via web search</p></div>
+              <div style="display: flex; align-items: baseline; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--border);"><span style="width: 4px; height: 4px; background: var(--fg); flex-shrink: 0; transform: translateY(-1px);"></span><p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">Retrieve relevant legal text per article</p></div>
+              <div style="display: flex; align-items: baseline; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--border);"><span style="width: 4px; height: 4px; background: var(--fg); flex-shrink: 0; transform: translateY(-1px);"></span><p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">Structure findings with sources &mdash; tasks that take hours manually</p></div>
+              <div style="display: flex; align-items: baseline; gap: 10px; padding: 7px 0;"><span style="width: 4px; height: 4px; background: var(--fg); flex-shrink: 0; transform: translateY(-1px);"></span><p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">Legal inference &mdash; if given the correct context</p></div>
             </div>
-            <div style="flex: 1; display: flex; align-items: center; gap: 16px; padding: 16px 24px; border: 1px solid var(--border); background: var(--accent-soft);">
-              <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: var(--fg); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0;"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
-              <div>
-                <span class="mono" style="font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.08em;">Input 2</span>
-                <p style="font-size: 14px; color: var(--fg); font-weight: 500; margin-top: 2px;">DSA Legal Text</p>
-                <p style="font-size: 12px; color: var(--text-muted);">Retrieved per article via RAG</p>
-              </div>
+          </div>
+          <div class="card anim-fade anim-d5" style="flex: 1; padding: 24px; display: flex; flex-direction: column; gap: 10px;">
+            <span class="mono" style="font-size: 10px; padding: 3px 10px; background: var(--fg); color: white; align-self: flex-start; text-transform: uppercase; letter-spacing: 0.06em;">What still needs a human</span>
+            <div style="display: flex; flex-direction: column; gap: 0;">
+              <div style="display: flex; align-items: baseline; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--border);"><span style="width: 4px; height: 4px; background: var(--fg); flex-shrink: 0; transform: translateY(-1px);"></span><p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">Legal classification requires contextual judgment</p></div>
+              <div style="display: flex; align-items: baseline; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--border);"><span style="width: 4px; height: 4px; background: var(--fg); flex-shrink: 0; transform: translateY(-1px);"></span><p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">Every finding is reviewed before entering the assessment</p></div>
+              <div style="display: flex; align-items: baseline; gap: 10px; padding: 7px 0;"><span style="width: 4px; height: 4px; background: var(--fg); flex-shrink: 0; transform: translateY(-1px);"></span><p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">Expert can override, edit, or bypass AI entirely</p></div>
+            </div>
+          </div>
+          <div class="card anim-fade anim-d6" style="flex: 1; padding: 24px; display: flex; flex-direction: column; gap: 10px;">
+            <span class="mono" style="font-size: 10px; padding: 3px 10px; background: var(--fg); color: white; align-self: flex-start; text-transform: uppercase; letter-spacing: 0.06em;">Looking ahead</span>
+            <div style="display: flex; flex-direction: column; gap: 0;">
+              <div style="display: flex; align-items: baseline; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--border);"><span style="width: 4px; height: 4px; background: var(--fg); flex-shrink: 0; transform: translateY(-1px);"></span><p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">Context architecture stays as models improve</p></div>
+              <div style="display: flex; align-items: baseline; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--border);"><span style="width: 4px; height: 4px; background: var(--fg); flex-shrink: 0; transform: translateY(-1px);"></span><p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">Better models &rarr; better results within the same guided framework</p></div>
+              <div style="display: flex; align-items: baseline; gap: 10px; padding: 7px 0;"><span style="width: 4px; height: 4px; background: var(--fg); flex-shrink: 0; transform: translateY(-1px);"></span><p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">Extensible to other regulations beyond the DSA</p></div>
             </div>
           </div>
         </div>
 
-        <!-- Step 1: Per-article assessment flow -->
-        <div class="substep" data-substep="1">
-          <div style="border: 1px solid var(--border); background: rgba(255,255,255,0.45); backdrop-filter: blur(8px); overflow: hidden;">
-            <div style="padding: 14px 24px; background: var(--fg); display: flex; align-items: center; gap: 12px;">
-              <span style="font-size: 14px; color: white; font-weight: 500;">Assessment Agent</span>
-              <span style="font-size: 12px; color: rgba(255,255,255,0.5);">&mdash; runs once per DSA article</span>
-              <div style="margin-left: auto; display: flex; gap: 6px;">
-                <span class="mono" style="font-size: 9px; padding: 3px 8px; background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 0.04em;">RAG on DSA</span>
-              </div>
-            </div>
-            <div style="padding: 20px 24px; display: flex; gap: 0;">
-              <div style="flex: 1; padding: 16px 20px; border-right: 1px solid var(--border);">
-                <span class="mono" style="font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em;">Reason</span>
-                <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-top: 8px;">
-                  Analyze legal criteria against company profile
-                </p>
-              </div>
-              <div style="flex: 1; padding: 16px 20px; border-right: 1px solid var(--border);">
-                <span class="mono" style="font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em;">Act</span>
-                <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-top: 8px;">
-                  Retrieve article text &amp; recitals via RAG
-                </p>
-              </div>
-              <div style="flex: 1; padding: 16px 20px;">
-                <span class="mono" style="font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em;">Output</span>
-                <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-top: 8px;">
-                  Applicability verdict, reasoning, action items
-                </p>
-              </div>
-            </div>
-          </div>
+        <div class="anim-fade anim-d7" style="display: flex; align-items: center; gap: 10px; padding: 10px 16px; background: var(--accent-soft);">
+          <svg viewBox="0 0 24 24" style="width: 14px; height: 14px; stroke: var(--text-muted); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          <p style="font-size: 11px; color: var(--text-muted);">Results are preliminary &mdash; system is a working prototype, not a validated product</p>
         </div>
-
-        <!-- Step 2: Summary Agent -->
-        <div class="substep" data-substep="2">
-          <div style="display: flex; gap: 16px; align-items: stretch;">
-            <div style="display: flex; align-items: center; padding: 0 16px;">
-              <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
-                <div style="width: 1px; height: 20px; background: var(--border-strong);"></div>
-                <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: var(--fg); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
-              </div>
-            </div>
-            <div style="flex: 1; border: 2px solid var(--fg); background: rgba(255,255,255,0.45); backdrop-filter: blur(8px); overflow: hidden;">
-              <div style="padding: 14px 24px; background: var(--accent-soft); display: flex; align-items: center; gap: 12px; border-bottom: 1px solid var(--border);">
-                <span style="font-size: 14px; color: var(--fg); font-weight: 500;">Summary Agent</span>
-                <span style="font-size: 12px; color: var(--text-muted);">&mdash; compiles all article-level results into the final report</span>
-              </div>
-              <div style="padding: 16px 24px; display: flex; gap: 24px;">
-                <div style="display: flex; align-items: start; gap: 10px;">
-                  <span class="mono" style="font-size: 10px; color: var(--text-faint); margin-top: 3px; flex-shrink: 0;">IN</span>
-                  <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">Per-article assessment results</p>
-                </div>
-                <span style="color: var(--text-faint); align-self: center;">&rarr;</span>
-                <div style="display: flex; align-items: start; gap: 10px;">
-                  <span class="mono" style="font-size: 10px; color: var(--text-faint); margin-top: 3px; flex-shrink: 0;">OUT</span>
-                  <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">Full compliance report &mdash; obligations, reasoning, action items (PDF export)</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
 
-      <div class="slide-footer">
+      <div class="slide-footer anim-fade anim-d8">
         <span></span>
         <span></span>
       </div>
